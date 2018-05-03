@@ -23,5 +23,14 @@ namespace bloodDonor
         public virtual Donation Donation { get; set; }
 
         public virtual User User { get; set; }
+
+        public override string ToString()
+        {
+            return "Donation processing:\n- Id: " + Id.ToString() +
+                    "\n- RequestId: " + RequestId.ToString() +
+                    "\n- DonationId: " + DonationId.ToString() +
+                    "\n- PersonelId: " + PersonelId.ToString() +
+                    "\n- Flags: " + Flags.ToString();
+        }
     }
 }
