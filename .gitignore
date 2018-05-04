@@ -7,15 +7,18 @@
 *.sln.docstates
 
 # Build results
-projectORM/bloodDonor/bloodDonor/[Dd]ebug/
-projectORM/bloodDonor/bloodDonor/[Dd]ebugPublic/
-projectORM/bloodDonor/bloodDonor/[Rr]elease/
-projectORM/bloodDonor/bloodDonor/[Rr]eleases/
-projectORM/bloodDonor/bloodDonor/x64/
-projectORM/bloodDonor/bloodDonor/build/
-projectORM/bloodDonor/bloodDonor/bld/
-projectORM/bloodDonor/bloodDonor/[Bb]in/
-projectORM/bloodDonor/bloodDonor/[Oo]bj/
+projectORM/BloodDonor/BloodDonor/[Dd]ebug/
+projectORM/BloodDonor/BloodDonor/[Dd]ebugPublic/
+projectORM/BloodDonor/BloodDonor/[Rr]elease/
+projectORM/BloodDonor/BloodDonor/[Rr]eleases/
+projectORM/BloodDonor/BloodDonor/x64/
+projectORM/BloodDonor/BloodDonor/build/
+projectORM/BloodDonor/BloodDonor/bld/
+projectORM/BloodDonor/BloodDonor/[Bb]in/
+projectORM/BloodDonor/BloodDonor/[Oo]bj/
+projectORM/BloodDonor/.vs/BloodDonor/
+projectORM/bloodDonor/.vs/
+db.lock
 
 old-class-diagram-project/
 
