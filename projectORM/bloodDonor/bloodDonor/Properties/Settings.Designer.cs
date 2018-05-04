@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace bloodDonor.Properties
+namespace BloodDonor.Properties
 {
 
 

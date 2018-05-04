@@ -1,14 +1,14 @@
-namespace bloodDonor
+namespace BloodDonor
 {
     using System;
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class Model1 : DbContext
+    public partial class ModelORM : DbContext
     {
-        public Model1()
-            : base("name=Model1")
+        public ModelORM()
+            : base("name=ModelORM")
         {
         }
 
@@ -21,6 +21,7 @@ namespace bloodDonor
         public virtual DbSet<Donor> Donors { get; set; }
         public virtual DbSet<Pacient> Pacients { get; set; }
         public virtual DbSet<ProcessingDonation> ProcessingDonations { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

@@ -12,8 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Drawing;
 
-namespace WpfTrying
+namespace BloodDonor
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -22,7 +23,11 @@ namespace WpfTrying
     {
         public MainWindow()
         {
-            InitializeComponent();
+            //Bitmap bmpIcon = BloodDonor.Properties.Resources.care;
+            var bitmap = BloodDonor.Properties.Resources.care; // or get it from resource
+            var iconHandle = bitmap.GetHicon();
+            var icon = System.Drawing.Icon.FromHandle(iconHandle);
+            //InitializeComponent();
         }
     }
 }
