@@ -17,8 +17,9 @@ projectORM/BloodDonor/BloodDonor/bld/
 projectORM/BloodDonor/BloodDonor/[Bb]in/
 projectORM/BloodDonor/BloodDonor/[Oo]bj/
 projectORM/BloodDonor/.vs/BloodDonor/
-projectORM/bloodDonor/.vs/
+projectORM/BloodDonor/.vs/
 db.lock
+.vs/
 
 old-class-diagram-project/
 

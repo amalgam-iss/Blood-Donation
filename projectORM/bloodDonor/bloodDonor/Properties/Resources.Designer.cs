@@ -63,9 +63,29 @@ namespace BloodDonor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap care {
+        internal static System.Drawing.Bitmap heart {
             get {
-                object obj = ResourceManager.GetObject("care", resourceCulture);
+                object obj = ResourceManager.GetObject("heart", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon if_Heart_Watch_379466 {
+            get {
+                object obj = ResourceManager.GetObject("if_Heart_Watch_379466", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap loginCare {
+            get {
+                object obj = ResourceManager.GetObject("loginCare", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
