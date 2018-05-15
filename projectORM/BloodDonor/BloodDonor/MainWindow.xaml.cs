@@ -23,11 +23,24 @@ namespace BloodDonor
     {
         public MainWindow()
         {
-            //Bitmap bmpIcon = BloodDonor.Properties.Resources.care;
-            var bitmap = BloodDonor.Properties.Resources.care; // or get it from resource
-            var iconHandle = bitmap.GetHicon();
-            var icon = System.Drawing.Icon.FromHandle(iconHandle);
-            //InitializeComponent();
+            InitializeComponent();
+
+        }
+
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void tbxUsername_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            tbxUsername.Text = "";
+        }
+
+        private void lblNewUser_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
+    
 }
