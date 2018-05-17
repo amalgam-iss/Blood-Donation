@@ -34,7 +34,7 @@ namespace BloodDonor
 
         private void tbxUsername_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            tbxUsername.Text = "";
+            tbxUsername.Text = "dfg";
         }
 
         private void lblNewUser_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
