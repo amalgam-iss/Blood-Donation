@@ -12,7 +12,7 @@ namespace BloodDonor.Controllers
     {
         UserModel userModel = new UserModel();
 
-        public bool login(string user, string password)
+        public int login(string user, string password)
         {
             return userModel.CanConnect(user, password);
         }

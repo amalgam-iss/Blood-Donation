@@ -15,7 +15,6 @@ using System.Windows.Shapes;
 using System.Drawing;
 
 using BloodDonor.Controllers;
-using BloodDonor.Utils;
 
 namespace BloodDonor
 {
