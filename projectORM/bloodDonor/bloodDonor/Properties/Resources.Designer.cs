@@ -63,16 +63,6 @@ namespace BloodDonor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap basiccolumn {
-            get {
-                object obj = ResourceManager.GetObject("basiccolumn", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap heart {
             get {
                 object obj = ResourceManager.GetObject("heart", resourceCulture);
@@ -96,16 +86,6 @@ namespace BloodDonor.Properties {
         internal static System.Drawing.Bitmap loginCare {
             get {
                 object obj = ResourceManager.GetObject("loginCare", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap raed5 {
-            get {
-                object obj = ResourceManager.GetObject("raed5", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
