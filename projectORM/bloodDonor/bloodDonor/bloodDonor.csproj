@@ -70,6 +70,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controllers\MainController.cs" />
+    <Compile Include="Models\UserModel.cs" />
     <Compile Include="sysdiagram.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Window2.xaml.cs">
@@ -143,5 +145,6 @@
   <ItemGroup>
     <None Include="Resources\if_Heart-Watch_379466.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
