@@ -24,10 +24,10 @@ namespace BloodDonor.Models
 
         public int? Type { get; set; }
 
-        public bool CanConnect(string user, string password)
+        public int CanConnect(string user, string password)
         {
-            bool userCanConnect = false;
-            SqlCommand command = new SqlCommand("SELECT * FROM Users WHERE username = @username AND password = @password", conn);
+            int userType;
+            SqlCommand command = new SqlCommand("SELECT Type FROM Users WHERE username = @username AND password = @password", conn);
             command.Parameters.Add(new SqlParameter("username", user));
             command.Parameters.Add(new SqlParameter("password", password));
 
@@ -36,15 +36,16 @@ namespace BloodDonor.Models
 
             if (reader.HasRows)
             {
-                userCanConnect = true;
+                int columnIndex = reader.GetOrdinal("Type");
+                userType = reader.GetInt32(columnIndex);
             }
             else
             {
-                userCanConnect = false;
+                userType = -1;
             }
 
             conn.Close();
-            return userCanConnect;
+            return userType;
         }
     }
 }

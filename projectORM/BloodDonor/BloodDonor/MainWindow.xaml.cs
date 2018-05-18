@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Drawing;
 
 using BloodDonor.Controllers;
+using BloodDonor.Utils;
 
 namespace BloodDonor
 {
@@ -32,13 +33,21 @@ namespace BloodDonor
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            if (ctrl.login(tbxUsername.Text, tbxPassword.Password.ToString()))
+            switch (ctrl.login(tbxUsername.Text, tbxPassword.Password.ToString()))
             {
-                Console.WriteLine("yas");
-            }
-            else
-            {
-                Console.WriteLine("nahah");
+                case 1:
+                    Window2 window = new Window2();
+                    window.Show();
+                    break;
+                case 2:
+                    // here donor window
+                    break;
+                case 3:
+                    // here nurse window
+                    break;
+                default:
+                    MessageBox.Show("Invalid username or password. \n Please sign up if you don't have an account!");
+                    break;
             }
         }
 
