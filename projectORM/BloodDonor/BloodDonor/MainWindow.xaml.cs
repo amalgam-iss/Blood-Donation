@@ -29,7 +29,8 @@ namespace BloodDonor
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-
+            Window2 window2 = new Window2();
+            window2.Show();
         }
 
         private void tbxUsername_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)

@@ -6,14 +6,20 @@
         xmlns:local="clr-namespace:BloodDonor" 
         mc:Ignorable="d" 
         ResizeMode="NoResize" 
+        WindowStyle="SingleBorderWindow"
+    WindowStartupLocation="CenterScreen"
         Title="Amalgam" Height="748.895" Width="527">
 
     <Grid x:Name="MainView">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="248*"/>
+            <ColumnDefinition Width="273*"/>
+        </Grid.ColumnDefinitions>
         <!-- tbxPassword  Click="tbxPassword_Click()"-->
-        <Grid RenderTransformOrigin="0.5,0.5">
-            <Label Content="Sign in to your account" VerticalAlignment="Top" Margin="24,148,23,0" 
+        <Grid RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
+            <Label Content="Sign in to your account" VerticalAlignment="Top" Margin="25,161,22,0" 
                    Height="42" HorizontalContentAlignment="Center" FontFamily="Microsoft YaHei UI" FontSize="18" FontStretch="Expanded"/>
-            <Canvas Height="140" VerticalAlignment="Top" Background="#FF558ED1"/>
+            <Canvas Height="156" VerticalAlignment="Top" Background="#FF558ED1"/>
             <TextBox x:Name="tbxUsername" 
                      Height="37" Margin="22,236,22,0" 
                      TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" 
@@ -32,7 +38,7 @@
                    Width="289" Foreground="#FF558ED1" Height="33"
                    PreviewMouseLeftButtonDown="lblNewUser_PreviewMouseLeftButtonDown"/>
             <Label x:Name="lblOr" Content="Or:" HorizontalAlignment="Left" Margin="22,502,0,0" VerticalAlignment="Top" Width="176" Height="33"/>
-            <Image Height="100" Margin="135,10,137,0" VerticalAlignment="Top" Source="pack://siteoforigin:,,,/Resources/heart.png"/>
+            <Image Height="100" Margin="138,36,134,0" VerticalAlignment="Top" Source="pack://siteoforigin:,,,/Resources/heart.png"/>
             <CheckBox x:Name="checkBoxRemember" 
                       Content="Remember me"
                       HorizontalAlignment="Left" 
