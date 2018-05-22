@@ -8,20 +8,20 @@
         Title="Sign up" Height="748.895" Width="527">
     <Grid>
         <Canvas Height="120" VerticalAlignment="Top" Background="#FF558ED1" Margin="0,0,-0.2,0"/>
-        <Label Content="Sign up" VerticalAlignment="Top" Margin="26,40,20.8,0" 
+        <Label x:Name="lblTitle" Content="Sign up" VerticalAlignment="Top" Margin="26,40,20.8,0" 
                    Height="42" HorizontalContentAlignment="Center" FontFamily="Microsoft YaHei UI" FontSize="24" FontStretch="Expanded" Foreground="#DDFFFFFF"/>
-        <TextBox Height="23" Margin="26,448,9.8,0" TextWrapping="Wrap" Text="Email here" VerticalAlignment="Top"/>
-        <Label Content="Username:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,149,0,0" FontFamily="Microsoft YaHei UI" 
+        <TextBox x:Name="tbxEmail" Height="23" Margin="26,448,9.8,0" TextWrapping="Wrap" Text="Email here" VerticalAlignment="Top"/>
+        <Label x:Name="lblUsername" Content="Username:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,149,0,0" FontFamily="Microsoft YaHei UI" 
                FontSize="12" Foreground="#FF558ED1" FontWeight="Bold" Height="23" Width="88"/>
-        <Label Content="Password:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,235,0,0" FontFamily="Microsoft YaHei UI" 
+        <Label x:Name="lblPassword" Content="Password:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,235,0,0" FontFamily="Microsoft YaHei UI" 
                FontSize="12" Foreground="#FF558ED1" FontWeight="Bold" Height="23" Width="69"/>
-        <Label Content="Email:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,420,0,0" FontFamily="Microsoft YaHei UI" 
+        <Label x:Name="lblEmail" Content="Email:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,420,0,0" FontFamily="Microsoft YaHei UI" 
                FontSize="12" Foreground="#FF558ED1" FontWeight="Bold" Height="23" Width="69"/>
-        <TextBox Height="23" Margin="26,177,9.8,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top"/>
-        <TextBox Height="23" Margin="25,263,10.8,0" TextWrapping="Wrap" Text="I know the &quot;Stars&quot; aren't working, it's because it's a text box and not a password box, i have to look into how to take data from password boxes." VerticalAlignment="Top" TextChanged="TextBox_TextChanged"/>
-        <Label Content="Date of birth:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,507,0,0" FontFamily="Microsoft YaHei UI" FontSize="12" 
+        <TextBox x:Name="tbxUsername" Height="23" Margin="26,177,9.8,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbxPassword" Height="23" Margin="25,263,10.8,0" TextWrapping="Wrap" Text="I know the &quot;Stars&quot; aren't working, it's because it's a text box and not a password box, i have to look into how to take data from password boxes." VerticalAlignment="Top" TextChanged="TextBox_TextChanged"/>
+        <Label x:Name="lblDateOfBirth" Content="Date of birth:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,507,0,0" FontFamily="Microsoft YaHei UI" FontSize="12" 
                Foreground="#FF558ED1" FontWeight="Bold" Height="25" Width="133"/>
-        <TextBox Height="23" Margin="26,537,9.8,0" TextWrapping="Wrap" Text="There apparently isn't any DateTimePicker" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+        <TextBox x:Name="tbxDateOfBirth" Height="23" Margin="26,537,9.8,0" TextWrapping="Wrap" Text="There apparently isn't any DateTimePicker" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
             <TextBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -31,10 +31,10 @@
                 </TransformGroup>
             </TextBox.RenderTransform>
         </TextBox>
-        <Label Content="Other info, let me know... TODO" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="26,629,0,0" FontFamily="Microsoft YaHei UI" 
+        <Label x:Name="lblTODO" Content="Other info, let me know... TODO" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="26,629,0,0" FontFamily="Microsoft YaHei UI" 
                FontSize="12" Foreground="#FF558ED1" FontWeight="Bold" Height="30" Width="422"/>
-        <TextBox Height="23" Margin="25,355,10.8,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
-        <Label Content="Confirm password:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,327,0,0" FontFamily="Microsoft YaHei UI" 
+        <TextBox x:Name="tbxConfirmPassword" Height="23" Margin="25,355,10.8,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <Label x:Name="lblConfrmPassword" Content="Confirm password:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,327,0,0" FontFamily="Microsoft YaHei UI" 
             FontSize="12" Foreground="#FF558ED1" FontWeight="Bold" Height="23" Width="147"/>
 
     </Grid>
