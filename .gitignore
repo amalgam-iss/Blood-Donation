@@ -20,6 +20,8 @@ projectORM/BloodDonor/.vs/BloodDonor/
 projectORM/BloodDonor/.vs/
 db.lock
 .vs/
+.suo
+.ide
 
 old-class-diagram-project/
 

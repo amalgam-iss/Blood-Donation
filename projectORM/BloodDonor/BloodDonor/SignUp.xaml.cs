@@ -15,18 +15,18 @@ using System.Windows.Shapes;
 namespace BloodDonor
 {
     /// <summary>
-    /// Interaction logic for Window2.xaml
+    /// Interaction logic for SignUp.xaml
     /// </summary>
-    public partial class Window2 : Window
+    public partial class SignUp : Window
     {
-        public Window2()
+        public SignUp()
         {
             InitializeComponent();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //dgvPatients;
+
         }
     }
 }

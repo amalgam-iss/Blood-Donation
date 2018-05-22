@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:BloodDonor"
 
         mc:Ignorable="d"
-        Title="Window2" Height="891.826" Width="1317.092">
+        Title="Window2" Height="891.826" Width="1317.092"
+        Loaded="Window_Loaded">
     <Grid Margin="0,0,-0.6,0.4">
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
@@ -57,6 +58,6 @@
             <Button Content="Button" HorizontalAlignment="Left" Margin="315,81,0,0" VerticalAlignment="Top" Width="75"/>
             <Button Content="Button" HorizontalAlignment="Left" Margin="315,156,0,0" VerticalAlignment="Top" Width="75"/>
         </Grid>
-        <DataGrid HorizontalAlignment="Left" Height="430" VerticalAlignment="Top" Width="368" Margin="334,349,0,0" Grid.Row="1"/>
+        <DataGrid x:Name="dgvPatients" HorizontalAlignment="Left" Height="430" VerticalAlignment="Top" Width="368" Margin="338,349,0,0" Grid.Row="1"/>
     </Grid>
 </Window>

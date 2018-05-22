@@ -40,7 +40,8 @@ namespace BloodDonor
 
         private void lblNewUser_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+            SignUp window = new SignUp();
+            window.Show();
         }
     }
     
