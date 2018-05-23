@@ -1,5 +1,6 @@
 namespace BloodDonor
 {
+    using BloodDonor;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -37,5 +38,26 @@ namespace BloodDonor
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProcessingDonation> ProcessingDonations { get; set; }
+
+        public static ICollection<User> getAll()
+        {
+            using (var db = new ModelORM())
+            {
+
+                // Create and save a new Blog 
+                // Display all Blogs from the database 
+                Console.WriteLine("All users in the database:");
+                foreach (var item in db.Users)
+                {
+                    Console.WriteLine(item.Username);
+                    Console.WriteLine(item.Email);
+                }
+
+                Console.WriteLine("Press any key to exit...");
+
+            }
+            return null;
+            
+        }
     }
 }

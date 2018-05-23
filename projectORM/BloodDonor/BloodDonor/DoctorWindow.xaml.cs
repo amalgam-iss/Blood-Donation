@@ -26,6 +26,11 @@ namespace BloodDonor
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            User.getAll();
+        }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
         }
     }

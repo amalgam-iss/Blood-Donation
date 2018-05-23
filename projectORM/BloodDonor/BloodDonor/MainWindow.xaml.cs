@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Drawing;
 
+
 namespace BloodDonor
 {
     /// <summary>
@@ -29,12 +30,15 @@ namespace BloodDonor
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-
+           
+            DoctorWindow dcWindow = new DoctorWindow();
+            this.Close();
+            dcWindow.Show();
         }
 
         private void tbxUsername_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            tbxUsername.Text = "dfg";
+            tbxUsername.Text = "";
         }
 
         private void lblNewUser_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
