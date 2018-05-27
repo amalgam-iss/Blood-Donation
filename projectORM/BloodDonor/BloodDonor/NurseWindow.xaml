@@ -36,7 +36,7 @@
                     </Button>
                 </Grid>
             </TabItem>
-            <TabItem Header="Expired bloodpack" Margin="62.8,0,-73.4,-2">
+            <TabItem Header="Donors" Margin="62.8,0,-73.4,-2">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="141*"/>
