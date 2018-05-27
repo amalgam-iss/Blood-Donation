@@ -14,7 +14,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Drawing;
 
-
 namespace BloodDonor
 {
     /// <summary>
@@ -30,10 +29,8 @@ namespace BloodDonor
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-           
-            DoctorWindow dcWindow = new DoctorWindow();
-            this.Close();
-            dcWindow.Show();
+            Window2 window2 = new Window2();
+            window2.Show();
         }
 
         private void tbxUsername_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -43,7 +40,8 @@ namespace BloodDonor
 
         private void lblNewUser_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+            SignUp window = new SignUp();
+            window.Show();
         }
     }
     

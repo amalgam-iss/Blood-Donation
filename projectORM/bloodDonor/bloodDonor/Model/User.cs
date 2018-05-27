@@ -6,6 +6,7 @@ namespace BloodDonor
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Diagnostics;
 
     public partial class User
     {
@@ -39,25 +40,55 @@ namespace BloodDonor
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProcessingDonation> ProcessingDonations { get; set; }
 
-        public static ICollection<User> getAll()
+        public static List<User> getAll()
         {
+            List<User> userList = new List<User>();
+
             using (var db = new ModelORM())
             {
 
                 // Create and save a new Blog 
                 // Display all Blogs from the database 
-                Console.WriteLine("All users in the database:");
+                Debug.WriteLine("All users in the database:");
                 foreach (var item in db.Users)
                 {
-                    Console.WriteLine(item.Username);
-                    Console.WriteLine(item.Email);
+                    Debug.WriteLine(item.Username);
+                    Debug.WriteLine(item.Id);
+                    userList.Add(item);
                 }
 
-                Console.WriteLine("Press any key to exit...");
-
+                Debug.WriteLine("Press any key to exit...");
             }
-            return null;
-            
+
+            return userList;
+        }
+
+        public static void add(long userID, string email, string userName, string password, int type)
+        {
+            User user = new User
+            {
+                Id = userID,
+                Email = email,
+                Username = userName,
+                Password = password,
+                Type = type
+            };
+
+            using (var db = new ModelORM())
+            {
+                db.Users.Add(user);
+                db.SaveChanges();
+                // should need error checking
+            }
+        }
+
+        public static void remove(User usr)
+        {
+            using (var db = new ModelORM())
+            {
+                db.Database.ExecuteSqlCommand("DELETE from Users where id = 2");
+                db.SaveChanges();
+            }
         }
     }
 }
