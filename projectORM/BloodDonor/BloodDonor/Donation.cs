@@ -8,12 +8,6 @@ namespace BloodDonor
 
     public partial class Donation
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Donation()
-        {
-            ProcessingDonations = new HashSet<ProcessingDonation>();
-        }
-
         public long Id { get; set; }
 
         public long? DonorId { get; set; }
@@ -34,11 +28,6 @@ namespace BloodDonor
 
         public int? Flags { get; set; }
 
-        public virtual Address Address { get; set; }
-
         public virtual Donor Donor { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProcessingDonation> ProcessingDonations { get; set; }
     }
 }
