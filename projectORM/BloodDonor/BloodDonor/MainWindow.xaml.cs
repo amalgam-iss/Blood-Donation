@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Drawing;
+using System.Diagnostics;
 
 namespace BloodDonor
 {
@@ -29,8 +30,26 @@ namespace BloodDonor
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            Window2 window2 = new Window2();
-            window2.Show();
+            Debug.WriteLine(tbxUsername.Text);
+            if (tbxUsername.Text.Equals("doctor"))
+            {
+                Window2 window2 = new Window2();
+                window2.Show();
+                this.Close();
+
+            }
+            else if (tbxUsername.Text.Equals("nurse"))
+            {
+                NurseWindow nurseWindow = new NurseWindow();
+                nurseWindow.Show();
+                this.Close();
+
+            }
+            else if(tbxUsername.Text.Equals("donor"))
+            {
+                this.Close();
+
+            }
         }
 
         private void tbxUsername_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -40,7 +59,8 @@ namespace BloodDonor
 
         private void lblNewUser_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+            SignUp window = new SignUp();
+            window.Show();
         }
     }
     
