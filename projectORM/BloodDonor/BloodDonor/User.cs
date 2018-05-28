@@ -13,7 +13,6 @@ namespace BloodDonor
         {
             DoctorPacients = new HashSet<DoctorPacient>();
             Donors = new HashSet<Donor>();
-            ProcessingDonations = new HashSet<ProcessingDonation>();
         }
 
         public long Id { get; set; }
@@ -34,8 +33,5 @@ namespace BloodDonor
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Donor> Donors { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProcessingDonation> ProcessingDonations { get; set; }
     }
 }

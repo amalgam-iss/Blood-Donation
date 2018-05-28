@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BloodDonor"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="AddBloodPack" Height="700" Width="400">
+        Title="Add Blood pack" Height="700" Width="400">
     <Grid Height="670" Margin="0,0,-0.4,0" VerticalAlignment="Top">
         <TextBox x:Name="tbxGroup" Margin="10,77,0,0" PreviewMouseDown="tbxGroup_MouseLeftButtonDown" TextWrapping="Wrap" Text="" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" Width="374"/>
         <Button x:Name="btnDone" Content="Done" Click="Button_Click" Margin="239,512,9.6,113.4" Height="Auto"/>

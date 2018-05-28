@@ -79,12 +79,28 @@
     <Compile Include="AddBloodPack.xaml.cs">
       <DependentUpon>AddBloodPack.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AmalgamIssDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AmalgamIssDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="BloodPack.cs" />
+    <Compile Include="BloodRequest.cs" />
+    <Compile Include="Disease.cs" />
+    <Compile Include="Doctor.cs" />
+    <Compile Include="DoctorPacient.cs" />
+    <Compile Include="Donation.cs" />
+    <Compile Include="Donor.cs" />
+    <Compile Include="DonorDisease.cs" />
     <Compile Include="EditBloodPack.xaml.cs">
       <DependentUpon>EditBloodPack.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model1.cs" />
+    <Compile Include="Nurse.cs" />
     <Compile Include="NurseWindow.xaml.cs">
       <DependentUpon>NurseWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pacient.cs" />
     <Compile Include="RemoveBloodPack.xaml.cs">
       <DependentUpon>RemoveBloodPack.xaml</DependentUpon>
     </Compile>
@@ -92,7 +108,7 @@
       <DependentUpon>SignUp.xaml</DependentUpon>
     </Compile>
     <Compile Include="sysdiagram.cs" />
-    <Compile Include="Model\User.cs" />
+    <Compile Include="User.cs" />
     <Compile Include="Window2.xaml.cs">
       <DependentUpon>Window2.xaml</DependentUpon>
     </Compile>
@@ -108,17 +124,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Model\Address.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Model\BloodRequest.cs" />
-    <Compile Include="Model\Disease.cs" />
-    <Compile Include="Model\DoctorPacient.cs" />
-    <Compile Include="Model\Donation.cs" />
-    <Compile Include="Model\Donor.cs" />
-    <Compile Include="Model\DonorDisease.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -141,9 +150,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="View\ModelORM.cs" />
-    <Compile Include="Model\Pacient.cs" />
-    <Compile Include="Model\ProcessingDonation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -161,7 +167,21 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="AmalgamIssDataSet.xsc">
+      <DependentUpon>AmalgamIssDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmalgamIssDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AmalgamIssDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="AmalgamIssDataSet.xss">
+      <DependentUpon>AmalgamIssDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\BloodPack.datasource" />
+    <None Include="Properties\DataSources\BloodRequest.datasource" />
+    <None Include="Properties\DataSources\Donor.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -189,6 +209,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\basiccolumn.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\" />
+    <Folder Include="View\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

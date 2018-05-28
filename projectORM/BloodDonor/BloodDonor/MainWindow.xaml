@@ -22,7 +22,7 @@
             <Canvas Height="156" VerticalAlignment="Top" Background="#FF558ED1"/>
             <TextBox x:Name="tbxUsername" 
                      Height="37" Margin="22,236,22,0" 
-                     TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" 
+                     TextWrapping="Wrap" Text="nurse" VerticalAlignment="Top" 
                      FontSize="14" FontFamily="Microsoft YaHei Light" 
                      CaretBrush="#FF558ED1" 
                      PreviewMouseLeftButtonDown="tbxUsername_PreviewMouseLeftButtonDown"
