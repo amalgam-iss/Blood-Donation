@@ -17,7 +17,7 @@
         </Grid.ColumnDefinitions>
         <!-- tbxPassword  Click="tbxPassword_Click()"-->
         <Grid RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
-            <Label Content="Sign in to your account" VerticalAlignment="Top" Margin="25,161,22,0" 
+            <Label x:Name="lblTitle" Content="Sign in to your account" VerticalAlignment="Top" Margin="25,161,22,0" 
                    Height="42" HorizontalContentAlignment="Center" FontFamily="Microsoft YaHei UI" FontSize="18" FontStretch="Expanded"/>
             <Canvas Height="156" VerticalAlignment="Top" Background="#FF558ED1"/>
             <TextBox x:Name="tbxUsername" 
@@ -52,8 +52,8 @@
                          PasswordChar="*" VerticalAlignment="Top"
                          FontSize="14"  FontFamily="Microsoft JhengHei Light" 
                          CaretBrush="#FF558ED1" />
-            <Label Content="Username:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,208,0,0" FontFamily="Microsoft YaHei UI" FontSize="10" Foreground="#FF558ED1" FontWeight="Bold" Height="23" Width="88"/>
-            <Label Content="Password:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,293,0,0" FontFamily="Microsoft YaHei UI" FontSize="10" Foreground="#FF558ED1" FontWeight="Bold" Height="23" Width="69"/>
+            <Label x:Name="lblUsername" Content="Username:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,208,0,0" FontFamily="Microsoft YaHei UI" FontSize="10" Foreground="#FF558ED1" FontWeight="Bold" Height="23" Width="88"/>
+            <Label x:Name="lblPassword" Content="Password:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,293,0,0" FontFamily="Microsoft YaHei UI" FontSize="10" Foreground="#FF558ED1" FontWeight="Bold" Height="23" Width="69"/>
 
         </Grid>
     </Grid>

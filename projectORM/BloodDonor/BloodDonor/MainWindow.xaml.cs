@@ -13,8 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Drawing;
-
-using BloodDonor.Controllers;
+using System.Diagnostics;
 
 namespace BloodDonor
 {
@@ -23,30 +22,33 @@ namespace BloodDonor
     /// </summary>
     public partial class MainWindow : Window
     {
-        MainController ctrl;
         public MainWindow()
         {
             InitializeComponent();
-            ctrl = new MainController();
+
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            switch (ctrl.login(tbxUsername.Text, tbxPassword.Password.ToString()))
+            Debug.WriteLine(tbxUsername.Text);
+            if (tbxUsername.Text.Equals("doctor"))
             {
-                case 1:
-                    Window2 window = new Window2();
-                    window.Show();
-                    break;
-                case 2:
-                    // here donor window
-                    break;
-                case 3:
-                    // here nurse window
-                    break;
-                default:
-                    MessageBox.Show("Invalid username or password. \n Please sign up if you don't have an account!");
-                    break;
+                Window2 window2 = new Window2();
+                window2.Show();
+                this.Close();
+
+            }
+            else if (tbxUsername.Text.Equals("nurse"))
+            {
+                NurseWindow nurseWindow = new NurseWindow();
+                nurseWindow.Show();
+                this.Close();
+
+            }
+            else if(tbxUsername.Text.Equals("donor"))
+            {
+                this.Close();
+
             }
         }
 
@@ -57,7 +59,8 @@ namespace BloodDonor
 
         private void lblNewUser_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+            SignUp window = new SignUp();
+            window.Show();
         }
     }
     
