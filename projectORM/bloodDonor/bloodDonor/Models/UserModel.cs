@@ -34,15 +34,11 @@ namespace BloodDonor.Models
             conn.Open();
             SqlDataReader reader = command.ExecuteReader();
 
-            //Console.WriteLine(String.Format("{0}", reader["Type"]));
             if (reader.HasRows)
             {
                 reader.Read();
                 string type = reader["Type"].ToString();
                 userType = Convert.ToInt32(type);
-
-                Console.WriteLine(type);
-               
             }
             else
             {
