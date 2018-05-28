@@ -11,7 +11,7 @@ namespace BloodDonor
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Pacient()
         {
-            DoctorPacients = new HashSet<DoctorPacient>();
+
         }
 
         public long Id { get; set; }
@@ -24,10 +24,5 @@ namespace BloodDonor
 
         [StringLength(1)]
         public string Rh { get; set; }
-
-        public long? AddressId { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DoctorPacient> DoctorPacients { get; set; }
     }
 }

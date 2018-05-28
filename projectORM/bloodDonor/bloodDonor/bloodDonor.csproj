@@ -76,7 +76,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddBloodPack.xaml.cs">
+    <Compile Include="Forms\NurseForm\AddBloodPack.xaml.cs">
       <DependentUpon>AddBloodPack.xaml</DependentUpon>
     </Compile>
     <Compile Include="AmalgamIssDataSet.Designer.cs">
@@ -84,39 +84,39 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AmalgamIssDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="BloodPack.cs" />
-    <Compile Include="BloodRequest.cs" />
-    <Compile Include="Disease.cs" />
-    <Compile Include="Doctor.cs" />
-    <Compile Include="DoctorPacient.cs" />
-    <Compile Include="Donation.cs" />
-    <Compile Include="Donor.cs" />
-    <Compile Include="DonorDisease.cs" />
-    <Compile Include="EditBloodPack.xaml.cs">
+    <Compile Include="Model\BloodPack.cs" />
+    <Compile Include="Model\BloodRequest.cs" />
+    <Compile Include="Model\Disease.cs" />
+    <Compile Include="Model\Doctor.cs" />
+    <Compile Include="Model\DoctorPacient.cs" />
+    <Compile Include="Model\Donation.cs" />
+    <Compile Include="Model\Donor.cs" />
+    <Compile Include="Model\DonorDisease.cs" />
+    <Compile Include="Forms\NurseForm\EditBloodPack.xaml.cs">
       <DependentUpon>EditBloodPack.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model1.cs" />
-    <Compile Include="Nurse.cs" />
-    <Compile Include="NurseWindow.xaml.cs">
+    <Compile Include="View\Model1.cs" />
+    <Compile Include="Model\Nurse.cs" />
+    <Compile Include="Forms\NurseForm\NurseWindow.xaml.cs">
       <DependentUpon>NurseWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pacient.cs" />
-    <Compile Include="RemoveBloodPack.xaml.cs">
+    <Compile Include="Model\Pacient.cs" />
+    <Compile Include="Forms\NurseForm\RemoveBloodPack.xaml.cs">
       <DependentUpon>RemoveBloodPack.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SignUp.xaml.cs">
+    <Compile Include="Forms\LoginSignupForm\SignUp.xaml.cs">
       <DependentUpon>SignUp.xaml</DependentUpon>
     </Compile>
     <Compile Include="sysdiagram.cs" />
-    <Compile Include="User.cs" />
-    <Compile Include="Window2.xaml.cs">
-      <DependentUpon>Window2.xaml</DependentUpon>
+    <Compile Include="Model\User.cs" />
+    <Compile Include="Forms\DoctorForm\DoctorWindow.xaml.cs">
+      <DependentUpon>DoctorWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="AddBloodPack.xaml">
+    <Page Include="Forms\NurseForm\AddBloodPack.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EditBloodPack.xaml">
+    <Page Include="Forms\NurseForm\EditBloodPack.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -132,19 +132,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="NurseWindow.xaml">
+    <Page Include="Forms\NurseForm\NurseWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="RemoveBloodPack.xaml">
+    <Page Include="Forms\NurseForm\RemoveBloodPack.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SignUp.xaml">
+    <Page Include="Forms\LoginSignupForm\SignUp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Window2.xaml">
+    <Page Include="Forms\DoctorForm\DoctorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -202,7 +202,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\if_Heart-Watch_379466.ico" />
+    <Resource Include="Resources\if_Heart-Watch_379466.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\raed5.jpg" />
@@ -211,8 +213,7 @@
     <None Include="Resources\basiccolumn.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Model\" />
-    <Folder Include="View\" />
+    <Folder Include="Forms\DonorForm\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

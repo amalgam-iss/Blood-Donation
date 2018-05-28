@@ -25,6 +25,7 @@ namespace BloodDonor
         public MainWindow()
         {
             InitializeComponent();
+            tbxUsername.Text = "doctor";
 
         }
 
@@ -33,7 +34,7 @@ namespace BloodDonor
             Debug.WriteLine(tbxUsername.Text);
             if (tbxUsername.Text.Equals("doctor"))
             {
-                Window2 window2 = new Window2();
+                DoctorWindow window2 = new DoctorWindow();
                 window2.Show();
                 this.Close();
 

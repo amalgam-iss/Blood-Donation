@@ -15,9 +15,8 @@ namespace BloodDonor
         {
             DoctorPacients = new HashSet<DoctorPacient>();
             Donors = new HashSet<Donor>();
-            ProcessingDonations = new HashSet<ProcessingDonation>();
         }
-
+        
         public long Id { get; set; }
 
         [StringLength(255)]
@@ -38,13 +37,12 @@ namespace BloodDonor
         public virtual ICollection<Donor> Donors { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProcessingDonation> ProcessingDonations { get; set; }
-
+   
         public static List<User> getAll()
         {
             List<User> userList = new List<User>();
 
-            using (var db = new ModelORM())
+            using (var db = new Model1())
             {
 
                 // Create and save a new Blog 
@@ -74,7 +72,7 @@ namespace BloodDonor
                 Type = type
             };
 
-            using (var db = new ModelORM())
+            using (var db = new Model1())
             {
                 db.Users.Add(user);
                 db.SaveChanges();
@@ -84,7 +82,7 @@ namespace BloodDonor
 
         public static void remove(User usr)
         {
-            using (var db = new ModelORM())
+            using (var db = new Model1())
             {
                 db.Database.ExecuteSqlCommand("DELETE from Users where id = 2");
                 db.SaveChanges();
