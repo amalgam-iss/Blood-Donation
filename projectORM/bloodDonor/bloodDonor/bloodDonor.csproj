@@ -36,10 +36,6 @@
   <PropertyGroup>
     <ApplicationIcon>Resources\if_Heart-Watch_379466.ico</ApplicationIcon>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject>
-    </StartupObject>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -90,7 +86,6 @@
     </Compile>
     <Compile Include="BloodPack.cs" />
     <Compile Include="BloodRequest.cs" />
-    <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Disease.cs" />
     <Compile Include="Doctor.cs" />
     <Compile Include="DoctorPacient.cs" />
@@ -101,7 +96,6 @@
       <DependentUpon>EditBloodPack.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model1.cs" />
-    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Nurse.cs" />
     <Compile Include="NurseWindow.xaml.cs">
       <DependentUpon>NurseWindow.xaml</DependentUpon>
@@ -115,7 +109,9 @@
     </Compile>
     <Compile Include="sysdiagram.cs" />
     <Compile Include="User.cs" />
-    <Compile Include="Utils\Utilscs.cs" />
+    <Compile Include="Window1.xaml.cs">
+      <DependentUpon>Window1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Window2.xaml.cs">
       <DependentUpon>Window2.xaml</DependentUpon>
     </Compile>
@@ -148,6 +144,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SignUp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

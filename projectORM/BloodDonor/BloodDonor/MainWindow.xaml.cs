@@ -39,8 +39,10 @@ namespace BloodDonor
             Console.WriteLine("user type" + user_type.ToString());
             switch (user_type)
             {
+
                 case 1:
-                    MessageBox.Show("donors page will be implemented soon");
+                    DonorWindow donorWindow = new DonorWindow();
+                    donorWindow.Show();
                     this.Close();
                     break;
                 case 2:
@@ -61,6 +63,7 @@ namespace BloodDonor
                 default:
                     MessageBox.Show("Login failed! Upsie");
                     break;
+                
 
             }
         }

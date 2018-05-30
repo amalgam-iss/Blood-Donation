@@ -199,3 +199,5 @@ git_stats/*
 StyleCop.Cache
 bin
 obj
+projectORM/bloodDonor/bloodDonor/App.config
+projectORM/bloodDonor/bloodDonor/App.config
