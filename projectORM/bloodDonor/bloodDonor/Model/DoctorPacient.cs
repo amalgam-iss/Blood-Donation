@@ -1,4 +1,4 @@
-namespace BloodDonor
+namespace BloodDonor.Model
 {
     using System;
     using System.Collections.Generic;

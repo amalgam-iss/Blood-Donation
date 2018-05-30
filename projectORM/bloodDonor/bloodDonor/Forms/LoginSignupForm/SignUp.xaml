@@ -10,32 +10,27 @@
         <Canvas Height="120" VerticalAlignment="Top" Background="#FF558ED1" Margin="0,0,-0.2,0"/>
         <Label x:Name="lblTitle" Content="Sign up" VerticalAlignment="Top" Margin="26,40,20.8,0" 
                    Height="42" HorizontalContentAlignment="Center" FontFamily="Microsoft YaHei UI" FontSize="24" FontStretch="Expanded" Foreground="#DDFFFFFF"/>
-        <TextBox x:Name="tbxEmail" Height="23" Margin="26,448,9.8,0" TextWrapping="Wrap" Text="Email here" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbxEmail" Height="23" Margin="26,448,9.8,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <Label x:Name="lblUsername" Content="Username:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,149,0,0" FontFamily="Microsoft YaHei UI" 
                FontSize="12" Foreground="#FF558ED1" FontWeight="Bold" Height="23" Width="88"/>
         <Label x:Name="lblPassword" Content="Password:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,235,0,0" FontFamily="Microsoft YaHei UI" 
                FontSize="12" Foreground="#FF558ED1" FontWeight="Bold" Height="23" Width="69"/>
         <Label x:Name="lblEmail" Content="Email:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,420,0,0" FontFamily="Microsoft YaHei UI" 
                FontSize="12" Foreground="#FF558ED1" FontWeight="Bold" Height="23" Width="69"/>
-        <TextBox x:Name="tbxUsername" Height="23" Margin="26,177,9.8,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top"/>
-        <TextBox x:Name="tbxPassword" Height="23" Margin="25,263,10.8,0" TextWrapping="Wrap" Text="I know the &quot;Stars&quot; aren't working, it's because it's a text box and not a password box, i have to look into how to take data from password boxes." VerticalAlignment="Top" TextChanged="TextBox_TextChanged"/>
-        <Label x:Name="lblDateOfBirth" Content="Date of birth:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,507,0,0" FontFamily="Microsoft YaHei UI" FontSize="12" 
-               Foreground="#FF558ED1" FontWeight="Bold" Height="25" Width="133"/>
-        <TextBox x:Name="tbxDateOfBirth" Height="23" Margin="26,537,9.8,0" TextWrapping="Wrap" Text="There apparently isn't any DateTimePicker" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
-            <TextBox.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="0.073"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </TextBox.RenderTransform>
-        </TextBox>
-        <Label x:Name="lblTODO" Content="Other info, let me know... TODO" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="26,629,0,0" FontFamily="Microsoft YaHei UI" 
-               FontSize="12" Foreground="#FF558ED1" FontWeight="Bold" Height="30" Width="422"/>
-        <TextBox x:Name="tbxConfirmPassword" Height="23" Margin="25,355,10.8,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbxUsername" Height="23" Margin="26,177,9.8,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <PasswordBox x:Name="tbxPassword"
+                         Height="23" Margin="25,263,10.8,0"
+                         PasswordChar="*" VerticalAlignment="Top"
+                         FontSize="14"  FontFamily="Microsoft JhengHei Light" 
+                         CaretBrush="#FF558ED1" />
+        <PasswordBox x:Name="tbxConfirmPassword"
+                         Height="23" Margin="25,355,10.8,0"
+                         PasswordChar="*" VerticalAlignment="Top"
+                         FontSize="14"  FontFamily="Microsoft JhengHei Light" 
+                         CaretBrush="#FF558ED1" />
         <Label x:Name="lblConfrmPassword" Content="Confirm password:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,327,0,0" FontFamily="Microsoft YaHei UI" 
             FontSize="12" Foreground="#FF558ED1" FontWeight="Bold" Height="23" Width="147"/>
+        <Button x:Name="signUpBtn" Content="Submit" HorizontalAlignment="Left" Margin="202,580,0,0" VerticalAlignment="Top" Width="82" Click="sign_up"/>
 
     </Grid>
 </Window>

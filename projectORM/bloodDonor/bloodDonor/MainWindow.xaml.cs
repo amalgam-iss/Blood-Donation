@@ -14,6 +14,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Drawing;
 using System.Diagnostics;
+using BloodDonor.Utils;
+
+using BloodDonor.Controllers;
 
 namespace BloodDonor
 {
@@ -22,33 +25,45 @@ namespace BloodDonor
     /// </summary>
     public partial class MainWindow : Window
     {
+        MainController ctrl;
         public MainWindow()
         {
             InitializeComponent();
-            tbxUsername.Text = "doctor";
+            ctrl = new MainController();
 
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine(tbxUsername.Text);
-            if (tbxUsername.Text.Equals("doctor"))
-            {
-                DoctorWindow window2 = new DoctorWindow();
-                window2.Show();
-                this.Close();
+            Console.WriteLine(tbxUsername.Text + " and pass " + tbxPassword.Password);
+            int user_type = ctrl.login(tbxUsername.Text, tbxPassword.Password);
 
-            }
-            else if (tbxUsername.Text.Equals("nurse"))
+            Console.WriteLine("user type" + user_type.ToString());
+            switch (user_type)
             {
-                NurseWindow nurseWindow = new NurseWindow();
-                nurseWindow.Show();
-                this.Close();
 
-            }
-            else if(tbxUsername.Text.Equals("donor"))
-            {
-                this.Close();
+                case 1:
+                    DonorWindow donorWindow = new DonorWindow();
+                    donorWindow.Show();
+                    this.Close();
+                    break;
+                case 2:
+                    DoctorWindow doctorWindow = new DoctorWindow();
+                    doctorWindow.Show();
+                    this.Close();
+                    break;
+                case 3:
+                    NurseWindow nurseWindow = new NurseWindow();
+                    nurseWindow.Show();
+                    this.Close();
+                    break;
+                case -1:
+                    MessageBox.Show("Invalid username or password");
+                    break;
+                default:
+                    MessageBox.Show("Login failed! Upsie");
+                    break;
+                
 
             }
         }

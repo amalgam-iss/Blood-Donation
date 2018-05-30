@@ -76,6 +76,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controllers\MainController.cs" />
+    <Compile Include="Forms\DoctorForm\CreateRequest.xaml.cs">
+      <DependentUpon>CreateRequest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Forms\NurseForm\AddBloodPack.xaml.cs">
       <DependentUpon>AddBloodPack.xaml</DependentUpon>
     </Compile>
@@ -84,6 +88,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AmalgamIssDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Forms\NurseForm\EditBloodPack.xaml.cs">
+      <DependentUpon>EditBloodPack.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Model\BloodPack.cs" />
     <Compile Include="Model\BloodRequest.cs" />
     <Compile Include="Model\Disease.cs" />
@@ -92,15 +100,16 @@
     <Compile Include="Model\Donation.cs" />
     <Compile Include="Model\Donor.cs" />
     <Compile Include="Model\DonorDisease.cs" />
-    <Compile Include="Forms\NurseForm\EditBloodPack.xaml.cs">
-      <DependentUpon>EditBloodPack.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Model1.cs" />
     <Compile Include="Model\Nurse.cs" />
+    <Compile Include="Model\Pacient.cs" />
+    <Compile Include="Model\sysdiagram.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="Model\Model1.cs" />
+    <Compile Include="Utils\Hashing.cs" />
+    <Compile Include="Utils\Utilscs.cs" />
     <Compile Include="Forms\NurseForm\NurseWindow.xaml.cs">
       <DependentUpon>NurseWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\Pacient.cs" />
     <Compile Include="Forms\NurseForm\RemoveBloodPack.xaml.cs">
       <DependentUpon>RemoveBloodPack.xaml</DependentUpon>
     </Compile>
@@ -108,10 +117,16 @@
       <DependentUpon>SignUp.xaml</DependentUpon>
     </Compile>
     <Compile Include="sysdiagram.cs" />
-    <Compile Include="Model\User.cs" />
     <Compile Include="Forms\DoctorForm\DoctorWindow.xaml.cs">
       <DependentUpon>DoctorWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Forms\DonorForm\DonorWindow.xaml.cs">
+      <DependentUpon>DonorWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Forms\DoctorForm\CreateRequest.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Forms\NurseForm\AddBloodPack.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -147,6 +162,10 @@
     <Page Include="Forms\DoctorForm\DoctorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\DonorForm\DonorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -213,7 +232,7 @@
     <None Include="Resources\basiccolumn.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Forms\DonorForm\" />
+    <Folder Include="View\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
