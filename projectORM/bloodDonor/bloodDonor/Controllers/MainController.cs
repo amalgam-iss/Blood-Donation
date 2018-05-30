@@ -28,7 +28,7 @@ namespace BloodDonor.Controllers
             {
                 return -3;
             }
-            return userModel.can_sign_up(username, password, confirmed_password, email);
+            return userModel.can_sign_up(username, password, email);
         }
     }
 }

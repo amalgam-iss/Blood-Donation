@@ -46,6 +46,7 @@ namespace BloodDonor
                     break;
                 case 1:
                     MessageBox.Show("Huraay!!! ");
+                    this.Close();
                     break;
                 default:
                     MessageBox.Show("Dunno man.... We fucked up");

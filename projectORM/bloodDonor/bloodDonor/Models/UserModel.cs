@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using System.Data.SqlClient;
 using System.Data;
+using BloodDonor.Utils;
 
 namespace BloodDonor.Models
 {
@@ -26,10 +27,12 @@ namespace BloodDonor.Models
 
         public int CanConnect(string user, string password)
         {
+            Hashing hashing = new Hashing(password);
+
             int userType;
             SqlCommand command = new SqlCommand("SELECT Type FROM Users WHERE username = @username AND password = @password", conn);
             command.Parameters.Add(new SqlParameter("username", user));
-            command.Parameters.Add(new SqlParameter("password", password));
+            command.Parameters.Add(new SqlParameter("password", hashing.getMd5Hash()));
 
             conn.Open();
             SqlDataReader reader = command.ExecuteReader();
@@ -49,8 +52,10 @@ namespace BloodDonor.Models
             return userType;
         }
 
-        public int can_sign_up(string username, string password, string confirmed_password, string email)
+        public int can_sign_up(string username, string password, string email)
         {
+            Hashing hashing = new Hashing(password);
+
             int did_sign_up;
 
             if (this.username_exists(username))
@@ -62,7 +67,7 @@ namespace BloodDonor.Models
                 conn.Open();
                 SqlCommand insert_command = new SqlCommand("INSERT INTO Users (username, password, email, type) VALUES (@username, @password, @email, @type)", conn);
                 insert_command.Parameters.Add(new SqlParameter("username", username));
-                insert_command.Parameters.Add(new SqlParameter("password", password));
+                insert_command.Parameters.Add(new SqlParameter("password", hashing.getMd5Hash()));
                 insert_command.Parameters.Add(new SqlParameter("email", email));
                 insert_command.Parameters.Add(new SqlParameter("type", 1));
 

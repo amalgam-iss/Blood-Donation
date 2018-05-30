@@ -47,13 +47,11 @@ namespace BloodDonor
                     this.Close();
                     break;
                 case 2:
-                    MessageBox.Show("doctors page");
                     Window2 window2 = new Window2();
                     window2.Show();
                     this.Close();
                     break;
                 case 3:
-                    MessageBox.Show("nurse page");
                     NurseWindow nurseWindow = new NurseWindow();
                     nurseWindow.Show();
                     this.Close();
