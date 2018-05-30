@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using BloodDonor.Controllers;
 namespace BloodDonor
 {
     /// <summary>
@@ -19,14 +20,37 @@ namespace BloodDonor
     /// </summary>
     public partial class SignUp : Window
     {
+        MainController ctrl;
         public SignUp()
         {
             InitializeComponent();
+            ctrl = new MainController();
         }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        
+        private void sign_up(object sender, RoutedEventArgs e)
         {
-
+            int try_sign_up = ctrl.sing_up(tbxUsername.Text, tbxPassword.Password, tbxConfirmPassword.Password, tbxEmail.Text);
+            switch (try_sign_up)
+            {
+                case -3:
+                    MessageBox.Show("Passwords did not matched! ");
+                    break;
+                case -2:
+                    MessageBox.Show("Invalid email! ");
+                    break;
+                case -1:
+                    MessageBox.Show("Upsie. We are stupid! ");
+                    break;
+                case 0:
+                    MessageBox.Show("This username already exists! ");
+                    break;
+                case 1:
+                    MessageBox.Show("Huraay!!! ");
+                    break;
+                default:
+                    MessageBox.Show("Dunno man.... We fucked up");
+                    break;
+            }
         }
     }
 }
