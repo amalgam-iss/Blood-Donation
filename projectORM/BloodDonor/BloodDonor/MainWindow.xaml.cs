@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Drawing;
 using System.Diagnostics;
+using BloodDonor.Utils;
 
 namespace BloodDonor
 {
