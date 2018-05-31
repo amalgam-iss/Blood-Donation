@@ -54,6 +54,7 @@ namespace BloodDonor
                         user = db.Users.Where(usr => usr.Username == tbxUsername.Text).First();
                     }
                     DoctorWindow doctorWindow = new DoctorWindow(user.Id.ToString());
+                    
                     doctorWindow.Show();
                     this.Close();
                     break;
