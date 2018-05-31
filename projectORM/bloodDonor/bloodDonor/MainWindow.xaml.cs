@@ -31,8 +31,6 @@ namespace BloodDonor
         {
             InitializeComponent();
             ctrl = new MainController();
-            tbxUsername.Text = "liviu";
-            tbxPassword.Password = "patronu";
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
@@ -70,8 +68,6 @@ namespace BloodDonor
                 default:
                     MessageBox.Show("Login failed! Upsie");
                     break;
-                
-
             }
         }
 

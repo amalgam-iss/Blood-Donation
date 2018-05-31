@@ -1,0 +1,14 @@
+﻿<Window x:Class="BloodDonor.Forms.ErrorForm.ErrorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BloodDonor.Forms.ErrorForm"
+        mc:Ignorable="d"
+        Title="Error" Height="138.293" Width="226.829" AutomationProperties.Name="ERROR">
+    <Grid Margin="0,0,3.8,-0.2">
+        <Label HorizontalContentAlignment="Center" x:Name="labelError" Content="ERROR" HorizontalAlignment="Left" Margin="0,21,0,0" VerticalAlignment="Top" Width="217" Foreground="#DDFF0000" FontWeight="Bold"/>
+        <Button x:Name="button" Content="OK" HorizontalAlignment="Left" Margin="73,67,0,0" VerticalAlignment="Top" Width="75" Background="#FF673AB7" Click="button_Click"/>
+
+    </Grid>
+</Window>

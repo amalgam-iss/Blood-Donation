@@ -1,0 +1,33 @@
+﻿<Window x:Class="BloodDonor.Forms.AddPatient"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BloodDonor.Forms"
+        mc:Ignorable="d"
+        Title="AddPatient" Height="300" Width="300" Background="White" Icon="/BloodDonor;component/Resources/if_Heart-Watch_379466.ico">
+    <Grid>
+        <Label x:Name="labelName" Content="Name:" HorizontalAlignment="Left" Margin="10,71,0,0" VerticalAlignment="Top" Foreground="#DD7903F3"/>
+        <Label x:Name="labelRh" Content="Rh:" HorizontalAlignment="Left" Margin="10,114,0,0" VerticalAlignment="Top" Width="64" Foreground="#DD7903F3"/>
+        <Label x:Name="labelBloodType" Content="Bloodtype:" HorizontalAlignment="Left" Margin="10,153,0,0" VerticalAlignment="Top" Foreground="#DD7903F3"/>
+        <Label x:Name="labelHelp" Content="Introduce the data of the patient&#xD;&#xA; you want to add!" HorizontalAlignment="Left" Margin="15,5,0,0" VerticalAlignment="Top" Width="260" FontSize="16" FontWeight="Bold" Foreground="#DD7903F3"/>
+        <TextBox x:Name="tboxName" HorizontalAlignment="Left" Height="23" Margin="60,71,0,0" TextWrapping="Wrap" Text="&#xD;&#xA;" VerticalAlignment="Top" Width="176"/>
+        <ComboBox Text="null" x:Name="cboxRh" HorizontalAlignment="Left" Margin="40,116,0,0" VerticalAlignment="Top" Width="37" IsEditable="False" SelectionChanged="cboxRh_SelectionChanged">
+            <ComboBoxItem>+</ComboBoxItem>
+            <ComboBoxItem>-</ComboBoxItem>
+        </ComboBox>
+        <ComboBox Text="null" x:Name="cboxBloodtype" HorizontalAlignment="Left" Margin="82,153,0,0" VerticalAlignment="Top" Width="49">
+            <ComboBoxItem>O</ComboBoxItem>
+            <ComboBoxItem>A</ComboBoxItem>
+            <ComboBoxItem>B</ComboBoxItem>
+            <ComboBoxItem>AB</ComboBoxItem>
+        </ComboBox>
+        <Button x:Name="btnCancel" Margin="0,220,174.6,0" Height="29" VerticalAlignment="Top" HorizontalAlignment="Right" Width="88" IsHitTestVisible="True" Click="btnCancel_Click">
+            <TextBlock TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Right"  Width="46" RenderTransformOrigin="1.221,0.677" Text="Cancel" Height="28"/>
+        </Button>
+        <Button x:Name="btnAdd" Margin="0,220,29.6,0" Height="29" VerticalAlignment="Top" HorizontalAlignment="Right" Width="88" IsHitTestVisible="True" Click="btnAdd_Click">
+            <TextBlock TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Right"  Width="46" RenderTransformOrigin="1.221,0.677"><Run Text="Add"/><LineBreak/><Run Text="&#x9;"/></TextBlock>
+        </Button>
+
+    </Grid>
+</Window>

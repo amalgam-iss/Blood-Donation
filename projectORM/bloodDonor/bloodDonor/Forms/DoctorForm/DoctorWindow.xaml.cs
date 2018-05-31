@@ -1,4 +1,5 @@
-﻿using BloodDonor.Model;
+﻿using BloodDonor.Forms;
+using BloodDonor.Model;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -42,17 +43,15 @@ namespace BloodDonor
         {
             if (patientTab.IsSelected)
             {
-                btnDeleteBloodpack.Visibility = Visibility.Hidden;
+                btnDeleteBloodrequest.Visibility = Visibility.Hidden;
                 btnDeletePatient.Visibility = Visibility.Visible;
-                btnUpdatePatient.Visibility = Visibility.Visible;
                 btnRequestBlood.Visibility = Visibility.Visible;
                 btnAddPatient.Visibility = Visibility.Visible;
             }
             else
             {
-                btnDeleteBloodpack.Visibility = Visibility.Visible;
+                btnDeleteBloodrequest.Visibility = Visibility.Visible;
                 btnDeletePatient.Visibility = Visibility.Hidden;
-                btnUpdatePatient.Visibility = Visibility.Hidden;
                 btnRequestBlood.Visibility = Visibility.Hidden;
                 btnAddPatient.Visibility = Visibility.Hidden;
             }
@@ -79,7 +78,6 @@ namespace BloodDonor
             if (dgPatients.SelectedItem != null)
             {
                 btnDeletePatient.IsEnabled = true;
-                btnUpdatePatient.IsEnabled = true;
                 btnRequestBlood.IsEnabled = true;
                 Pacient pacient = (Pacient)dgPatients.SelectedItem;
                 Debug.WriteLine("Name =" + pacient.Name);
@@ -98,7 +96,37 @@ namespace BloodDonor
          */
         private void btnAddPatient_Click(object sender, RoutedEventArgs e)
         {
+            AddPatient addPatientWindow = new AddPatient();
+            bool? result = addPatientWindow.ShowDialog();
+            if (result.HasValue && result.Value)
+            {
+                string patName = addPatientWindow.PatientName;
+                string patRh = addPatientWindow.Rh;
+                string bloodType = addPatientWindow.BloodType;
 
+                Debug.WriteLine(patName + " " + patRh + " " + bloodType);
+
+                // Now adding to the database
+                Pacient patient = new Pacient
+                {
+                    Name = patName,
+                    Rh = patRh,
+                    BloodType = bloodType
+                };
+
+                using (var db = new Model1())
+                {
+                    var pat = db.Pacients.Add(patient);
+                    var patDoc = new DoctorPacient
+                    {
+                        PacientId = pat.Id,
+                        DoctorId = doctor.Id
+                    };
+                    db.DoctorPacients.Add(patDoc);
+                    db.SaveChanges();
+                }
+                fillPatientsDataGrid();
+            }
         }
 
         private void btnDeletePatient_Click(object sender, RoutedEventArgs e)
@@ -112,12 +140,6 @@ namespace BloodDonor
             }
             fillPatientsDataGrid();
         }
-
-        private void btnUpdatePatient_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
 
         /**
          * BLOODPACK REQUESTS

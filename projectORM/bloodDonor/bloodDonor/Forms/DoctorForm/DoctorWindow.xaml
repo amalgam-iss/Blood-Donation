@@ -38,20 +38,17 @@
         <Label x:Name="doctorSpecialityLabel" Content="Speciality:" HorizontalAlignment="Left" Margin="14,126,0,0" VerticalAlignment="Top" FontFamily="Yu Gothic" FontWeight="Bold" Background="{x:Null}" Foreground="#DD6600B6"/>
         <Label x:Name="specialityLabelM" Content="Plastician" HorizontalAlignment="Left" Margin="89,126,0,0" VerticalAlignment="Top" FontFamily="Yu Gothic" FontWeight="Bold" Background="{x:Null}" Foreground="#DD000000"/>
         <Label x:Name="phoneLabelM" Content="0747233422" HorizontalAlignment="Left" Margin="113,97,0,0" VerticalAlignment="Top" FontFamily="Yu Gothic" FontWeight="Bold" Background="{x:Null}" Foreground="#DD000000"/>
-        <Button x:Name="btnDeleteBloodrequest" Margin="0,333,34,0" Height="128" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122" IsHitTestVisible="True" Click="btnDeleteBloodpack_Click" Visibility="Hidden">
+        <Button x:Name="btnDeleteBloodrequest" Margin="0,333,34,0" Height="128" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122" IsHitTestVisible="True" Click="btnDeleteBloodrequest_Click" Visibility="Hidden">
             <TextBlock TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Right"  Width="92"><Run Text="Request"/><LineBreak/><Run Text="Bloodpack"/></TextBlock>
         </Button>
-        <Button x:Name="btnDeletePatient" Margin="0,227,34,0" Height="58" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122" IsHitTestVisible="True" Click="btnDeletePatient_Click" IsEnabled="False">
+        <Button x:Name="btnDeletePatient" Margin="0,417,34,0" Height="58" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122" IsHitTestVisible="True" Click="btnDeletePatient_Click" IsEnabled="False">
             <TextBlock TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Right"  Width="92"><Run Text="Delete"/><LineBreak/><Run Text="patient"/></TextBlock>
         </Button>
-        <Button x:Name="btnUpdatePatient" Margin="0,307,34,0" Height="58" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122" IsHitTestVisible="True" IsEnabled="False" Click="btnUpdatePatient_Click">
-            <TextBlock TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Right"  Width="92"><Run Text="Update"/><LineBreak/><Run Text="patient"/></TextBlock>
-        </Button>
         <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="0,-3,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnRequestBlood" Margin="0,386,34,0" Height="58" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122" IsHitTestVisible="True" IsEnabled="False" Click="btnRequestBlood_Click">
+        <Button x:Name="btnRequestBlood" Margin="0,333,34,0" Height="58" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122" IsHitTestVisible="True" IsEnabled="False" Click="btnRequestBlood_Click">
             <TextBlock TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Right"  Width="92"><Run Text="Request"/><LineBreak/><Run Text="bloodpack"/></TextBlock>
         </Button>
-        <Button x:Name="btnAddPatient" Margin="0,466,34,0" Height="58" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122" IsHitTestVisible="True" Click="btnAddPatient_Click">
+        <Button x:Name="btnAddPatient" Margin="0,249,34,0" Height="58" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122" IsHitTestVisible="True" Click="btnAddPatient_Click">
             <TextBlock TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Right"  Width="92"><Run Text="Add"/><LineBreak/><Run Text="patient"/></TextBlock>
         </Button>
     </Grid>
