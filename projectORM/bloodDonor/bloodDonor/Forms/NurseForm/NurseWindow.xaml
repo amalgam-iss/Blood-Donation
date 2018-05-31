@@ -6,13 +6,6 @@
         xmlns:local="clr-namespace:BloodDonor"
         mc:Ignorable="d"
         Title="Nurse Window" Height="900" Width="1229.2" Loaded="Window_Loaded">
-    <Window.Resources>
-        <local:AmalgamIssDataSet x:Key="amalgamIssDataSet"/>
-        <CollectionViewSource x:Key="donorsViewSource" Source="{Binding Donors, Source={StaticResource amalgamIssDataSet}}"/>
-        <CollectionViewSource x:Key="donorViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Donor}, CreateList=True}"/>
-        <CollectionViewSource x:Key="bloodPackViewSource" d:DesignSource="{d:DesignInstance {x:Type local:BloodPack}, CreateList=True}"/>
-        <CollectionViewSource x:Key="bloodRequestViewSource" d:DesignSource="{d:DesignInstance {x:Type local:BloodRequest}, CreateList=True}"/>
-    </Window.Resources>
     <Grid>
         <Label x:Name="lblTitle" Content="Welcome, Nurse!" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,16,0,0" Width="487" RenderTransformOrigin="0.5,0.5" Height="38" FontSize="20"/>
 

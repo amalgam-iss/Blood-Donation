@@ -21,10 +21,20 @@ namespace BloodDonor
     /// </summary>
     public partial class DoctorWindow : Window
     {
-        public DoctorWindow()
-        {
-            InitializeComponent();
+        Doctor doctor { get; set; }
 
+        public DoctorWindow(string UserId)
+        {
+            long userId = Convert.ToInt32(UserId);
+            doctor = new Doctor();
+            using (var db = new Model1())
+            {
+                doctor = (Doctor)db.Doctors.SqlQuery("SELECT * FROM Doctors d where d.UserId = " + userId + "").SingleOrDefault();
+            }
+            InitializeComponent();
+            doctorNameLabel.Content = doctor.Name + "!";
+            specialityLabelM.Content = doctor.Speciality;
+            phoneLabelM.Content = doctor.Phone;
             fillPatientsDataGrid();
         }
 
@@ -37,15 +47,19 @@ namespace BloodDonor
         {
             if (patientTab.IsSelected)
             {
-                btnRequestBloodpack.Visibility = Visibility.Hidden;
+                btnDeleteBloodpack.Visibility = Visibility.Hidden;
                 btnDeletePatient.Visibility = Visibility.Visible;
                 btnUpdatePatient.Visibility = Visibility.Visible;
+                btnRequestBlood.Visibility = Visibility.Visible;
+                btnAddPatient.Visibility = Visibility.Visible;
             }
             else
             {
-                btnRequestBloodpack.Visibility = Visibility.Visible;
+                btnDeleteBloodpack.Visibility = Visibility.Visible;
                 btnDeletePatient.Visibility = Visibility.Hidden;
                 btnUpdatePatient.Visibility = Visibility.Hidden;
+                btnRequestBlood.Visibility = Visibility.Hidden;
+                btnAddPatient.Visibility = Visibility.Hidden;
             }
         }
 
@@ -58,21 +72,10 @@ namespace BloodDonor
             Debug.WriteLine("Fill Patients.");
             using (var context = new Model1())
             {
-                var data = (from d in context.Pacients select d);
-                //{
-                //    Name = d.Name,
-                //    BloodType = d.BloodType,
-                //    Rh = d.Rh
-                //});
+                //var data = (from patient in context.Pacients select patient);
+                var data = context.Pacients.SqlQuery("select * from Pacients p where p.Id in (select pac.PacientID from DoctorPacients pac where pac.DoctorId = " + doctor.Id + ")").ToList();
                 dgPatients.ItemsSource = data.ToList();
             }
-
-            
-        }
-
-        private void btnRequestBloodpack_Click(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void btnDeletePatient_Click(object sender, RoutedEventArgs e)
@@ -91,8 +94,32 @@ namespace BloodDonor
             {
                 btnDeletePatient.IsEnabled = true;
                 btnUpdatePatient.IsEnabled = true;
-                Pacient pacient = (Pacient)dgPatients.SelectedItem;  
+                btnRequestBlood.IsEnabled = true;
+                Pacient pacient = (Pacient)dgPatients.SelectedItem;
+                Debug.WriteLine("Name =" + pacient.Name);
             }
+        }
+
+        private void dgPatients_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.Column.Header.ToString() == "DoctorPacients")  {
+                e.Column.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void btnRequestBlood_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnAddPatient_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnDeleteBloodpack_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

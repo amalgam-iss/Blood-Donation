@@ -17,6 +17,7 @@ using System.Diagnostics;
 using BloodDonor.Utils;
 
 using BloodDonor.Controllers;
+using BloodDonor.Model;
 
 namespace BloodDonor
 {
@@ -30,14 +31,14 @@ namespace BloodDonor
         {
             InitializeComponent();
             ctrl = new MainController();
-
+            tbxUsername.Text = "liviu";
+            tbxPassword.Password = "patronu";
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine(tbxUsername.Text + " and pass " + tbxPassword.Password);
             int user_type = ctrl.login(tbxUsername.Text, tbxPassword.Password);
-
+           
             Console.WriteLine("user type" + user_type.ToString());
             switch (user_type)
             {
@@ -48,7 +49,13 @@ namespace BloodDonor
                     this.Close();
                     break;
                 case 2:
-                    DoctorWindow doctorWindow = new DoctorWindow();
+                    // Send the userId to doctorWindow
+                    User user;
+                    using (var db = new Model1())
+                    {
+                        user = db.Users.Where(usr => usr.Username == tbxUsername.Text).First();
+                    }
+                    DoctorWindow doctorWindow = new DoctorWindow(user.Id.ToString());
                     doctorWindow.Show();
                     this.Close();
                     break;
