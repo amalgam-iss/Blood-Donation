@@ -38,7 +38,7 @@
         <Label x:Name="doctorSpecialityLabel" Content="Speciality:" HorizontalAlignment="Left" Margin="14,126,0,0" VerticalAlignment="Top" FontFamily="Yu Gothic" FontWeight="Bold" Background="{x:Null}" Foreground="#DD6600B6"/>
         <Label x:Name="specialityLabelM" Content="Plastician" HorizontalAlignment="Left" Margin="89,126,0,0" VerticalAlignment="Top" FontFamily="Yu Gothic" FontWeight="Bold" Background="{x:Null}" Foreground="#DD000000"/>
         <Label x:Name="phoneLabelM" Content="0747233422" HorizontalAlignment="Left" Margin="113,97,0,0" VerticalAlignment="Top" FontFamily="Yu Gothic" FontWeight="Bold" Background="{x:Null}" Foreground="#DD000000"/>
-        <Button x:Name="btnDeleteBloodpack" Margin="0,333,34,0" Height="128" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122" IsHitTestVisible="True" Click="btnDeleteBloodpack_Click" Visibility="Hidden">
+        <Button x:Name="btnDeleteBloodrequest" Margin="0,333,34,0" Height="128" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122" IsHitTestVisible="True" Click="btnDeleteBloodpack_Click" Visibility="Hidden">
             <TextBlock TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Right"  Width="92"><Run Text="Request"/><LineBreak/><Run Text="Bloodpack"/></TextBlock>
         </Button>
         <Button x:Name="btnDeletePatient" Margin="0,227,34,0" Height="58" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122" IsHitTestVisible="True" Click="btnDeletePatient_Click" IsEnabled="False">

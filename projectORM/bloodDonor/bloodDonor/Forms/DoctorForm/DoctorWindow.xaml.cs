@@ -38,11 +38,6 @@ namespace BloodDonor
             fillPatientsDataGrid();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            //dgvPatients;
-        }
-
         private void controlTab_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (patientTab.IsSelected)
@@ -64,9 +59,9 @@ namespace BloodDonor
         }
 
         /**
-         * Fill patients grid
+         * PATIENTS DATAGRID OPERATIONS
          * 
-         * */
+         */
         private void fillPatientsDataGrid()
         {
             Debug.WriteLine("Fill Patients.");
@@ -78,15 +73,6 @@ namespace BloodDonor
             }
         }
 
-        private void btnDeletePatient_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnUpdatePatient_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void dgPatients_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -107,19 +93,59 @@ namespace BloodDonor
             }
         }
 
-        private void btnRequestBlood_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
+        /**
+         * PATIENT OPERATIONS
+         */
         private void btnAddPatient_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void btnDeleteBloodpack_Click(object sender, RoutedEventArgs e)
+        private void btnDeletePatient_Click(object sender, RoutedEventArgs e)
+        {
+            Pacient pacient = (Pacient)dgPatients.SelectedItem;
+            using (var db = new Model1())
+            {
+                db.Database.ExecuteSqlCommand("DELETE FROM dbo.DoctorPacients where DoctorID =" + doctor.Id + " and PacientID =" + pacient.Id + "");
+                db.Database.ExecuteSqlCommand("DELETE FROM dbo.Pacients where Id =" + pacient.Id + "");
+                db.SaveChanges();
+            }
+            fillPatientsDataGrid();
+        }
+
+        private void btnUpdatePatient_Click(object sender, RoutedEventArgs e)
         {
 
         }
+
+
+        /**
+         * BLOODPACK REQUESTS
+         */
+        private void btnRequestBlood_Click(object sender, RoutedEventArgs e)
+        {
+            Pacient pacient = (Pacient)dgPatients.SelectedItem;
+            CreateRequest createRequest = new CreateRequest(pacient);
+            bool? result = createRequest.ShowDialog();
+            if (result.HasValue && result.Value)
+            {
+                //TODO Update the object
+            }
+        }
+
+        private void btnDeleteBloodrequest_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
+        /**
+         * NO IDEA WHAT THIS IS FOR
+         */
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            //dgvPatients;
+        }
+
     }
 }
