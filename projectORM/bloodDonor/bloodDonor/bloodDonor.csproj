@@ -87,6 +87,7 @@
     <Compile Include="BloodPack.cs" />
     <Compile Include="BloodRequest.cs" />
     <Compile Include="Controllers\MainController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Disease.cs" />
     <Compile Include="Doctor.cs" />
     <Compile Include="DoctorPacient.cs" />
@@ -97,6 +98,7 @@
       <DependentUpon>EditBloodPack.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model1.cs" />
+    <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Nurse.cs" />
     <Compile Include="NurseWindow.xaml.cs">

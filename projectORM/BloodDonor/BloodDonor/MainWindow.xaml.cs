@@ -26,6 +26,7 @@ namespace BloodDonor
     public partial class MainWindow : Window
     {
         MainController ctrl;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -36,13 +37,12 @@ namespace BloodDonor
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             int user_type = ctrl.login(tbxUsername.Text, tbxPassword.Password);
-
-            Console.WriteLine("user type" + user_type.ToString());
+            Console.WriteLine("user type" + user_type);
             switch (user_type)
             {
 
                 case 1:
-                    DonorWindow donorWindow = new DonorWindow();
+                    DonorWindow donorWindow = new DonorWindow(tbxUsername.Text);
                     donorWindow.Show();
                     this.Close();
                     break;
