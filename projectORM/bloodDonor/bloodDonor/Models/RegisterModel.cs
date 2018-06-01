@@ -234,23 +234,6 @@ namespace BloodDonor.Models
             return false;
         }
 
-        public void DeleteDisease(string disease)
-        {
-            // function to delete a disease that the donor does not has it anymore
-            long Id = GetDisease(disease);
-
-            if (this.CheckDisease(Id))
-            {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand("Delete from DonorDisease where DonorId=@DonorId and DiseaseId=@DiseaseId", conn);
-                cmd.Parameters.AddWithValue("@DonorId",this.Id);
-                cmd.Parameters.AddWithValue("@DiseaseId",Id);
-                cmd.CommandType = CommandType.Text;
-                cmd.ExecuteNonQuery();
-                conn.Close();
-            }
-        }
-
         public void AddDisease(string disease)
         { 
             // function to add a disease that the donor has in the DB

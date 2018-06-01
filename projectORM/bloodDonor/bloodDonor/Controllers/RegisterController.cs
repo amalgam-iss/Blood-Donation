@@ -52,12 +52,6 @@ namespace BloodDonor.Controllers
             this.register.AddDisease(disease);
         }
 
-        public void DeleteDisease(string disease)
-        {
-            // function to delete a disease, that the user no longer has it, from the DB
-            this.register.DeleteDisease(disease);
-        }
-
         public string GetDate()
         {
             // function to return the date of the last donation

@@ -102,7 +102,7 @@ namespace BloodDonor
         private string Check()
         {
             // function to check if the donor has some diseases. If yes than it cannot donate
-            // all of her/his diseases will be stored in/deleted form the database, also all the personal info 
+            // all of her/his diseases will be stored in the database, also all the personal info 
             // regarding the donor will be stored in the DB.
 
             string result = "Cannot donate because of the: \n";
@@ -112,84 +112,132 @@ namespace BloodDonor
                 result += "\t - hepatitis. \n";
             }
             else
-                this.register.DeleteDisease("Hepatitis");
+            {
+                Hepatitis.IsChecked = this.register.CheckDisease("Hepatitis");
+                if (Hepatitis.IsChecked == true)
+                    result += "\t - hepatitis. \n";
+            }
             if (Pox.IsChecked == true)
             {
                 this.register.AddDisease("Pox");
                 result += "\t - pox. \n";
             }
             else
-                this.register.DeleteDisease("Pox");
+            {
+                Pox.IsChecked = this.register.CheckDisease("Pox");
+                if (Pox.IsChecked == true)
+                    result += "\t - pox. \n";
+            }
             if (TB.IsChecked == true)
             {
                 this.register.AddDisease("TB");
                 result += "\t - TB. \n";
             }
             else
-                this.register.DeleteDisease("TB");
+            {
+                TB.IsChecked = this.register.CheckDisease("TB");
+                if (TB.IsChecked == true)
+                    result += "\t - TB. \n";
+            }
             if (Malaria.IsChecked == true)
             {
                 this.register.AddDisease("Malaria");
                 result += "\t - malaria. \n";
             }
             else
-                this.register.DeleteDisease("Malaria");
+            {
+                Malaria.IsChecked = this.register.CheckDisease("Malaria");
+                if (Malaria.IsChecked == true)
+                    result += "\t - malaria. \n";
+            }
             if (Neurological.IsChecked == true)
             {
                 this.register.AddDisease("Neurological");
                 result += "\t - neurological diseases. \n";
             }
             else
-                this.register.DeleteDisease("Neurological");
+            {
+                Neurological.IsChecked = this.register.CheckDisease("Neurological");
+                if (Neurological.IsChecked == true)
+                    result += "\t - neurological diseases. \n";
+            }
             if (Brucellosis.IsChecked == true)
             {
                 this.register.AddDisease("Brucellosis");
                 result += "\t - brucellosis. \n";
             }
             else
-                this.register.DeleteDisease("Brucellosis");
+            {
+                Brucellosis.IsChecked = this.register.CheckDisease("Brucellosis");
+                if (Brucellosis.IsChecked == true)
+                    result += "\t - brucellosis. \n";
+            }
             if (Ulcer.IsChecked == true)
             {
                 this.register.AddDisease("Ulcer");
                 result += "\t - ulcer. \n";
             }
             else
-                this.register.DeleteDisease("Ulcer");
+            {
+                Ulcer.IsChecked = this.register.CheckDisease("Ulcer");
+                if (Ulcer.IsChecked == true)
+                    result += "\t - ulcer. \n";
+            }
             if (Diabetes.IsChecked == true)
             { 
                 this.register.AddDisease("Diabetes");
                 result += "\t - diabetes. \n";
             }
             else
-                this.register.DeleteDisease("Diabetes");
+            {
+                Diabetes.IsChecked = this.register.CheckDisease("Diabetes");
+                if (Diabetes.IsChecked == true)
+                    result += "\t - diabetes. \n";
+            }
             if (HeartD.IsChecked == true)
             {
                 this.register.AddDisease("Heart");
                 result += "\t - heard diseases. \n";
             }
             else
-                this.register.DeleteDisease("Heart");
+            {
+                HeartD.IsChecked = this.register.CheckDisease("Heart");
+                if (HeartD.IsChecked == true)
+                    result += "\t - heard diseases. \n";
+            }
             if (SkinD.IsChecked == true)
             {
                 this.register.AddDisease("Skin");
                 result += "\t - skin diseases. \n";
             }
             else
-                this.register.DeleteDisease("Skin");
+            {
+                SkinD.IsChecked = this.register.CheckDisease("Skin");
+                if (SkinD.IsChecked == true)
+                    result += "\t - skin diseases. \n";
+            }
             if (Cancer.IsChecked == true)
             {
                 this.register.AddDisease("Cancer");
                 result += "\t - cancer. \n";
             }
             else
-                this.register.DeleteDisease("Cancer");
+            {
+                Cancer.IsChecked = this.register.CheckDisease("Cancer");
+                if (Cancer.IsChecked == true)
+                    result += "\t - cancer. \n";
+            }
             if (Myopia.IsChecked == true)
             {
                 this.register.AddDisease("Myopia");
                 result += "\t - Myopia. \n";
             }
             else
-                this.register.DeleteDisease("Myopia");
+            {
+                Myopia.IsChecked = this.register.CheckDisease("Myopia");
+                if (Myopia.IsChecked == true)
+                    result += "\t - Myopia. \n";
+            }
 
             if (Surgery.IsChecked == true)
                 result += "\t - surgery. \n";
@@ -241,12 +289,15 @@ namespace BloodDonor
                 int months = Convert.ToInt32(date.Month.ToString());
                 string dates = this.register.GetDate();
                 Debug.WriteLine(dates);
-                int lastmoth =  Convert.ToInt32(dates.Split('/')[0]);
-
-                if (months - lastmoth < 0)
+                if (dates != "")
                 {
-                    MessageBox.Show("You can donate again after 3 months.");
-                    return false;
+                    int lastmoth = Convert.ToInt32(dates.Split('/')[0]);
+
+                    if (months - lastmoth < 0)
+                    {
+                        MessageBox.Show("You can donate again after 3 months.");
+                        return false;
+                    }
                 }
             }
             catch(Exception)
