@@ -30,6 +30,11 @@ namespace BloodDonor
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
+            loginCheck();
+        }
+
+        private void loginCheck()
+        {
             Debug.WriteLine(tbxUsername.Text);
             if (tbxUsername.Text.Equals("doctor"))
             {
@@ -45,7 +50,7 @@ namespace BloodDonor
                 this.Close();
 
             }
-            else if(tbxUsername.Text.Equals("donor"))
+            else if (tbxUsername.Text.Equals("donor"))
             {
                 this.Close();
 
@@ -62,6 +67,23 @@ namespace BloodDonor
             SignUp window = new SignUp();
             window.Show();
         }
+
+        private void tbxPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Return)
+            {
+                loginCheck();
+            }
+        }
+
+        private void tbxUsername_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Return)
+            {
+                loginCheck();
+            }
+        }
+
     }
     
 }

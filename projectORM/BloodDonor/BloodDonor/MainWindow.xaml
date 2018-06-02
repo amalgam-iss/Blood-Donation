@@ -16,7 +16,7 @@
             <ColumnDefinition Width="273*"/>
         </Grid.ColumnDefinitions>
         <!-- tbxPassword  Click="tbxPassword_Click()"-->
-        <Grid RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
+        <Grid RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2" >
             <Label x:Name="lblTitle" Content="Sign in to your account" VerticalAlignment="Top" Margin="25,161,22,0" 
                    Height="42" HorizontalContentAlignment="Center" FontFamily="Microsoft YaHei UI" FontSize="18" FontStretch="Expanded"/>
             <Canvas Height="156" VerticalAlignment="Top" Background="#FF558ED1"/>
@@ -26,7 +26,7 @@
                      FontSize="14" FontFamily="Microsoft YaHei Light" 
                      CaretBrush="#FF558ED1" 
                      PreviewMouseLeftButtonDown="tbxUsername_PreviewMouseLeftButtonDown"
-                     
+                     KeyDown="tbxUsername_KeyDown"
                      />
             <Button x:Name="btnLogin" 
                     Content="Sign In" 
@@ -51,7 +51,7 @@
                          MaxLength="25" 
                          PasswordChar="*" VerticalAlignment="Top"
                          FontSize="14"  FontFamily="Microsoft JhengHei Light" 
-                         CaretBrush="#FF558ED1" />
+                         CaretBrush="#FF558ED1" KeyDown="tbxPassword_KeyDown"/>
             <Label x:Name="lblUsername" Content="Username:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,208,0,0" FontFamily="Microsoft YaHei UI" FontSize="10" Foreground="#FF558ED1" FontWeight="Bold" Height="23" Width="88"/>
             <Label x:Name="lblPassword" Content="Password:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,293,0,0" FontFamily="Microsoft YaHei UI" FontSize="10" Foreground="#FF558ED1" FontWeight="Bold" Height="23" Width="69"/>
 

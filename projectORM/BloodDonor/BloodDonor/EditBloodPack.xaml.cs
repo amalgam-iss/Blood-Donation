@@ -22,6 +22,8 @@ namespace BloodDonor
 
     public partial class EditBloodPack : Window
     {
+
+        // The parameters for a blood pack.
         public String groupTxt;
         public String rhTxt;
         public String statusTxt;
@@ -57,18 +59,22 @@ namespace BloodDonor
             dpCreationDate.Text = "";
         }
 
+
+        //Quality of life, clean the textbox when you press it
         private void tbxStatus_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             tbxStatus.Clear();
 
         }
 
+        //Quality of life, clean the textbox when you press it
         private void tbxRh_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             tbxRh.Clear();
 
         }
 
+        //Quality of life, clean the textbox when you press it
         private void tbxGroup_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             tbxGroup.Clear();
