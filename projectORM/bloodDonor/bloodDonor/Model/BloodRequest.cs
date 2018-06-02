@@ -18,11 +18,9 @@ namespace BloodDonor.Model
         [StringLength(1)]
         public string Rh { get; set; }
 
-        public int? Quantity { get; set; }
+       /// public int? Quantity { get; set; }
 
         public int? Urgency { get; set; }
-
-        public long? AddressId { get; set; }
 
         public int? Requested_quantity { get; set; }
 

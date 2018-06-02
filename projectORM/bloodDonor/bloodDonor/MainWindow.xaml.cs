@@ -31,12 +31,16 @@ namespace BloodDonor
         {
             InitializeComponent();
             ctrl = new MainController();
+            tbxPassword.Password = "pass";
+            tbxUsername.Text = "george"; 
+
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
+            
             int user_type = ctrl.login(tbxUsername.Text, tbxPassword.Password);
-           
+       
             Console.WriteLine("user type" + user_type.ToString());
             switch (user_type)
             {

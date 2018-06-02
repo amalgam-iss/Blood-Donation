@@ -37,6 +37,8 @@ namespace BloodDonor
             specialityLabelM.Content = doctor.Speciality;
             phoneLabelM.Content = doctor.Phone;
             fillPatientsDataGrid();
+            fillBloodRequestsDataGrid();
+
         }
 
         private void controlTab_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -151,13 +153,60 @@ namespace BloodDonor
             bool? result = createRequest.ShowDialog();
             if (result.HasValue && result.Value)
             {
-                //TODO Update the object
+                string bloodType = pacient.BloodType;
+                string rh = pacient.Rh;
+                int quantity = createRequest.Amount;
+                int priority = createRequest.Priority;
+
+                using (var context = new Model1())
+                {
+                    // Now adding to the database
+                    BloodRequest bloodRequest = new BloodRequest
+                    {
+                        DoctorPacient = context.DoctorPacients.SqlQuery("select * from DoctorPacients where DoctorId = " + doctor.Id + ";").SingleOrDefault(),
+                        BloodType = bloodType,
+                        Rh = rh,
+                        Requested_quantity = quantity,
+                        Received_quantity = 0,
+                        Urgency = priority
+                    };
+
+                    var pat = context.BloodRequests.Add(bloodRequest);
+                    context.SaveChanges();
+                    
+                    fillBloodRequestsDataGrid();
+                }
+            }
+        }
+
+        private void fillBloodRequestsDataGrid()
+        {
+            Debug.WriteLine("Fill Requests.");
+            using (var context = new Model1())
+            {
+                var data = context.DoctorPacients.SqlQuery("select * from DoctorPacients where DoctorId = " + doctor.Id +";").SingleOrDefault();
+                Console.WriteLine(data);
+                dgRequests.ItemsSource = data.BloodRequests.ToList();
+            }
+        }
+
+        private void dgRequests_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.Column.Header.ToString() == "DoctorPacient")
+            {
+                e.Column.Visibility = Visibility.Hidden;
             }
         }
 
         private void btnDeleteBloodrequest_Click(object sender, RoutedEventArgs e)
         {
-
+            BloodRequest bloodRequest = (BloodRequest)dgRequests.SelectedItem;
+            using (var db = new Model1())
+            {;
+                db.Database.ExecuteSqlCommand("DELETE FROM dbo.BloodRequests where Id =" + bloodRequest.Id + "");
+                db.SaveChanges();
+            }
+            fillBloodRequestsDataGrid();
         }
 
 

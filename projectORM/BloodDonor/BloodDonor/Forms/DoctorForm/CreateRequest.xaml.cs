@@ -21,7 +21,10 @@ namespace BloodDonor
     /// </summary>
     public partial class CreateRequest : Window
     {
-       public CreateRequest(Pacient pacient)
+        public int Amount { get; set; }
+        public int Priority { get; set; }
+
+        public CreateRequest(Pacient pacient)
        {
             InitializeComponent();
             this.tbxBloodType.Text = pacient.BloodType;
@@ -29,25 +32,27 @@ namespace BloodDonor
             this.tbxRh.Text = pacient.Rh; 
         }
 
-        private void btnExit_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             try
             {
-                int amount = int.Parse(this.tbxAmount.Text);
-                Console.WriteLine(amount);
-                
-                this.Close(); 
+                Amount = int.Parse(this.tbxAmount.Text);
+                Priority = int.Parse(this.tbxPriority.Text);
+
+                this.DialogResult = true; 
+                this.Close();
             }
-            catch(Exception a)
+            catch (Exception a)
             {
                 this.tbxAmount.Clear();
                 Console.Write(a.StackTrace);
             }
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
