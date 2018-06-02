@@ -52,6 +52,8 @@ namespace BloodDonor
             }
             else if (tbxUsername.Text.Equals("donor"))
             {
+                DonorWindow donorWindow = new DonorWindow();
+                donorWindow.Show();
                 this.Close();
 
             }
