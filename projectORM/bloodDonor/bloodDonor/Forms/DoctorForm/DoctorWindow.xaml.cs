@@ -158,12 +158,16 @@ namespace BloodDonor
                 int quantity = createRequest.Amount;
                 int priority = createRequest.Priority;
 
+                DoctorPacient dp = new DoctorPacient();
+                dp.DoctorId = doctor.Id;
+                dp.PacientId = pacient.Id; 
+
                 using (var context = new Model1())
                 {
                     // Now adding to the database
                     BloodRequest bloodRequest = new BloodRequest
                     {
-                        DoctorPacient = context.DoctorPacients.SqlQuery("select * from DoctorPacients where DoctorId = " + doctor.Id + ";").SingleOrDefault(),
+                        DoctorPacient = dp,
                         BloodType = bloodType,
                         Rh = rh,
                         Requested_quantity = quantity,
@@ -184,9 +188,18 @@ namespace BloodDonor
             Debug.WriteLine("Fill Requests.");
             using (var context = new Model1())
             {
-                var data = context.DoctorPacients.SqlQuery("select * from DoctorPacients where DoctorId = " + doctor.Id +";").SingleOrDefault();
-                Console.WriteLine(data);
-                dgRequests.ItemsSource = data.BloodRequests.ToList();
+                var doctorPacients = context.DoctorPacients.SqlQuery("select * from DoctorPacients where DoctorId = " + doctor.Id + ";");
+                List<BloodRequest> bloodRequests = new List<BloodRequest>();
+
+                ///bloodRequests = doctorPacients.BloodRequests.ToList();
+                foreach (var dp in doctorPacients.ToList())
+                {
+                    bloodRequests.AddRange(dp.BloodRequests.ToList());
+                    Console.WriteLine(dp.BloodRequests.ToList()); 
+                }
+                
+                Console.WriteLine(bloodRequests);
+                dgRequests.ItemsSource = bloodRequests;
             }
         }
 
