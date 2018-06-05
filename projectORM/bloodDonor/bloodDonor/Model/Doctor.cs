@@ -8,6 +8,12 @@ namespace BloodDonor.Model
 
     public partial class Doctor
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Doctor()
+        {
+            DoctorPacients = new HashSet<DoctorPacient>();
+        }
+
         public long Id { get; set; }
 
         [StringLength(255)]
@@ -20,6 +26,9 @@ namespace BloodDonor.Model
         public string Speciality { get; set; }
 
         public long? UserId { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DoctorPacient> DoctorPacients { get; set; }
 
         public virtual User User { get; set; }
     }

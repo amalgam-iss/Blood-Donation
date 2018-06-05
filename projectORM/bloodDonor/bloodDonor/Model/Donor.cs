@@ -24,8 +24,6 @@ namespace BloodDonor.Model
 
         public long? PhoneNumber { get; set; }
 
-        public long? BirthDate { get; set; }
-
         [StringLength(2)]
         public string BloodType { get; set; }
 
@@ -34,6 +32,12 @@ namespace BloodDonor.Model
 
         [StringLength(255)]
         public string Address { get; set; }
+
+        [StringLength(50)]
+        public string Weight { get; set; }
+
+        [StringLength(100)]
+        public string BirthDate { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Donation> Donations { get; set; }

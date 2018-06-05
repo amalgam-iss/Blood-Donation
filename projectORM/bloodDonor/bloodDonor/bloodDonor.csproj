@@ -78,6 +78,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controllers\MainController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Forms\DoctorForm\AddPatient.xaml.cs">
       <DependentUpon>AddPatient.xaml</DependentUpon>
     </Compile>
@@ -98,6 +99,7 @@
     <Compile Include="Forms\NurseForm\EditBloodPack.xaml.cs">
       <DependentUpon>EditBloodPack.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Model\BloodPack.cs" />
     <Compile Include="Model\BloodRequest.cs" />
@@ -107,11 +109,11 @@
     <Compile Include="Model\Donation.cs" />
     <Compile Include="Model\Donor.cs" />
     <Compile Include="Model\DonorDisease.cs" />
+    <Compile Include="Model\Model2.cs" />
     <Compile Include="Model\Nurse.cs" />
     <Compile Include="Model\Pacient.cs" />
     <Compile Include="Model\sysdiagram.cs" />
     <Compile Include="Model\User.cs" />
-    <Compile Include="Model\Model1.cs" />
     <Compile Include="Utils\Hashing.cs" />
     <Compile Include="Utils\Utilscs.cs" />
     <Compile Include="Forms\NurseForm\NurseWindow.xaml.cs">

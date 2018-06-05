@@ -27,26 +27,23 @@ namespace BloodDonor
     public partial class MainWindow : Window
     {
         MainController ctrl;
+
         public MainWindow()
         {
             InitializeComponent();
             ctrl = new MainController();
-            tbxPassword.Password = "pass";
-            tbxUsername.Text = "george"; 
 
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            
             int user_type = ctrl.login(tbxUsername.Text, tbxPassword.Password);
-       
-            Console.WriteLine("user type" + user_type.ToString());
+            Console.WriteLine("user type" + user_type);
             switch (user_type)
             {
 
                 case 1:
-                    DonorWindow donorWindow = new DonorWindow();
+                    DonorWindow donorWindow = new DonorWindow(tbxUsername.Text);
                     donorWindow.Show();
                     this.Close();
                     break;
@@ -58,9 +55,9 @@ namespace BloodDonor
                         user = db.Users.Where(usr => usr.Username == tbxUsername.Text).First();
                     }
                     DoctorWindow doctorWindow = new DoctorWindow(user.Id.ToString());
-                    
+
                     doctorWindow.Show();
-                    this.Close();
+                    ;
                     break;
                 case 3:
                     NurseWindow nurseWindow = new NurseWindow();
@@ -73,6 +70,8 @@ namespace BloodDonor
                 default:
                     MessageBox.Show("Login failed! Upsie");
                     break;
+                
+
             }
         }
 

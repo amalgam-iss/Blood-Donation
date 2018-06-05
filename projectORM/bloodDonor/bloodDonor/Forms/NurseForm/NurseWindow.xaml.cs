@@ -137,15 +137,7 @@ namespace BloodDonor
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
-            System.Windows.Data.CollectionViewSource donorViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("donorViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // dgvDonor.ItemsSource = [generic data source]
-            System.Windows.Data.CollectionViewSource bloodPackViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("bloodPackViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // bloodPackViewSource.Source = [generic data source]
-            System.Windows.Data.CollectionViewSource bloodRequestViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("bloodRequestViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // bloodRequestViewSource.Source = [generic data source]
+            
         }
     }
 }

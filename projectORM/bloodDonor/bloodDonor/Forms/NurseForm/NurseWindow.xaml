@@ -11,7 +11,7 @@
 
         <TabControl Margin="10,59,9.6,10.4">
             <TabItem Header="Bloodpack">
-                <Grid Background="#FFE5E5E5" Height="775" Margin="0,0,0,0" DataContext="{StaticResource bloodRequestViewSource}">
+                <Grid Background="#FFE5E5E5" Height="775" Margin="0,0,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="189*"/>
                         <ColumnDefinition Width="1009*"/>
@@ -37,13 +37,13 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Donors">
-                <Grid Background="#FFE5E5E5" DataContext="{StaticResource donorsViewSource}">
+                <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="141*"/>
                         <ColumnDefinition Width="0*"/>
                         <ColumnDefinition Width="1057*"/>
                     </Grid.ColumnDefinitions>
-                    <DataGrid x:Name="dgvDonor" Grid.ColumnSpan="3" Margin="10,61,205,10" ItemsSource="{Binding Source={StaticResource donorViewSource}}"/>
+                    <DataGrid x:Name="dgvDonor" Grid.ColumnSpan="3" Margin="10,61,205,10" />
                     <Label Content="Donor view:"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF558ED1" FontWeight="Bold"  Margin="10,21,0,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="382" Grid.ColumnSpan="3"/>
                     <Button x:Name="btn2_Copy"  Margin="0,61,10,0" Height="50" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Right" Width="144">
                         <TextBlock Text="Do something?" TextWrapping="Wrap" TextAlignment="Center"/>
@@ -54,7 +54,7 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Expired blood packs" RenderTransformOrigin="7.562,0.409">
-                <Grid  Background="#FFE5E5E5" Height="775" Margin="0,0,0,0" DataContext="{StaticResource bloodPackViewSource}">
+                <Grid  Background="#FFE5E5E5" Height="775" Margin="0,0,0,0">
                     <DataGrid x:Name="dgvExpiredBloodPacks" HorizontalAlignment="Left" Height="697" Margin="10,68,0,0" VerticalAlignment="Top" Width="988" ItemsSource="{Binding}"/>
                     <Button  Click="btn2_Click" Height="Auto" Margin="0,68,10,657" HorizontalAlignment="Right" Width="144">
                         <TextBlock Text="Delete expired blood pack" TextWrapping="Wrap" TextAlignment="Center" Height="40" Width="112"/>

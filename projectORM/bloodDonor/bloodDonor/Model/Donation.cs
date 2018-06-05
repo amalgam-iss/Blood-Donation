@@ -22,11 +22,13 @@ namespace BloodDonor.Model
 
         public int? Quantity { get; set; }
 
-        public long? Date { get; set; }
-
-        public int? Status { get; set; }
-
         public int? Flags { get; set; }
+
+        [StringLength(100)]
+        public string Status { get; set; }
+
+        [Column(TypeName = "date")]
+        public DateTime? C_Date { get; set; }
 
         public virtual Donor Donor { get; set; }
     }
