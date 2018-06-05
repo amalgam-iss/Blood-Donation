@@ -78,7 +78,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controllers\MainController.cs" />
-    <Compile Include="Forms\AddPatient.xaml.cs">
+    <Compile Include="Forms\DoctorForm\AddPatient.xaml.cs">
       <DependentUpon>AddPatient.xaml</DependentUpon>
     </Compile>
     <Compile Include="Forms\DoctorForm\CreateRequest.xaml.cs">
@@ -130,7 +130,7 @@
     <Compile Include="Forms\DonorForm\DonorWindow.xaml.cs">
       <DependentUpon>DonorWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="Forms\AddPatient.xaml">
+    <Page Include="Forms\DoctorForm\AddPatient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

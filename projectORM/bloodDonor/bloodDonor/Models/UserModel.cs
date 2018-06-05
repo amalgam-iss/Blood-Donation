@@ -12,7 +12,7 @@ namespace BloodDonor.Models
 {
     public class UserModel
     {
-        SqlConnection conn = new SqlConnection(@"Data Source = DESKTOP-B2S14AI; " +
+        SqlConnection conn = new SqlConnection(@"Data Source = lberciu-lpt; " +
                 " Initial Catalog = AmalgamIss; Integrated Security = true;");
 
         public long Id { get; set; }
