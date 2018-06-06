@@ -10,9 +10,9 @@ using System.Diagnostics;
 
 namespace BloodDonor.Models
 {
-    class RegisterModel
+    public class RegisterModel
     {
-        SqlConnection conn = new SqlConnection(@"Data Source = lberciu-lpt; " +
+        SqlConnection conn = new SqlConnection(@"Data Source = DESKTOP-3DU7K2P\SQLEXPRESS; " +
                 " Initial Catalog = AmalgamIss; Integrated Security = true;");
         private long Id = 0;
 
