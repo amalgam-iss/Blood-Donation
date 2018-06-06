@@ -25,9 +25,8 @@
                         <TextBlock Text="Remove blood pack" TextWrapping="Wrap" TextAlignment="Center" Width="92"/>
                     </Button>
                     <Button x:Name="btn3" Click="btn3_Click" Content="Exit" Margin="874,710,9,0" Height="32" Grid.Column="1" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl1" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="877.2,361,0,0" Height="87" Width="122" Grid.Column="1"/>
-                    <Label Content="Blood pack view:"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF558ED1" FontWeight="Bold"  Margin="10,21,0,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="382" Grid.ColumnSpan="2"/>
-                    <Label Content="Request:"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF558ED1" FontWeight="Bold"  Margin="347.4,21,0,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="127" Grid.Column="1"/>
+                    <Label Content="Blood pack view:"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF673AB7" FontWeight="Bold"  Margin="10,21,0,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="382" Grid.ColumnSpan="2"/>
+                    <Label Content="Request:"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF673AB7" FontWeight="Bold"  Margin="347.4,21,0,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="127" Grid.Column="1"/>
                     <Button x:Name="btn4" Click="btn4_Click" Margin="0,181,8.6,0" Height="50" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122">
                         <TextBlock Text="Edit blood pack status" TextWrapping="Wrap" TextAlignment="Center" Width="92"/>
                     </Button>
@@ -44,7 +43,7 @@
                         <ColumnDefinition Width="1057*"/>
                     </Grid.ColumnDefinitions>
                     <DataGrid x:Name="dgvDonor" Grid.ColumnSpan="3" Margin="10,61,205,10" />
-                    <Label Content="Donor view:"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF558ED1" FontWeight="Bold"  Margin="10,21,0,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="382" Grid.ColumnSpan="3"/>
+                    <Label Content="Donor view:"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF673AB7" FontWeight="Bold"  Margin="10,21,0,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="382" Grid.ColumnSpan="3"/>
                     <Button x:Name="btn2_Copy"  Margin="0,61,10,0" Height="50" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Right" Width="144">
                         <TextBlock Text="Do something?" TextWrapping="Wrap" TextAlignment="Center"/>
                     </Button>
@@ -62,7 +61,7 @@
                     </Button>
                     <Button x:Name="btnUpdate1"  Content="Update" Click="btnUpdate_Click" Height="50" Margin="0,0,10,577" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="144"/>
                     <Button x:Name="btnExit3" Content="Exit" VerticalAlignment="Bottom" Click="btn3_Click" Height="50" Margin="0,0,10,23" HorizontalAlignment="Right" Width="144"/>
-                    <Label Content="Expired blood packs view:"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF558ED1" FontWeight="Bold"  Margin="10,21,0,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="382"/>
+                    <Label Content="Expired blood packs view:"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF673AB7" FontWeight="Bold"  Margin="10,21,0,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="382"/>
 
                 </Grid>
 

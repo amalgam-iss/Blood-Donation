@@ -19,7 +19,7 @@
         <Grid RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
             <Label x:Name="lblTitle" Content="Sign in to your account" VerticalAlignment="Top" Margin="25,161,22,0" 
                    Height="42" HorizontalContentAlignment="Center" FontFamily="Microsoft YaHei UI" FontSize="18" FontStretch="Expanded"/>
-            <Canvas Height="156" VerticalAlignment="Top" Background="#FF558ED1"/>
+            <Canvas Height="156" VerticalAlignment="Top" Background="#FF673AB7"/>
             <TextBox x:Name="tbxUsername" 
                      Height="37" Margin="22,236,22,0" 
                      TextWrapping="Wrap" Text="" VerticalAlignment="Top" 
@@ -30,13 +30,13 @@
                      />
             <Button x:Name="btnLogin" 
                     Content="Sign In" 
-                    Margin="22,433,22,0" VerticalAlignment="Top" Background="#FF558ED1" 
+                    Margin="22,433,22,0" VerticalAlignment="Top"
                     Click="btnLogin_Click" Height="41"
                     />
             <Label x:Name="lblNewUser" Content="Click Here to make a new account!"
                    HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,540,0,0"
-                   Width="289" Foreground="#FF558ED1" Height="33"
-                   PreviewMouseLeftButtonDown="lblNewUser_PreviewMouseLeftButtonDown"/>
+                   Width="289" Foreground="#FF673AB7" Height="33"
+                   PreviewMouseLeftButtonDown="lblNewUser_PreviewMouseLeftButtonDown" FontSize="14"/>
             <Label x:Name="lblOr" Content="Or:" HorizontalAlignment="Left" Margin="22,502,0,0" VerticalAlignment="Top" Width="176" Height="33"/>
             <Image Height="100" Margin="138,36,134,0" VerticalAlignment="Top" Source="pack://siteoforigin:,,,/Resources/heart.png"/>
             <CheckBox x:Name="checkBoxRemember" 
@@ -52,8 +52,8 @@
                          PasswordChar="*" VerticalAlignment="Top"
                          FontSize="14"  FontFamily="Microsoft JhengHei Light" 
                          CaretBrush="#FF558ED1" />
-            <Label x:Name="lblUsername" Content="Username:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,208,0,0" FontFamily="Microsoft YaHei UI" FontSize="10" Foreground="#FF558ED1" FontWeight="Bold" Height="23" Width="88"/>
-            <Label x:Name="lblPassword" Content="Password:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,293,0,0" FontFamily="Microsoft YaHei UI" FontSize="10" Foreground="#FF558ED1" FontWeight="Bold" Height="23" Width="69"/>
+            <Label x:Name="lblUsername" Content="Username:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,208,0,0" FontFamily="Microsoft YaHei UI" FontSize="12" Foreground="#FF673AB7" FontWeight="Bold" Height="23" Width="88"/>
+            <Label x:Name="lblPassword" Content="Password:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,293,0,0" FontFamily="Microsoft YaHei UI" FontSize="12" Foreground="#FF673AB7" FontWeight="Bold" Height="23" Width="75"/>
 
         </Grid>
     </Grid>

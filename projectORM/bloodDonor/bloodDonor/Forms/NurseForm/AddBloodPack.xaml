@@ -14,10 +14,10 @@
         <TextBox x:Name="tbxRh" Margin="10,190,10,0"  PreviewMouseDown="tbxRh_PreviewMouseDown"  TextWrapping="Wrap" Text="" Height="37" VerticalAlignment="Top" FontSize="14"/>
         <TextBox x:Name="tbxStatus" Margin="10,381,11,248"  PreviewMouseDown="tbxStatus_PreviewMouseDown" TextWrapping="Wrap" Text="" FontSize="14"/>
         <DatePicker x:Name="dpCreationDate" PreviewMouseDown="dpCreationDate_PreviewMouseDown"  VerticalAlignment="Top" Margin="10,286,10,0" Height="35" FontSize="14"/>
-        <Label Content="Group"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF558ED1" FontWeight="Bold"  Margin="10,43,0,0" Height="34" VerticalAlignment="Top" HorizontalAlignment="Left" Width="91"/>
-        <Label Content="Rh type"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF558ED1" FontWeight="Bold"  Margin="10,147,0,0" Height="38" VerticalAlignment="Top" HorizontalAlignment="Left" Width="127"/>
-        <Label Content="Creation date"  FontFamily="Microsoft YaHei UI" FontSize="13" Foreground="#FF558ED1" FontWeight="Bold"  Margin="10,247,0,0" Height="39" VerticalAlignment="Top" HorizontalAlignment="Left" Width="238"/>
-        <Label Content="Status"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF558ED1" FontWeight="Bold"  Margin="10,346,0,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="127"/>
+        <Label Content="Group"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF673AB7" FontWeight="Bold"  Margin="10,43,0,0" Height="34" VerticalAlignment="Top" HorizontalAlignment="Left" Width="91"/>
+        <Label Content="Rh type"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF673AB7" FontWeight="Bold"  Margin="10,147,0,0" Height="38" VerticalAlignment="Top" HorizontalAlignment="Left" Width="127"/>
+        <Label Content="Creation date"  FontFamily="Microsoft YaHei UI" FontSize="13" Foreground="#FF673AB7" FontWeight="Bold"  Margin="10,247,0,0" Height="39" VerticalAlignment="Top" HorizontalAlignment="Left" Width="238"/>
+        <Label Content="Status"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF673AB7" FontWeight="Bold"  Margin="10,346,0,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="127"/>
 
     </Grid>
 </Window>
