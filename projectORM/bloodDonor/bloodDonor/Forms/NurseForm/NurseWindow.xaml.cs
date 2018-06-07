@@ -236,7 +236,7 @@ namespace BloodDonor
              var cellId = dgvBloodPack.SelectedCells[0];
             EditBloodPack win1 = new EditBloodPack(cellId); // or cellId
             bool? result = win1.ShowDialog();
-
+            //TODO
             if (result.HasValue && result.Value)
             {
                 String groupTxtNurse = win1.groupTxt;
@@ -245,12 +245,12 @@ namespace BloodDonor
                 DateTime currentDateNurse = win1.currentDate;
                 using (var db = new Model1())
                 {
-                    var res = db.BloodPacks.SingleOrDefault(b => b.Id.ToString().Equals(cellId.ToString()));
-                    if (result != null)
-                    {
-                        result.SomeValue = "Some new value";
-                        db.SaveChanges();
-                    }
+                    //var res = db.BloodPacks.SingleOrDefault(b => b.Id.ToString().Equals(cellId.ToString()));
+                    //if (result != null)
+                    //{
+                    //    result.SomeValue = "Some new value";
+                    //    db.SaveChanges();
+                    //}
                 }
             }
         }
