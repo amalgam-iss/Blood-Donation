@@ -28,7 +28,7 @@
                     <Button x:Name="btnAddBloodpack" Background="#FF673AB7"  Click="btnAddBloodpack_Click" Margin="0,61,9.6,0" Height="50" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122">
                         <TextBlock Text="Add blood pack" TextWrapping="Wrap" TextAlignment="Center" Width="92"/>
                     </Button>
-                    <Button x:Name="btn2" Background="#FF673AB7" Margin="0,171,10.6,0" Click="btn2_Click" Height="50" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122">
+                    <Button x:Name="btnRemoveBloodpack" Background="#FF673AB7" Margin="0,171,10.6,0" Click="btnRemoveBloodpack_Click" Height="50" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122">
                         <TextBlock Text="Remove blood pack" TextWrapping="Wrap" TextAlignment="Center" Width="92"/>
                     </Button>
                     <!--<Button x:Name="btn3" Click="btn3_Click" Content="Exit" Margin="874,710,9,0" Height="32" Grid.Column="1" VerticalAlignment="Top"/>
@@ -73,7 +73,7 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <DataGrid x:Name="dgvExpiredBloodPacks" HorizontalAlignment="Left" Height="697" Margin="27,50,0,0" VerticalAlignment="Top" Width="971" ItemsSource="{Binding}"/>
-                    <Button  Click="btn2_Click" Height="Auto" Margin="0,68,9.8,657" HorizontalAlignment="Right" Width="144">
+                    <Button  Click="btnRemoveBloodpack_Click" Height="Auto" Margin="0,68,9.8,657" HorizontalAlignment="Right" Width="144">
                         <TextBlock Text="Delete expired blood pack" TextWrapping="Wrap" TextAlignment="Center" Height="40" Width="112"/>
                     </Button>
                     <Button x:Name="btnUpdate1"  Content="Update" Click="btnUpdate_Click" Height="50" Margin="0,0,9.8,577" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="144"/>

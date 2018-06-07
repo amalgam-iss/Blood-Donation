@@ -142,6 +142,13 @@ namespace BloodDonor
                 return;
             }
 
+            if (bloodRequest.Received_quantity + 1 > bloodRequest.Requested_quantity)
+            {
+                errorWindow.SetContent("Request already fulfilled!");
+                errorWindow.Show();
+                return;
+            }
+
             using (var context = new Model1())
             {
                 bloodRequest.Received_quantity += 1;
@@ -172,17 +179,24 @@ namespace BloodDonor
         }
 
         // Opens a new window which allows you to remove a blood pack.
-        private void btn2_Click(object sender, RoutedEventArgs e)
+        private void btnRemoveBloodpack_Click(object sender, RoutedEventArgs e)
         {
-            Object myItem = dgvBloodPack.SelectedItem;
-            //Object cellId = dgvBloodPack.SelectedCells[0];
-            RemoveBloodPack win1 = new RemoveBloodPack(myItem); // or cellId
-            bool? result = win1.ShowDialog();
-
-            if (result.HasValue && result.Value)
+            ErrorWindow errorWindow = new ErrorWindow();
+            BloodPack bloodPack = (BloodPack)dgvBloodPack.SelectedItem;
+            if (bloodPack == null)
             {
-                String cellRemovedId = win1.bloodPackIdTxt;
+                errorWindow.SetContent("No bloodpack selected!");
+                errorWindow.Show();
+                return;
             }
+
+            using (var context = new Model1())
+            {
+                context.Entry(bloodPack).State = EntityState.Deleted;
+                context.SaveChanges();
+            }
+
+            initiateDgvBloodPack();
         }
 
         // Closes the current window.
