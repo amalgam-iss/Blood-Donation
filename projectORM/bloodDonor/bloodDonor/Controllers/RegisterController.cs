@@ -11,6 +11,7 @@ namespace BloodDonor.Controllers
     {
         private string username;
         RegisterModel register = new RegisterModel();
+        private string Countries = "Austria,Bulgaria,Romania,Germany,Sweden,Poland,Croatia,France,Hungary,Spain,Portugal,Belgium,Netherland,Denmark,CzechRep,Slovakia,Cyprus,Estonia,Finland,Italy,Greece,Ireland,Latvia,Luxembourg,Lithuania,Malta,Slovenia";
 
         public void Register(string dob, string country, string city, string address, string blood_type,string weight)
         {
@@ -119,6 +120,12 @@ namespace BloodDonor.Controllers
             if (Year < 0)
                 throw new ArgumentOutOfRangeException("Invalid Year");
 
+        }
+        public bool CheckCountry(string country)
+        {
+            if (this.Countries.Contains(country))
+                return true;
+            return false;
         }
     }
 }

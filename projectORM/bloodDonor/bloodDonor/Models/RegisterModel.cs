@@ -27,12 +27,18 @@ namespace BloodDonor.Models
                 conn.Open();
                 Random rnd = new Random();
                 int nr = rnd.Next(2);
+                string RH = "";
+                if (nr == 1)
+                    RH = "+";
+                else
+                    RH = "-";
+                long phone = Convert.ToInt64(this.GeneratePhoneNr());
                 SqlCommand cmd = new SqlCommand("insert into Donors(UserId,Name,PhoneNumber,BloodType,Rh,Address,Weight,BirthDate) Values(@Id,@Name,@PhoneNumber,@BloodType,@Rh,@Address,@Weight,@BirthDate)", conn);
                 cmd.Parameters.AddWithValue("@Id", this.Id);
                 cmd.Parameters.AddWithValue("@Name", username);
-                cmd.Parameters.AddWithValue("@PhoneNumber", 0770665443);
+                cmd.Parameters.AddWithValue("@PhoneNumber", phone);
                 cmd.Parameters.AddWithValue("@BloodType", blood_type);
-                cmd.Parameters.AddWithValue("@Rh", nr);
+                cmd.Parameters.AddWithValue("@Rh", RH);
                 cmd.Parameters.AddWithValue("@Address", adr);
                 cmd.Parameters.AddWithValue("@Weight", weight);
                 cmd.Parameters.AddWithValue("@BirthDate", dob);
@@ -42,6 +48,15 @@ namespace BloodDonor.Models
             }
             else
                 this.UpdateData(dob,adr,weight,blood_type);
+        }
+
+        private string GeneratePhoneNr()
+        {
+            Random random = new Random();
+            string phone = "0";
+            for (int i = 0; i < 9; i++)
+                phone += random.Next(0, 9).ToString();
+            return phone;
         }
 
         public bool CheckPatient(string patientName)
@@ -68,7 +83,6 @@ namespace BloodDonor.Models
             //function to update the donor personal informations like Address, Weight, etc... 
             conn.Open();
             SqlCommand cmd = new SqlCommand("update Donors set Address=@Address, Weight=@Weight, BirthDate=@BirthDate where UserId=@UserId", conn);
-            //cmd.Parameters.AddWithValue("@BloodType", blood_type);
             cmd.Parameters.AddWithValue("@Address", adr);
             cmd.Parameters.AddWithValue("@Weight",weight);
             cmd.Parameters.AddWithValue("@BirthDate",dob);
@@ -126,12 +140,28 @@ namespace BloodDonor.Models
             return "";
         }
 
+        public long GetDonorId()
+        {
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("select Id from Donors where UserId=@UserId", conn);
+            cmd.Parameters.AddWithValue("@UserId", this.Id);
+            SqlDataReader reader = cmd.ExecuteReader();
+            long donorId = 0;
+            if (reader.HasRows)
+            {
+                reader.Read();
+                donorId = Convert.ToInt64(reader["Id"].ToString());
+            }
+            conn.Close();
+            return donorId;
+        }
+
         public void Add(string donblood)
         {
             // function that adds a new Donation or BloodPack, depending of the value of the parameter, in the Db
             // checks if the donor exists, if yes than retrieves the necessary data fro donation or BlooPack
             conn.Open();
-            SqlCommand cmd = new SqlCommand("select Id,BloodType, Rh from Donors where UserId=@UserId",conn);
+            SqlCommand cmd = new SqlCommand("select Id,BloodType, Rh, Address from Donors where UserId=@UserId",conn);
             cmd.Parameters.AddWithValue("@UserId", this.Id);
             SqlDataReader reader = cmd.ExecuteReader();
             reader.Read();
@@ -139,6 +169,7 @@ namespace BloodDonor.Models
             long donorId = Convert.ToInt64(reader["Id"].ToString());
             string blood_type = reader["BloodType"].ToString();
             string Rh = reader["Rh"].ToString();
+            string address = reader["Address"].ToString();
             int year = Convert.ToInt32(DateTime.Today.Year.ToString());
             int day = Convert.ToInt32(DateTime.Today.Day.ToString());
             int month = Convert.ToInt32(DateTime.Today.Month.ToString());
@@ -147,7 +178,7 @@ namespace BloodDonor.Models
             conn.Close();
             if (donblood.Equals("donation"))
             {
-                this.AddDonation(donorId,blood_type,Rh,date);
+                this.AddDonation(donorId,blood_type,Rh,date, address);
             } 
             if (donblood.Equals("bloodpack"))
             {
@@ -177,18 +208,20 @@ namespace BloodDonor.Models
             conn.Close();
         }
 
-        private void AddDonation(long donorId,string blood_type, string rh, string date)
+        private void AddDonation(long donorId,string blood_type, string rh, string date, string address)
         {
             // Adds a new Donation in the DB, this one will be visible only for donor to keep
             // track of his/her successful donations
             // contains data like: the BloodType, Rh, the Quantity donated which is 2 BloodPacks,status(Distributed), 
             // and the date of the donation
             conn.Open();
-            SqlCommand cmd = new SqlCommand("insert into Donations(DonorId,BloodType,Rh,Quantity,Status,C_Date) values(@DonorId,@BloodType,@Rh,@Quantity,@Status,@Date)", conn);
+            SqlCommand cmd = new SqlCommand("insert into Donations(DonorId,Address,BloodType,Rh,Quantity,Flags,Status,C_Date) values(@DonorId,@Address,@BloodType,@Rh,@Quantity,@Flags,@Status,@Date)", conn);
             cmd.Parameters.AddWithValue("@DonorId",donorId);
+            cmd.Parameters.AddWithValue("@Address",address);
             cmd.Parameters.AddWithValue("@BloodType",blood_type);
             cmd.Parameters.AddWithValue("@Rh",rh);
             cmd.Parameters.AddWithValue("@Quantity",2);
+            cmd.Parameters.AddWithValue("@Flags",1);
             cmd.Parameters.AddWithValue("Status","Distributed");
             cmd.Parameters.AddWithValue("@Date", date);
             cmd.CommandType = CommandType.Text;
@@ -219,9 +252,12 @@ namespace BloodDonor.Models
         {
             // function to check if the donor has some diseases that are stored in the DB 
             // if yes this will be displayed as checked in the corresponding checkbox of the disease
+            long donorId = this.GetDonorId();
+            if (donorId == 0)
+                return false;
             conn.Open();
             SqlCommand cmd = new SqlCommand("select * from DonorDisease where DonorId=@DonorId and DiseaseId=@DiseaseId",conn);
-            cmd.Parameters.AddWithValue("@DonorId",this.Id);
+            cmd.Parameters.AddWithValue("@DonorId",donorId);
             cmd.Parameters.AddWithValue("@DiseaseId",id);
             SqlDataReader reader = cmd.ExecuteReader();
             
@@ -243,9 +279,12 @@ namespace BloodDonor.Models
                 return;
             else
             {
+                long donorId = this.GetDonorId();
+                if (donorId == 0)
+                    return;
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("insert into DonorDisease(DonorId,DiseaseId) values(@DonorId,@DiseaseId)", conn);
-                cmd.Parameters.AddWithValue("@DonorId",this.Id);
+                cmd.Parameters.AddWithValue("@DonorId",donorId);
                 cmd.Parameters.AddWithValue("@DiseaseId",Id);
                 cmd.CommandType = CommandType.Text;
                 cmd.ExecuteNonQuery();
@@ -257,9 +296,12 @@ namespace BloodDonor.Models
         {
             // function to get the date of the last donation made by the donor 
             // to check if he/she can donate again
+            long donorId = this.GetDonorId();
+            if (donorId == 0)
+                return "";
             conn.Open();
             SqlCommand cmd = new SqlCommand("Select top 1 C_Date from Donations where DonorId=@DonorId order by Id desc",conn);
-            cmd.Parameters.AddWithValue("@DonorId",this.Id);
+            cmd.Parameters.AddWithValue("@DonorId",donorId);
             SqlDataReader reader = cmd.ExecuteReader();
             
             if (reader.HasRows)
