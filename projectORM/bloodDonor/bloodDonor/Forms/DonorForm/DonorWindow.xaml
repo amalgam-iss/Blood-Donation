@@ -20,9 +20,16 @@
 
                     <DataGrid x:Name="dgvDonationsView" HorizontalAlignment="Left" Margin="10,56,0,10" Width="606" Grid.ColumnSpan="4" SelectionMode="Single"/>
                     <Label Content="Donations view:"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF673AB7" FontWeight="Bold"  Margin="10,21,0,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="382" Grid.ColumnSpan="4"/>
+                    <DataGrid x:Name="dgvDonationsView" HorizontalAlignment="Left" Margin="10,56,0,130" Width="600" Grid.ColumnSpan="4" SelectionMode="Single"/>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="200" IsReadOnly="True" Header="Date" Binding="{Binding Path=Date}" />
+                            <DataGridTextColumn Width="200" IsReadOnly="True" Header="Status" Binding="{Binding Path=Status}" />
+                            <DataGridTextColumn Width="200" IsReadOnly="True" Header="Test Result" Binding="{Binding Path=Result}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
 
                     <Button x:Name="btn1"   Click="btn1_Click" Margin="0,61,9.8,0" Height="50" Grid.Column="3" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122">
-                        <TextBlock Text="Exit" TextWrapping="Wrap" TextAlignment="Center" Width="92"/>
+                        <TextBlock Text="Log Out" TextWrapping="Wrap" TextAlignment="Center" Width="92"/>
                     </Button>
                 </Grid>
             </TabItem>

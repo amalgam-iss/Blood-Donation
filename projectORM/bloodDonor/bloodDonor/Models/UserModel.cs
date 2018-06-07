@@ -90,6 +90,69 @@ namespace BloodDonor.Models
             return did_sign_up;
         }
 
+        public int getUserId(string username)
+        {
+            int userId = -1;
+            SqlCommand command = new SqlCommand("SELECT Id FROM Users WHERE username = @username", conn);
+            command.Parameters.Add(new SqlParameter("username", username));
+
+            conn.Open();
+            SqlDataReader reader = command.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                reader.Read();
+                userId = Convert.ToInt32(reader["Id"]);
+            }
+            conn.Close();
+            return userId;
+        }
+
+        public int getDonorId(int userId)
+        {
+            int donorId = -1;
+            SqlCommand command = new SqlCommand("SELECT Id FROM Donors WHERE UserId = @userId", conn);
+            command.Parameters.Add(new SqlParameter("userId", userId));
+
+            conn.Open();
+            SqlDataReader reader = command.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                reader.Read();
+                donorId = Convert.ToInt32(reader["Id"]);
+            }
+            conn.Close();
+            return donorId;
+        }
+
+
+        public List<string> getHistory(int donorId)
+        {
+            List<String> history = new List<String>();
+
+
+            SqlCommand command = new SqlCommand("SELECT Flags, Status, C_Date FROM Donations WHERE DonorId = @donorId", conn);
+            command.Parameters.Add(new SqlParameter("donorId", donorId));
+
+            conn.Open();
+            SqlDataReader reader = command.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    int flag = reader.GetInt32(0);
+                    string status = reader.GetString(1);
+                    string date = reader.GetDateTime(2).ToString("dd/MM/yyyy");
+                    string entry = "" + flag.ToString() + "|" + status + "|" + date;
+                    history.Add(entry);
+                }
+            }
+            conn.Close();
+            return history;
+
+        }
 
         private bool username_exists(string username)
         {

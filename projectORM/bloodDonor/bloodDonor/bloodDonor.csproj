@@ -78,6 +78,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controllers\HistoryController.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Forms\DoctorForm\AddPatient.xaml.cs">

@@ -19,9 +19,7 @@ namespace BloodDonor
     /// </summary>
     public partial class RemoveBloodPack : Window
     {
-        // The id of the blood pack that you want to remove. 
         public string bloodPackIdTxt;
-
         public RemoveBloodPack(Object dataGridCell)
         {
             InitializeComponent();
@@ -38,12 +36,6 @@ namespace BloodDonor
             bloodPackIdTxt = tbxRemoveBloodPack.Text;
         }
 
-
-        /// <summary>
-        /// Exit the window. Set the result to false/closed.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = false;

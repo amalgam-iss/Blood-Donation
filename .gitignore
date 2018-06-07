@@ -202,3 +202,5 @@ obj
 projectORM/bloodDonor/bloodDonor/App.config
 projectORM/bloodDonor/bloodDonor/App.config
 projectORM/bloodDonor/.vs/bloodDonor/v15/Server/sqlite3/storage.ide
+projectORM/bloodDonor/bloodDonor/App.config.orig
+projectORM/bloodDonor/bloodDonor/Forms/DonorForm/DonorWindow.xaml.orig
