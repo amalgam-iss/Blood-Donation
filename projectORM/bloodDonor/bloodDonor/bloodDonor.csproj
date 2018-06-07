@@ -216,9 +216,9 @@
       <DependentUpon>AmalgamIssDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
-    <None Include="Properties\DataSources\BloodPack.datasource" />
-    <None Include="Properties\DataSources\BloodRequest.datasource" />
-    <None Include="Properties\DataSources\Donor.datasource" />
+    <None Include="Properties\DataSources\BloodDonor.Model.BloodPack.datasource" />
+    <None Include="Properties\DataSources\BloodDonor.Model.BloodRequest.datasource" />
+    <None Include="Properties\DataSources\BloodDonor.Model.Donor.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -43,7 +43,9 @@ namespace BloodDonor
             Debug.WriteLine("I tried to initialise the donors\n");
             using (var context = new Model1())
             {
-                var data = (from d in context.Donors select d);
+                // var data = (from d in context.Donors select d);
+                //  dgvDonor.ItemsSource = data.ToList();
+                var data = context.Pacients.SqlQuery("select * from Donors").ToList();
                 dgvDonor.ItemsSource = data.ToList();
             }
 
@@ -237,11 +239,17 @@ namespace BloodDonor
         }
 
 
-        
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
-            
+
+            System.Windows.Data.CollectionViewSource bloodPackViewSource1 = ((System.Windows.Data.CollectionViewSource)(this.FindResource("bloodPackViewSource1")));
+            // Load data by setting the CollectionViewSource.Source property:
+            // bloodPackViewSource1.Source = [generic data source]
+            System.Windows.Data.CollectionViewSource bloodRequestViewSource1 = ((System.Windows.Data.CollectionViewSource)(this.FindResource("bloodRequestViewSource1")));
+            // Load data by setting the CollectionViewSource.Source property:
+            // bloodRequestViewSource1.Source = [generic data source]
         }
     }
 }
