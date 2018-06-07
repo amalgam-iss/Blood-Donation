@@ -33,6 +33,9 @@ namespace BloodDonor
 
         }
 
+        /// <summary>
+        /// Populates the dgv of Donors
+        /// </summary>
         private void initiateDgvDonors()
         {
             Debug.WriteLine("I tried to initialise the donors\n");
@@ -43,6 +46,9 @@ namespace BloodDonor
             }
 
         }
+        /// <summary>
+        /// Populates the dgv of Expired Blood Packs
+        /// </summary>
         private void initiateDgvExpiredBloodPack()
         {
             Debug.WriteLine("I tried to initialise the expired bp\n");
@@ -54,6 +60,9 @@ namespace BloodDonor
             }
 
         }
+        /// <summary>
+        /// Populates the dgv of Blood Pack
+        /// </summary>
         private void initiateDgvBloodPack()
         {
             Debug.WriteLine("I tried to initialise the bp\n");
@@ -63,16 +72,25 @@ namespace BloodDonor
                 dgvBloodPack.ItemsSource = data.ToList();
             }
         }
+
+        /// <summary>
+        /// Populates the dgv Blood Request
+        /// </summary>
         private void initiateDgvBloodRequest()
         {
             Debug.WriteLine("I tried to initialise the blood request\n");
             using (var context = new Model1())
             {
                 var data = (from d in context.BloodRequests select d);
-                dgvBloodPack.ItemsSource = data.ToList();
+                dgvPendingRequest.ItemsSource = data.ToList();
             }
         }
 
+        /// <summary>
+        /// Opens a new window to add a blood pack to the database. If the result is ok then the object is created and added to the database. 
+        /// </summary>
+        /// <param name="sender"> required parameter </param>
+        /// <param name="e"> required parameter </param>
         private void btn1_Click(object sender, RoutedEventArgs e)
         {
             AddBloodPack win1 = new AddBloodPack();
@@ -88,6 +106,11 @@ namespace BloodDonor
             }
         }
 
+        /// <summary>
+        /// Opens a new window which allows you to remove a blood pack.
+        /// </summary>
+        /// <param name="sender"> required parameter </param>
+        /// <param name="e">  required parameter </param>
         private void btn2_Click(object sender, RoutedEventArgs e)
         {
             Object myItem = dgvBloodPack.SelectedItem;
@@ -101,11 +124,23 @@ namespace BloodDonor
             }
         }
 
+        /// <summary>
+        /// Closes the current window.
+        /// </summary>
+        /// <param name="sender"> required parameter </param>
+        /// <param name="e"> required parameter </param>
         private void btn3_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
+
+
+        /// <summary>
+        /// Updates the database with all the changes form the dgv
+        /// </summary>
+        /// <param name="sender"> required parameter </param>
+        /// <param name="e"> required parameter </param>
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
             //TODO update dgv
@@ -117,6 +152,11 @@ namespace BloodDonor
 
         }
 
+        /// <summary>
+        /// Opens a new window to edit the bloodpack
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn4_Click(object sender, RoutedEventArgs e)
         {
             Object myItem = dgvBloodPack.SelectedItem;
@@ -134,6 +174,8 @@ namespace BloodDonor
             }
         }
 
+
+        
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
