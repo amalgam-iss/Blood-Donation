@@ -57,7 +57,6 @@
                     <DataGrid x:Name="dgvDonor" Margin="10,48,186,23" />
                     <Label Content="Donor view:"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF673AB7" FontWeight="Bold"  Margin="0.6,10,0,0" Height="38" VerticalAlignment="Top" HorizontalAlignment="Left" Width="390" Grid.Column="6" Grid.ColumnSpan="2"/>
                     <Button x:Name="btnExit2" Background="#FF673AB7"  Content="Exit" VerticalAlignment="Bottom" Click="btn3_Click" Height="50" Margin="0,0,8.201,22.8" Grid.Column="7" HorizontalAlignment="Right" Width="144"/>
-                    <Button x:Name="btnUpdate2" Background="#FF673AB7" Content="Update" Click="btnUpdate_Click" Height="50" Margin="0,0,8.201,533.8" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="144" Grid.Column="7"/>
 
                 </Grid>
             </TabItem>

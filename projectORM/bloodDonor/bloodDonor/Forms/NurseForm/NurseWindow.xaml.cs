@@ -45,7 +45,7 @@ namespace BloodDonor
             {
                 // var data = (from d in context.Donors select d);
                 //  dgvDonor.ItemsSource = data.ToList();
-                var data = context.Pacients.SqlQuery("select * from Donors").ToList();
+                var data = context.Donors.SqlQuery("select * from Donors").ToList();
                 dgvDonor.ItemsSource = data.ToList();
             }
 
@@ -176,7 +176,17 @@ namespace BloodDonor
                 String rhTxtNurse = win1.rhTxt;
                 String statusTxtNurse = win1.statusTxt;
                 DateTime currentDateNurse = win1.currentDate;
-                //TODO Create the object
+                BloodPack bloodPack = new BloodPack();
+                bloodPack.Group = groupTxtNurse;
+                bloodPack.Rh = rhTxtNurse;
+                bloodPack.Status = statusTxtNurse;
+                bloodPack.Creation_date = currentDateNurse;
+                using (var context = new Model1())
+                {
+                    var blood = context.BloodPacks.Add(bloodPack);
+                    context.SaveChanges();
+                }
+                initiateDgvBloodPack();
             }
         }
 
@@ -210,7 +220,6 @@ namespace BloodDonor
         /// Updates the database with all the changes form the dgv
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
-            //TODO update dgv
 
             using (var context = new Model1())
             {
@@ -223,8 +232,8 @@ namespace BloodDonor
         // Opens a new window to edit the bloodpack
         private void btn4_Click(object sender, RoutedEventArgs e)
         {
-            Object myItem = dgvBloodPack.SelectedItem;
-            // Object cellId = dgvBloodPack.SelectedCells[0];
+            //Object myItem = dgvBloodPack.SelectedItem;
+             var cellId = dgvBloodPack.SelectedCells[0];
             EditBloodPack win1 = new EditBloodPack(myItem); // or cellId
             bool? result = win1.ShowDialog();
 
@@ -234,7 +243,16 @@ namespace BloodDonor
                 String rhTxtNurse = win1.rhTxt;
                 String statusTxtNurse = win1.statusTxt;
                 DateTime currentDateNurse = win1.currentDate;
-                //TODO Update the object
+                using (var db = new Model1())
+                {
+                    //TODO 
+                    //var res = db.BloodPacks.SingleOrDefault(b => b.Id.ToString().Equals(cellId.ToString()));
+                    //if (result != null)
+                    //{
+                    //    result.SomeValue = "Some new value";
+                    //    db.SaveChanges();
+                    //}
+                }
             }
         }
 
@@ -250,6 +268,18 @@ namespace BloodDonor
             System.Windows.Data.CollectionViewSource bloodRequestViewSource1 = ((System.Windows.Data.CollectionViewSource)(this.FindResource("bloodRequestViewSource1")));
             // Load data by setting the CollectionViewSource.Source property:
             // bloodRequestViewSource1.Source = [generic data source]
+        }
+
+        private void btnUpdate2_Click(object sender, RoutedEventArgs e)
+        {
+
+            using (var context = new Model1())
+            {
+
+                context.SaveChanges();
+            }
+
+            initiateDgvDonors();
         }
     }
 }
