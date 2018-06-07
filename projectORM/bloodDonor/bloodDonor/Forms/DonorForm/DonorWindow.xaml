@@ -22,7 +22,13 @@
                         <ColumnDefinition Width="11*"/>
                         <ColumnDefinition Width="609*"/>
                     </Grid.ColumnDefinitions>
-                    <DataGrid x:Name="dgvDonationsView" HorizontalAlignment="Left" Margin="10,56,0,130" Width="600" Grid.ColumnSpan="4" SelectionMode="Single"/>
+                    <DataGrid x:Name="dgvDonationsView" HorizontalAlignment="Left" Margin="10,56,0,130" Width="600"     Grid.ColumnSpan="4" SelectionMode="Single">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="200" Header="Date"/>
+                            <DataGridTextColumn Width="200" Header="Status"/>
+                            <DataGridTextColumn Width="200" Header="Test Result"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
                     <Label Content="Donations view:"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF558ED1" FontWeight="Bold"  Margin="10,21,0,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="382" Grid.ColumnSpan="4"/>
 
                     <Button x:Name="btn1"   Click="btn1_Click" Margin="0,61,9.8,0" Height="50" Grid.Column="3" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122">

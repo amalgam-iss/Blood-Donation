@@ -46,7 +46,12 @@ namespace BloodDonor
             {
 
                 case 1:
-                    DonorWindow donorWindow = new DonorWindow();
+                    User user1;
+                    using (var db = new Model1())
+                    {
+                        user1 = db.Users.Where(usr => usr.Username == tbxUsername.Text).First();
+                    }
+                    DonorWindow donorWindow = new DonorWindow(user1.Id.ToString());
                     donorWindow.Show();
                     this.Close();
                     break;

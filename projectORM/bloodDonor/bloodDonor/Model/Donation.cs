@@ -12,7 +12,7 @@ namespace BloodDonor.Model
 
         public long? DonorId { get; set; }
 
-        public long? AddressId { get; set; }
+        public string Address { get; set; }
 
         [StringLength(2)]
         public string BloodType { get; set; }
@@ -22,7 +22,7 @@ namespace BloodDonor.Model
 
         public int? Quantity { get; set; }
 
-        public long? Date { get; set; }
+        public string C_Date { get; set; }
 
         public int? Status { get; set; }
 
