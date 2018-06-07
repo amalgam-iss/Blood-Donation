@@ -98,9 +98,18 @@ namespace BloodDonor
                 blood_type.Text = rez1[0];
                 weight.Text = rez1[2];
                 dob.Text = rez1[3];
-                country.Text = adr[0];
-                city.Text = adr[1];
-                address.Text = adr[2];
+                if (adr.Length == 3)
+                {
+                    country.Text = adr[0];
+                    city.Text = adr[1];
+                    address.Text = adr[2];
+                }
+                else
+                {
+                    country.Text = "";
+                        city.Text = "";
+                        address.Text = "";
+                }
             }
             Hepatitis.IsChecked = this.register.CheckDisease("Hepatitis");
             Pox.IsChecked = this.register.CheckDisease("Pox");
