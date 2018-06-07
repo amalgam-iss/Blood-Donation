@@ -26,12 +26,13 @@
                      FontSize="14" FontFamily="Microsoft YaHei Light" 
                      CaretBrush="#FF558ED1" 
                      PreviewMouseLeftButtonDown="tbxUsername_PreviewMouseLeftButtonDown"
-                   
+                     KeyboardNavigation.TabIndex="0"
                      />
             <Button x:Name="btnLogin" 
                     Content="Sign In" 
                     Margin="22,433,22,0" VerticalAlignment="Top"
                     Click="btnLogin_Click" Height="41"
+                    KeyboardNavigation.TabIndex="3"
                     />
             <Label x:Name="lblNewUser" Content="Click Here to make a new account!"
                    HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,540,0,0"
@@ -51,6 +52,8 @@
                          MaxLength="25" 
                          PasswordChar="*" VerticalAlignment="Top"
                          FontSize="14"  FontFamily="Microsoft JhengHei Light" 
+                         KeyboardNavigation.TabIndex="1"
+                         KeyDown="tbxPassword_KeyDown"
                          CaretBrush="#FF558ED1" />
             <Label x:Name="lblUsername" Content="Username:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,208,0,0" FontFamily="Microsoft YaHei UI" FontSize="12" Foreground="#FF673AB7" FontWeight="Bold" Height="23" Width="88"/>
             <Label x:Name="lblPassword" Content="Password:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,293,0,0" FontFamily="Microsoft YaHei UI" FontSize="12" Foreground="#FF673AB7" FontWeight="Bold" Height="23" Width="75"/>

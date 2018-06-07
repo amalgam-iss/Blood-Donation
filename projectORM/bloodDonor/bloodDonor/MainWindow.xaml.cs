@@ -37,8 +37,13 @@ namespace BloodDonor
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
+            LogIn();
+        }
+
+        private void LogIn()
+        {
             int user_type = ctrl.login(tbxUsername.Text, tbxPassword.Password);
-            Console.WriteLine("user type" + user_type);
+            Debug.WriteLine("user type" + user_type);
             switch (user_type)
             {
 
@@ -52,6 +57,8 @@ namespace BloodDonor
                     User user;
                     using (var db = new Model1())
                     {
+                        Debug.WriteLine("tbxUsername:  " + tbxUsername.Text);
+                      //  Debug.WriteLine("usr.Username:  " + usr.Username);
                         user = db.Users.Where(usr => usr.Username == tbxUsername.Text).First();
                     }
                     DoctorWindow doctorWindow = new DoctorWindow(user.Id.ToString());
@@ -61,7 +68,7 @@ namespace BloodDonor
                     this.Close();
                     break;
                 case 3:
-                    NurseWindow nurseWindow = new NurseWindow();
+                    NurseWindow nurseWindow = new NurseWindow(tbxUsername.Text);
                     nurseWindow.Show();
                     this.Close();
                     break;
@@ -71,11 +78,10 @@ namespace BloodDonor
                 default:
                     MessageBox.Show("Login failed! Upsie");
                     break;
-                
+
 
             }
         }
-
         private void tbxUsername_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             tbxUsername.Text = "";
@@ -85,6 +91,12 @@ namespace BloodDonor
         {
             SignUp window = new SignUp();
             window.Show();
+        }
+
+        private void tbxPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Return)
+                LogIn();
         }
     }
     
