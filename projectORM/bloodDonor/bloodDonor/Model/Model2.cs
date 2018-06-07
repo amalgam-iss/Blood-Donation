@@ -1,41 +1,42 @@
-namespace BloodDonor
+namespace BloodDonor.Model
 {
     using System;
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class ModelORM : DbContext
+    public partial class Model1 : DbContext
     {
-        public ModelORM()
-            : base("name=ModelORM")
+        public Model1()
+            : base("name=Model1")
         {
         }
 
-        public virtual DbSet<Address> Addresses { get; set; }
+        public virtual DbSet<BloodPack> BloodPacks { get; set; }
         public virtual DbSet<BloodRequest> BloodRequests { get; set; }
         public virtual DbSet<Disease> Diseases { get; set; }
         public virtual DbSet<DoctorPacient> DoctorPacients { get; set; }
+        public virtual DbSet<Doctor> Doctors { get; set; }
         public virtual DbSet<Donation> Donations { get; set; }
         public virtual DbSet<DonorDisease> DonorDiseases { get; set; }
         public virtual DbSet<Donor> Donors { get; set; }
+        public virtual DbSet<Nurse> Nurses { get; set; }
         public virtual DbSet<Pacient> Pacients { get; set; }
-        public virtual DbSet<ProcessingDonation> ProcessingDonations { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Address>()
-                .Property(e => e.Country)
+            modelBuilder.Entity<BloodPack>()
+                .Property(e => e.Group)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Address>()
-                .Property(e => e.City)
+            modelBuilder.Entity<BloodPack>()
+                .Property(e => e.Rh)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Address>()
-                .Property(e => e.Street)
+            modelBuilder.Entity<BloodPack>()
+                .Property(e => e.Status)
                 .IsUnicode(false);
 
             modelBuilder.Entity<BloodRequest>()
@@ -45,22 +46,33 @@ namespace BloodDonor
             modelBuilder.Entity<BloodRequest>()
                 .Property(e => e.Rh)
                 .IsUnicode(false);
-
-            modelBuilder.Entity<BloodRequest>()
-                .HasMany(e => e.ProcessingDonations)
-                .WithOptional(e => e.BloodRequest)
-                .HasForeignKey(e => e.RequestId);
 
             modelBuilder.Entity<Disease>()
                 .Property(e => e.Name)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<Doctor>()
+                .Property(e => e.Name)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Doctor>()
+                .Property(e => e.Phone)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Doctor>()
+                .Property(e => e.Speciality)
+                .IsUnicode(false);
+
             modelBuilder.Entity<Donation>()
                 .Property(e => e.BloodType)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Donation>()
                 .Property(e => e.Rh)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Donation>()
+                .Property(e => e.Status)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Donor>()
@@ -73,6 +85,22 @@ namespace BloodDonor
 
             modelBuilder.Entity<Donor>()
                 .Property(e => e.Rh)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Donor>()
+                .Property(e => e.Address)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Donor>()
+                .Property(e => e.Weight)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Donor>()
+                .Property(e => e.BirthDate)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Nurse>()
+                .Property(e => e.Name)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Pacient>()
@@ -98,16 +126,6 @@ namespace BloodDonor
             modelBuilder.Entity<User>()
                 .Property(e => e.Password)
                 .IsUnicode(false);
-
-            modelBuilder.Entity<User>()
-                .HasMany(e => e.DoctorPacients)
-                .WithOptional(e => e.User)
-                .HasForeignKey(e => e.DoctorId);
-
-            modelBuilder.Entity<User>()
-                .HasMany(e => e.ProcessingDonations)
-                .WithOptional(e => e.User)
-                .HasForeignKey(e => e.PersonelId);
         }
     }
 }

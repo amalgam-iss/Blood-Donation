@@ -1,0 +1,124 @@
+﻿<Window x:Class="BloodDonor.DonorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BloodDonor"
+        mc:Ignorable="d"
+        Title="Window1" Height="700" Width="800">
+    <Window.Resources>
+        <local:AmalgamIssDataSet x:Key="amalgamIssDataSet"/>
+        <CollectionViewSource x:Key="donationsViewSource" Source="{Binding Donors, Source={StaticResource amalgamIssDataSet}}"/>
+    </Window.Resources>
+    <Grid>
+        <Label x:Name="lblTitle" Content="Welcome, Donor!" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,16,0,0" Width="487" RenderTransformOrigin="0.5,0.5" Height="38" FontSize="20"/>
+        <Image HorizontalAlignment="Left" Height="42" VerticalAlignment="Top" Width="46" Margin="730,17,0,0" Source="pack://siteoforigin:,,,/Resources/if_Heart-Watch_379466.ico"/>
+        <TabControl Margin="10,59,9.6,10.4">
+            <TabItem Header="Donations">
+                <Grid Background="#FFE5E5E5" Height="675" Margin="0,0,0,0" DataContext="{StaticResource donationsViewSource}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="122*"/>
+                        <ColumnDefinition Width="27*"/>
+                        <ColumnDefinition Width="11*"/>
+                        <ColumnDefinition Width="609*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="dgvDonationsView" HorizontalAlignment="Left" Margin="10,56,0,130" Width="600"     Grid.ColumnSpan="4" SelectionMode="Single">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="200" IsReadOnly="True" Header="Date" Binding="{Binding Path=Date}" />
+                            <DataGridTextColumn Width="200" IsReadOnly="True" Header="Status" Binding="{Binding Path=Status}" />
+                            <DataGridTextColumn Width="200" IsReadOnly="True" Header="Test Result" Binding="{Binding Path=Result}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Label Content="Donations view:"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF558ED1" FontWeight="Bold"  Margin="10,21,0,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="382" Grid.ColumnSpan="4"/>
+
+                    <Button x:Name="btn1"   Click="btn1_Click" Margin="0,61,9.8,0" Height="50" Grid.Column="3" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122">
+                        <TextBlock Text="Log Out" TextWrapping="Wrap" TextAlignment="Center" Width="92"/>
+                    </Button>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Register for donation">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="115*"/>
+                        <RowDefinition Height="458*"/>
+                    </Grid.RowDefinitions>
+                    <Label x:Name="lbl" Content="Requirements:"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF558ED1" FontWeight="Bold"  Margin="10,21,0,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="382"/>
+                    <Label x:Name="lbl1" Content="Be EU citizen" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" Margin="20,50,0,0" Height="87" Width="122" Grid.RowSpan="2"/>
+                    <Label x:Name="lbl2" Content="Age between 18 and 65" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" Margin="20,65,0,0" Height="87" Width="150" Grid.RowSpan="2"/>
+                    <Label x:Name="lbl3" Content="Weight above 50" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" Margin="20,80,0,0" Height="87" Width="122" Grid.RowSpan="2"/>
+                    <Label x:Name="lbl4" Content="NO Hepatitis" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" Margin="20,95,0,0" Height="87" Width="122" Grid.RowSpan="2"/>
+                    <Label x:Name="lbl5" Content="NO TB" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" Margin="20,110,0,0" Height="87" Width="122" Grid.RowSpan="2"/>
+                    <Label x:Name="lbl6" Content="NO Pox" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" Margin="20,9.7,0,0" Height="87" Width="122" Grid.Row="1"/>
+                    <Label x:Name="lbl7" Content="NO Malaria" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" Margin="20,24.7,0,0" Height="87" Width="122" Grid.Row="1"/>
+                    <Label x:Name="lbl8" Content="NO neurological diseases" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" Margin="20,39.7,0,0" Height="87" Width="160" Grid.Row="1"/>
+                    <Label x:Name="lbl9" Content="NO Brucellosis" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" Margin="20,54.7,0,0" Height="87" Width="122" Grid.Row="1"/>
+                    <Label x:Name="lbl10" Content="NO Ulcer" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" Margin="20,69.7,0,0" Height="87" Width="122" Grid.Row="1"/>
+                    <Label x:Name="lbl11" Content="NO Diabetes" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" Margin="20,84.7,0,0" Height="87" Width="122" Grid.Row="1"/>
+                    <Label x:Name="lbl12" Content="NO Heart diseases" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" Margin="20,99.7,0,0" Height="87" Width="122" Grid.Row="1"/>
+                    <Label x:Name="lbl13" Content="NO Skin diseases" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" Margin="20,114.7,0,0" Height="87" Width="122" Grid.Row="1"/>
+                    <Label x:Name="lbl14" Content="NO Myopia over (-) 6 diopters" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" Margin="20,129.7,0,0" Height="87" Width="185" Grid.Row="1"/>
+                    <Label x:Name="lbl15" Content="Stable pulse" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" Margin="20,144.7,0,0" Height="87" Width="122" Grid.Row="1"/>
+                    <Label x:Name="lbl16" Content="Systolic blood pressure" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" Margin="20,159.7,0,0" Height="87" Width="122" Grid.Row="1"/>
+                    <Label x:Name="lbl17" Content="NO surgeries in the last 6 months" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" Margin="20,174.7,0,0" Height="87" Width="210" Grid.Row="1"/>
+                    <Label x:Name="lbl18" Content="No alcohol consumption in the last 48h" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" Margin="20,189.7,0,0" Height="87" Width="235" Grid.Row="1"/>
+                    <Label x:Name="lbl19" Content="No fat consumption in the last 48h" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" Margin="20,204.7,0,0" Height="87" Width="235" Grid.Row="1"/>
+                    <Label x:Name="lbL20" Content="Women must not be:"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF558ED1" FontWeight="Bold"  Margin="10,224.7,0,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="382" Grid.Row="1"/>
+                    <Label x:Name="lbl21" Content="pregnant" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" Margin="20,244.7,0,0" Height="87" Width="210" Grid.Row="1"/>
+                    <Label x:Name="lbl22" Content="post birth" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" Margin="20,259.7,0,0" Height="87" Width="235" Grid.Row="1"/>
+                    <Label x:Name="lbl23" Content="menstruating" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" Margin="20,274.7,0,0" Height="87" Width="235" Grid.Row="1"/>
+                    <Label x:Name="lbL24" Content="Must not be in treatment for:"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF558ED1" FontWeight="Bold"  Margin="10,294.7,0,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="382" Grid.Row="1"/>
+                    <Label x:Name="lbl25" Content="hypertension" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" Margin="20,314.7,0,0" Height="87" Width="235" Grid.Row="1"/>
+                    <Label x:Name="lbl26" Content="heart disease" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" Margin="20,329.7,0,0" Height="87" Width="235" Grid.Row="1"/>
+                    <Label x:Name="lbl27" Content="kidney disease" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" Margin="20,344.7,0,0" Height="87" Width="235" Grid.Row="1"/>
+                    <Label x:Name="lbl28" Content="mental illness" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" Margin="20,359.7,0,0" Height="87" Width="235" Grid.Row="1"/>
+                    <Label x:Name="lbl29" Content="blood disease" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" Margin="20,374.7,0,-4.2" Height="87" Width="235" Grid.Row="1"/>
+                    <Label x:Name="lbl30" Content="endocrine affections" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" Margin="20,389.7,0,-19.2" Height="87" Width="235" Grid.Row="1"/>
+
+                    <Label x:Name="lbl31" Content="Date of birth" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" Margin="423,37,0,0" Height="87" Width="235" Grid.RowSpan="2"/>
+                    <TextBox  x:Name="dob" Text="dd/ll/aaaa" Width="142" Margin="560,35,0,55.3" HorizontalAlignment="Left"/>
+
+                    <Label x:Name="lbl32" Content="Weight" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" Margin="423,73,0,0" Height="87" Width="235" Grid.RowSpan="2"/>
+                    <TextBox  x:Name="weight" Text="kg" Width="142" Margin="560,54,0,23.2" HorizontalAlignment="Left"/>
+
+                    <Label x:Name="lbl33" Content="Country" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" Margin="423,114,0,0" Height="87" Width="235" Grid.RowSpan="2"/>
+                    <TextBox  x:Name="country" Text="" Width="142" Margin="560,103,0,435.8" HorizontalAlignment="Left" Grid.RowSpan="2"/>
+
+                    <Label x:Name="lbl34" Content="City" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" Margin="423,32.8,0,0" Height="87" Width="235" Grid.Row="1"/>
+                    <TextBox  x:Name="city" Text="" Width="142" Margin="560,17.8,0,402.8" HorizontalAlignment="Left" Grid.Row="1"/>
+
+                    <Label x:Name="lbl35" Content="Address" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" Margin="423,65.8,0,0" Height="87" Width="235" Grid.Row="1"/>
+                    <TextBox  x:Name="address" Text="" Width="142" Margin="560,54.8,0,369.8" HorizontalAlignment="Left" Grid.Row="1"/>
+
+                    <Label x:Name="lbl36" Content="Blood type" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" Margin="423,107.8,0,0" Height="87" Width="235" Grid.Row="1"/>
+                    <TextBox  x:Name="blood_type" Text="" Width="142" Height="Auto" Margin="560,92.8,0,330.8" HorizontalAlignment="Left" Grid.Row="1"/>
+
+                    <CheckBox x:Name ="Hepatitis" Content="Hepatits" HorizontalAlignment="Left" Margin="560,145,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+                    <CheckBox x:Name="Pox" Content="Pox" HorizontalAlignment="Left" Margin="560,160,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+                    <CheckBox x:Name="TB" Content="TB" HorizontalAlignment="Left" Margin="560,175,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+                    <CheckBox x:Name="Malaria" Content="Malaria" HorizontalAlignment="Left" Margin="560,190,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+                    <CheckBox x:Name="Neurological" Content="Neurological diseases" HorizontalAlignment="Left" Margin="560,205,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+                    <CheckBox x:Name="Brucellosis" Content="Brucellosis" HorizontalAlignment="Left" Margin="560,220,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+                    <CheckBox x:Name="Ulcer" Content="Ulcer" HorizontalAlignment="Left" Margin="560,235,0,0" VerticalAlignment="Top"  Grid.Row="1"/>
+                    <CheckBox x:Name="Diabetes" Content="Diabetes" HorizontalAlignment="Left" Margin="560,250,0,0" VerticalAlignment="Top"  Grid.Row="1"/>
+                    <CheckBox x:Name="HeartD" Content="Heart diseases" HorizontalAlignment="Left" Margin="560,265,0,0" VerticalAlignment="Top"  Grid.Row="1"/>
+                    <CheckBox x:Name="SkinD" Content="Skin diseases" HorizontalAlignment="Left" Margin="560,280,0,0" VerticalAlignment="Top"  Grid.Row="1"/>
+                    <CheckBox x:Name="Cancer" Content="Cancer" HorizontalAlignment="Left" Margin="560,295,0,0" VerticalAlignment="Top"  Grid.Row="1"/>
+                    <CheckBox x:Name="Myopia" Content="Myopia over (-6)diopters" HorizontalAlignment="Left" Margin="560,310,0,0" VerticalAlignment="Top"  Grid.Row="1"/>
+                    <CheckBox x:Name="Surgery" Content="Any surgery in last 6 months" HorizontalAlignment="Left" Margin="560,325,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+                    <CheckBox x:Name="Pregnant" Content="Pregnant" HorizontalAlignment="Left" Margin="560,340,0,0" VerticalAlignment="Top"  Grid.Row="1"/>
+                    <CheckBox x:Name="PostB" Content="Post birth" HorizontalAlignment="Left" Margin="560,355,0,0" VerticalAlignment="Top"  Grid.Row="1"/>
+                    <CheckBox x:Name="Menstruating" Content="Menstruating" HorizontalAlignment="Left" Margin="560,370,0,0" VerticalAlignment="Top"  Grid.Row="1"/>
+                    <CheckBox x:Name="Alcohol" Content="Any alcohol in the last 48h" HorizontalAlignment="Left" Margin="560,385,0,0" VerticalAlignment="Top"  Grid.Row="1"/>
+                    <CheckBox x:Name="Donate" Content="Donate for a certain person" HorizontalAlignment="Left" Margin="560,400,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+
+                    <Label x:Name="lbl37" Content="Name of the person" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" Margin="423,420.8,0,-50.2" Height="87" Width="235" Grid.Row="1"/>
+                    <TextBox  x:Name="nameOfThePerson" Text="name of the person" Width="142" Margin="560,422.8,0,-0.2" HorizontalAlignment="Left" Grid.Row="1"/>
+                    <Button x:Name="btnSend"  Click="btnSend_Data" Margin="0,398.8,391.8,0" Height="50" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122" Grid.Row="1">
+                        <TextBlock Text="Send Data" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Right"  Width="92"/>
+                    </Button>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

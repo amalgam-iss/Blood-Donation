@@ -1,4 +1,4 @@
-namespace BloodDonor
+namespace BloodDonor.Model
 {
     using System;
     using System.Collections.Generic;
@@ -8,12 +8,6 @@ namespace BloodDonor
 
     public partial class BloodRequest
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public BloodRequest()
-        {
-            ProcessingDonations = new HashSet<ProcessingDonation>();
-        }
-
         public long Id { get; set; }
 
         public long? DoctorPacientId { get; set; }
@@ -30,13 +24,10 @@ namespace BloodDonor
 
         public long? AddressId { get; set; }
 
-        public long? Flags { get; set; }
+        public int? Requested_quantity { get; set; }
 
-        public virtual Address Address { get; set; }
+        public int? Received_quantity { get; set; }
 
         public virtual DoctorPacient DoctorPacient { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProcessingDonation> ProcessingDonations { get; set; }
     }
 }

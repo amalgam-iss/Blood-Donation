@@ -15,13 +15,23 @@ using System.Windows.Shapes;
 namespace BloodDonor
 {
     /// <summary>
-    /// Interaction logic for Window2.xaml
+    /// Interaction logic for DoctorWindow.xaml
     /// </summary>
-    public partial class Window2 : Window
+    public partial class DoctorWindow : Window
     {
-        public Window2()
+        public DoctorWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            User.getAll();
+        }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

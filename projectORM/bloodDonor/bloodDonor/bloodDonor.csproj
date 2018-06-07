@@ -8,11 +8,12 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>BloodDonor</RootNamespace>
     <AssemblyName>BloodDonor</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,12 +34,18 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\if_Heart-Watch_379466.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
     </Reference>
     <Reference Include="MaterialDesignColors, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignColors.1.1.2\lib\net45\MaterialDesignColors.dll</HintPath>
@@ -48,6 +55,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
@@ -70,39 +78,116 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="sysdiagram.cs" />
-    <Compile Include="Model\User.cs" />
-    <Compile Include="Window2.xaml.cs">
-      <DependentUpon>Window2.xaml</DependentUpon>
+    <Compile Include="Controllers\HistoryController.cs" />
+    <Compile Include="Controllers\MainController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Forms\DoctorForm\AddPatient.xaml.cs">
+      <DependentUpon>AddPatient.xaml</DependentUpon>
     </Compile>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="Model\Address.cs" />
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
+    <Compile Include="Forms\DoctorForm\CreateRequest.xaml.cs">
+      <DependentUpon>CreateRequest.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ErrorForm\ErrorWindow.xaml.cs">
+      <DependentUpon>ErrorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\NurseForm\AddBloodPack.xaml.cs">
+      <DependentUpon>AddBloodPack.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AmalgamIssDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AmalgamIssDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\NurseForm\EditBloodPack.xaml.cs">
+      <DependentUpon>EditBloodPack.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Model\BloodPack.cs" />
     <Compile Include="Model\BloodRequest.cs" />
     <Compile Include="Model\Disease.cs" />
+    <Compile Include="Model\Doctor.cs" />
     <Compile Include="Model\DoctorPacient.cs" />
     <Compile Include="Model\Donation.cs" />
     <Compile Include="Model\Donor.cs" />
     <Compile Include="Model\DonorDisease.cs" />
+    <Compile Include="Model\Model2.cs" />
+    <Compile Include="Model\Nurse.cs" />
+    <Compile Include="Model\Pacient.cs" />
+    <Compile Include="Model\sysdiagram.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="Utils\Hashing.cs" />
+    <Compile Include="Utils\Utilscs.cs" />
+    <Compile Include="Forms\NurseForm\NurseWindow.xaml.cs">
+      <DependentUpon>NurseWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\NurseForm\RemoveBloodPack.xaml.cs">
+      <DependentUpon>RemoveBloodPack.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LoginSignupForm\SignUp.xaml.cs">
+      <DependentUpon>SignUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs" />
+    <Compile Include="Forms\DoctorForm\DoctorWindow.xaml.cs">
+      <DependentUpon>DoctorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DonorForm\DonorWindow.xaml.cs">
+      <DependentUpon>DonorWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Forms\DoctorForm\AddPatient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\DoctorForm\CreateRequest.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Forms\ErrorForm\ErrorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\NurseForm\AddBloodPack.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\NurseForm\EditBloodPack.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Window2.xaml">
+    <Page Include="Forms\NurseForm\NurseWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Forms\NurseForm\RemoveBloodPack.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\LoginSignupForm\SignUp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\DoctorForm\DoctorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\DonorForm\DonorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="View\ModelORM.cs" />
-    <Compile Include="Model\Pacient.cs" />
-    <Compile Include="Model\ProcessingDonation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -120,7 +205,21 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="AmalgamIssDataSet.xsc">
+      <DependentUpon>AmalgamIssDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmalgamIssDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AmalgamIssDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="AmalgamIssDataSet.xss">
+      <DependentUpon>AmalgamIssDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\BloodPack.datasource" />
+    <None Include="Properties\DataSources\BloodRequest.datasource" />
+    <None Include="Properties\DataSources\Donor.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -141,7 +240,21 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\if_Heart-Watch_379466.ico" />
+    <Resource Include="Resources\if_Heart-Watch_379466.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\raed5.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\basiccolumn.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="View\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

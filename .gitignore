@@ -20,7 +20,9 @@ projectORM/BloodDonor/.vs/BloodDonor/
 projectORM/BloodDonor/.vs/
 db.lock
 .vs/
+.suo
 
+App.config
 old-class-diagram-project/
 
 # Roslyn cache directories
@@ -154,6 +156,7 @@ csx/
 # Windows Store app package directory
 AppPackages/
 
+
 # Others
 sql/
 *.Cache
@@ -196,3 +199,6 @@ git_stats/*
 StyleCop.Cache
 bin
 obj
+projectORM/bloodDonor/bloodDonor/App.config
+projectORM/bloodDonor/bloodDonor/App.config
+projectORM/bloodDonor/.vs/bloodDonor/v15/Server/sqlite3/storage.ide

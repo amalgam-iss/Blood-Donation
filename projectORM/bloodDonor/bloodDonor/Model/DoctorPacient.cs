@@ -1,4 +1,4 @@
-namespace BloodDonor
+namespace BloodDonor.Model
 {
     using System;
     using System.Collections.Generic;
@@ -23,7 +23,7 @@ namespace BloodDonor
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BloodRequest> BloodRequests { get; set; }
 
-        public virtual User User { get; set; }
+        public virtual Doctor Doctor { get; set; }
 
         public virtual Pacient Pacient { get; set; }
     }
