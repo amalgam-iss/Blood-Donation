@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace BloodDonor.Controllers
 {
-    class RegisterController
+    public class RegisterController
     {
         private string username;
         RegisterModel register = new RegisterModel();
+        private string Countries = "Austria,Bulgaria,Romania,Germany,Sweden,Poland,Croatia,France,Hungary,Spain,Portugal,Belgium,Netherland,Denmark,CzechRep,Slovakia,Cyprus,Estonia,Finland,Italy,Greece,Ireland,Latvia,Luxembourg,Lithuania,Malta,Slovenia";
 
         public void Register(string dob, string country, string city, string address, string blood_type,string weight)
         {
@@ -61,5 +62,70 @@ namespace BloodDonor.Controllers
 
         public string GetUser(){ return this.username; }
         public void SetUser(string user) { this.username = user; }
+
+        public void CheckWeightTest(string weight)
+        {
+            int w;
+            try
+            {
+                w = int.Parse(weight);
+            }
+            catch(Exception)
+            {
+                throw new ArgumentOutOfRangeException("Weight must be integer.");
+            }
+
+            if (w < 0)
+                throw new ArgumentOutOfRangeException("Weight not a positive number.");
+        }
+
+        public void CheckAgeTest(string age)
+        {
+            int ag;
+            try
+            {
+                ag = int.Parse(age);
+            }
+            catch (Exception)
+            {
+                throw new ArgumentOutOfRangeException("Age must be integer.");
+            }
+            if (ag < 18 && ag >65)
+                throw new ArgumentOutOfRangeException("Your age is not good.");
+        }
+
+        public void CheckBloodTypeTest(string type)
+        {
+            if (type != "A" || type != "B" || type != "AB" || type != "0")
+                throw new ArgumentOutOfRangeException("Invalid blood type.");
+        }
+        public void CheckDateTest(string date)
+        {
+            string[] dateformat = date.Split('/');
+            int Day, Month, Year;
+            try
+            {
+                Day = int.Parse(dateformat[0]);
+                Month = int.Parse(dateformat[1]);
+                Year = int.Parse(dateformat[2]);
+            }
+            catch(Exception)
+            {
+                throw new ArgumentOutOfRangeException("Invalid date.");
+            }
+            if (Day < 0 && Day > 31)
+                throw new ArgumentOutOfRangeException("Invalid day.");
+            if (Month < 0 && Month > 12)
+                throw new ArgumentOutOfRangeException("Invalid month.");
+            if (Year < 0)
+                throw new ArgumentOutOfRangeException("Invalid Year");
+
+        }
+        public bool CheckCountry(string country)
+        {
+            if (this.Countries.Contains(country))
+                return true;
+            return false;
+        }
     }
 }
