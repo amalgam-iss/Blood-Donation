@@ -11,7 +11,7 @@
         <Button x:Name="btnDone" Content="Update" HorizontalAlignment="Left" Margin="231,236,0,0" VerticalAlignment="Top" Width="112" Click="btnDone_Click" Height="60" FontSize="22"/>
         <Label x:Name="label" Content="Set new status for the&#xA; selected bloodpack" HorizontalAlignment="Left" Margin="62,28,0,0" VerticalAlignment="Top" Height="85" Width="262" FontSize="24" FontWeight="Bold" Foreground="#DD7D08E7"/>
         <ComboBox Text="null" x:Name="cboxStatus" HorizontalAlignment="Left" Margin="33,140,0,0" VerticalAlignment="Top" Width="310" Height="50" FontSize="24">
-            <ComboBoxItem>IN_TESTING</ComboBoxItem>
+            <ComboBoxItem>IN_PROCESS</ComboBoxItem>
             <ComboBoxItem>TEST_OK</ComboBoxItem>
             <ComboBoxItem>TEST_NOT_OK</ComboBoxItem>
             <ComboBoxItem>DISTRIBUTED</ComboBoxItem>
