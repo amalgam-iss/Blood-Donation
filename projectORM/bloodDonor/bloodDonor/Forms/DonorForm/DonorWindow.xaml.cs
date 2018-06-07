@@ -1,4 +1,5 @@
 ﻿using BloodDonor.Controllers;
+using BloodDonor.Forms.ErrorForm;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -28,7 +29,6 @@ namespace BloodDonor
             InitializeComponent();
             register.SetUser(username);
             this.Initialize();
-            lblTitle.Content = "Welcome, " + username;
         }
 
         private void btn1_Click(object sender, RoutedEventArgs e)
@@ -43,6 +43,16 @@ namespace BloodDonor
 
             register.Register(dob.Text, country.Text, city.Text, address.Text, blood_type.Text, weight.Text);
             string result = this.Check();
+
+            if (result.Length != 31)
+            {
+                MessageBox.Show(result);
+                return;
+            }
+
+            if (this.CheckPeriod() == false)
+                return;
+
             Debug.WriteLine(result.Length);
             if (result.Length == 31)
             {
@@ -52,6 +62,7 @@ namespace BloodDonor
                     this.register.AddDonationBloodPack("donation", "");
                     this.register.AddDonationBloodPack("bloodpack", "");
                     MessageBox.Show("All good");
+                    return;
                 }
                 else
                 {
@@ -60,13 +71,19 @@ namespace BloodDonor
                     {
                         this.register.AddDonationBloodPack("bloodpack", "");
                         MessageBox.Show("All good");
+                        return;
                     }
                     else
-                        MessageBox.Show("The patient does not exist.");
+                    {
+                        ErrorWindow error = new ErrorWindow();
+                        error.SetContent("The patient does not exist.");
+                        error.Show();
+                        //MessageBox.Show("The patient does not exist.");
+                        return;
+                    }
                 }
             }
-            else
-                MessageBox.Show(result);
+
         }
 
         private void Initialize()
@@ -258,72 +275,113 @@ namespace BloodDonor
 
             int year = Convert.ToInt32(DateTime.Today.Year.ToString());
             if (country.Text == "" || city.Text == "" || 
-                address.Text == "" || blood_type.Text == "" || dob.Text == "dd/ll/aaaa" || weight.Text == "kg")
+                address.Text == "" || blood_type.Text == "" || dob.Text == "dd-ll-aaaa" || weight.Text == "")
             {
-                MessageBox.Show("All fields are mandatory");
+                ErrorWindow error = new ErrorWindow();
+                error.SetContent("All fields are mandatory");
+                error.Show();
+                //MessageBox.Show("All fields are mandatory");
                 return false;
             }
             try
             {
-                string[] dateform = dob.Text.Split('/');
+                string[] dateform = dob.Text.Split('-');
                 int day = Convert.ToInt32(dateform[0]);
                 int month = Convert.ToInt32(dateform[1]);
                 int givenyear = Convert.ToInt32(dateform[2]);
-                if (year < givenyear && (year - givenyear < 18 || year - givenyear > 66))
+                if (year < givenyear || (year - givenyear < 18 || year - givenyear > 66))
                 {
-                    MessageBox.Show("Your age is not good for donations.");
+                    ErrorWindow error = new ErrorWindow();
+                    error.SetContent("Your age is not good for donations.");
+                    error.Show();
+                    //MessageBox.Show("Your age is not good for donations.");
                     return false;
                 }
                 if (day > 31 || day < 1)
                 {
-                    MessageBox.Show(day + " is not a valid day.");
+                    ErrorWindow error = new ErrorWindow();
+                    error.SetContent(day + " is not a valid day.");
+                    error.Show();
+                    //MessageBox.Show(day + " is not a valid day.");
                     return false;
                 }
                 if (month > 12 || month < 1)
                 {
-                    MessageBox.Show(month + " is not a valid month.");
+                    ErrorWindow error = new ErrorWindow();
+                    error.SetContent(month + " is not a valid month.");
+                    error.Show();
+                    //MessageBox.Show(month + " is not a valid month.");
                     return false;
-                }
-
-                DateTime date = DateTime.Now.AddMonths(-3);
-                int months = Convert.ToInt32(date.Month.ToString());
-                string dates = this.register.GetDate();
-                Debug.WriteLine(dates);
-                if (dates != "")
-                {
-                    int lastmoth = Convert.ToInt32(dates.Split('/')[0]);
-
-                    if (months - lastmoth < 0)
-                    {
-                        MessageBox.Show("You can donate again after 3 months.");
-                        return false;
-                    }
                 }
             }
             catch(Exception)
             {
-                MessageBox.Show("The date of birth must be integer.");
+                ErrorWindow error = new ErrorWindow();
+                error.SetContent("The date of birth must be integer.");
+                error.Show();
+                //MessageBox.Show("The date of birth must be integer.");
                 return false;
             }
             try
             {
-                string[] wei = weight.Text.Split('k');
-                int weig = Convert.ToInt32(wei[0]);
+                int weig = Convert.ToInt32(weight.Text);
                 if (weig < 50)
                 {
-                    MessageBox.Show("Your weight is not good for donations.");
+                    ErrorWindow error = new ErrorWindow();
+                    error.SetContent("Your weight is not good for donations.");
+                    error.Show();
+                    //MessageBox.Show("Your weight is not good for donations.");
                     return false;
                 }
             }
             catch(Exception)
             {
-                MessageBox.Show("Make sure that the weigth is an integer.");
+                ErrorWindow error = new ErrorWindow();
+                error.SetContent("Make sure that the weigth is an integer.");
+                error.Show();
+                //MessageBox.Show("Make sure that the weigth is an integer.");
+                return false;
+            }
+            if (!this.register.CheckCountry(country.Text.ToString()))
+            {
+                ErrorWindow error = new ErrorWindow();
+                error.SetContent("Your contry is not a member of EU");
+                error.Show();
+                //MessageBox.Show("Your contry is not a member of EU");
                 return false;
             }
             if (blood_type.Text !="A" && blood_type.Text != "B" && blood_type.Text != "AB" && blood_type.Text !="0")
             {
-                MessageBox.Show("Invalid blood type.");
+                ErrorWindow error = new ErrorWindow();
+                error.SetContent("Invalid blood type.");
+                error.Show();
+                //MessageBox.Show("Invalid blood type.");
                 return false;
+            }
+            return true;
+        }
+
+        private bool CheckPeriod()
+        {
+            DateTime date = DateTime.Now.AddMonths(-3);
+            int months = Convert.ToInt32(date.Month.ToString());
+            string dates = this.register.GetDate();
+            Debug.WriteLine(dates + "lemne");
+            if (dates != "")
+            {
+                Debug.WriteLine(dates);
+                int lastmoth = Convert.ToInt32(dates.Split('/')[1]);
+
+                if (months - lastmoth < 0)
+                {
+                    ErrorWindow error = new ErrorWindow();
+                    error.SetContent("You can donate again after 3 months.");
+                    error.Show();
+                    //MessageBox.Show("You can donate again after 3 months.");
+                    return false;
+                }
+                else
+                    return true;
             }
             return true;
         }

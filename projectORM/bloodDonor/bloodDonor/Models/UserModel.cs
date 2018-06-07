@@ -14,7 +14,6 @@ namespace BloodDonor.Models
     public class UserModel
     {
         SqlConnection conn = new SqlConnection(ConfigurationManager.AppSettings["dataSource"]);
-
         public long Id { get; set; }
 
         public string Email { get; set; }
