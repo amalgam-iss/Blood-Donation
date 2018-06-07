@@ -230,6 +230,18 @@ namespace BloodDonor
             {
                 e.Column.Visibility = Visibility.Hidden;
             }
+            if (e.Column.Header.ToString() == "AddressId")
+            {
+                e.Column.Visibility = Visibility.Hidden;
+            }
+            if (e.Column.Header.ToString() == "Quantity")
+            {
+                e.Column.Visibility = Visibility.Hidden;
+            }
+            if (e.Column.Header.ToString() == "DoctorPacientId")
+            {
+                e.Column.Visibility = Visibility.Hidden;
+            }
         }
 
         private void btnDeleteBloodrequest_Click(object sender, RoutedEventArgs e)
