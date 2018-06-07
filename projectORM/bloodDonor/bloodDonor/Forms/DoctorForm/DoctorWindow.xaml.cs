@@ -49,6 +49,7 @@ namespace BloodDonor
                 btnDeletePatient.Visibility = Visibility.Visible;
                 btnRequestBlood.Visibility = Visibility.Visible;
                 btnAddPatient.Visibility = Visibility.Visible;
+  
             }
             else
             {
@@ -56,6 +57,7 @@ namespace BloodDonor
                 btnDeletePatient.Visibility = Visibility.Hidden;
                 btnRequestBlood.Visibility = Visibility.Hidden;
                 btnAddPatient.Visibility = Visibility.Hidden;
+               
             }
         }
 
@@ -83,6 +85,11 @@ namespace BloodDonor
                 btnRequestBlood.IsEnabled = true;
                 Pacient pacient = (Pacient)dgPatients.SelectedItem;
                 Debug.WriteLine("Name =" + pacient.Name);
+            }
+            else
+            {
+                btnDeletePatient.IsEnabled = false;
+                btnRequestBlood.IsEnabled = false;
             }
         }
 
@@ -134,13 +141,21 @@ namespace BloodDonor
         private void btnDeletePatient_Click(object sender, RoutedEventArgs e)
         {
             Pacient pacient = (Pacient)dgPatients.SelectedItem;
+            if (pacient == null)
+            {
+                return;
+            }
+
             using (var db = new Model1())
             {
+                DoctorPacient doctorPacient = db.DoctorPacients.SqlQuery("SELECT * FROM DoctorPacients d where d.DoctorId = " + doctor.Id + " and d.PacientId = " + pacient.Id + "").SingleOrDefault();
+                db.Database.ExecuteSqlCommand("DELETE FROM dbo.BloodRequests where DoctorPacientId = " + doctorPacient.Id + "");
                 db.Database.ExecuteSqlCommand("DELETE FROM dbo.DoctorPacients where DoctorID =" + doctor.Id + " and PacientID =" + pacient.Id + "");
                 db.Database.ExecuteSqlCommand("DELETE FROM dbo.Pacients where Id =" + pacient.Id + "");
                 db.SaveChanges();
             }
             fillPatientsDataGrid();
+            fillBloodRequestsDataGrid();
         }
 
         /**
@@ -149,6 +164,11 @@ namespace BloodDonor
         private void btnRequestBlood_Click(object sender, RoutedEventArgs e)
         {
             Pacient pacient = (Pacient)dgPatients.SelectedItem;
+            
+            if (pacient == null)
+            {
+                return;
+            }
             CreateRequest createRequest = new CreateRequest(pacient);
             bool? result = createRequest.ShowDialog();
             if (result.HasValue && result.Value)
@@ -158,12 +178,17 @@ namespace BloodDonor
                 int quantity = createRequest.Amount;
                 int priority = createRequest.Priority;
 
+                DoctorPacient dp = new DoctorPacient();
+                dp.DoctorId = doctor.Id;
+                dp.PacientId = pacient.Id; 
+
                 using (var context = new Model1())
                 {
                     // Now adding to the database
+                    DoctorPacient doctorPacient = context.DoctorPacients.SqlQuery("SELECT * FROM DoctorPacients d where d.DoctorId = " + doctor.Id + " and d.PacientId = " + pacient.Id + "").SingleOrDefault();
                     BloodRequest bloodRequest = new BloodRequest
                     {
-                        DoctorPacient = context.DoctorPacients.SqlQuery("select * from DoctorPacients where DoctorId = " + doctor.Id + ";").SingleOrDefault(),
+                        DoctorPacientId = doctorPacient.Id,
                         BloodType = bloodType,
                         Rh = rh,
                         Requested_quantity = quantity,
@@ -184,9 +209,18 @@ namespace BloodDonor
             Debug.WriteLine("Fill Requests.");
             using (var context = new Model1())
             {
-                var data = context.DoctorPacients.SqlQuery("select * from DoctorPacients where DoctorId = " + doctor.Id +";").SingleOrDefault();
-                Console.WriteLine(data);
-                dgRequests.ItemsSource = data.BloodRequests.ToList();
+                var doctorPacients = context.DoctorPacients.SqlQuery("select * from DoctorPacients where DoctorId = " + doctor.Id + ";");
+                List<BloodRequest> bloodRequests = new List<BloodRequest>();
+
+                ///bloodRequests = doctorPacients.BloodRequests.ToList();
+                foreach (var dp in doctorPacients.ToList())
+                {
+                    bloodRequests.AddRange(dp.BloodRequests.ToList());
+                    Console.WriteLine(dp.BloodRequests.ToList()); 
+                }
+                
+                Console.WriteLine(bloodRequests);
+                dgRequests.ItemsSource = bloodRequests;
             }
         }
 
@@ -196,11 +230,29 @@ namespace BloodDonor
             {
                 e.Column.Visibility = Visibility.Hidden;
             }
+            if (e.Column.Header.ToString() == "AddressId")
+            {
+                e.Column.Visibility = Visibility.Hidden;
+            }
+            if (e.Column.Header.ToString() == "Quantity")
+            {
+                e.Column.Visibility = Visibility.Hidden;
+            }
+            if (e.Column.Header.ToString() == "DoctorPacientId")
+            {
+                e.Column.Visibility = Visibility.Hidden;
+            }
         }
 
         private void btnDeleteBloodrequest_Click(object sender, RoutedEventArgs e)
         {
-            BloodRequest bloodRequest = (BloodRequest)dgRequests.SelectedItem;
+            BloodRequest bloodRequest = (dgRequests.SelectedItem != null ? (BloodRequest)dgRequests.SelectedItem : null);
+
+            if (bloodRequest == null)
+            {
+                return;
+            }
+
             using (var db = new Model1())
             {;
                 db.Database.ExecuteSqlCommand("DELETE FROM dbo.BloodRequests where Id =" + bloodRequest.Id + "");

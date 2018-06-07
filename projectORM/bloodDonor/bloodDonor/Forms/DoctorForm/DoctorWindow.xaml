@@ -28,7 +28,7 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <DataGrid x:Name="dgRequests" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="346" Width="514" Grid.ColumnSpan="2" AutoGeneratingColumn="dgRequests_AutoGeneratingColumn"/>
+                    <DataGrid x:Name="dgRequests" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="346" Width="514" Grid.ColumnSpan="2" AutoGeneratingColumn="dgRequests_AutoGeneratingColumn" IsReadOnly="True"/>
                 </Grid>
             </TabItem>
         </TabControl>
@@ -44,7 +44,6 @@
         <Button x:Name="btnDeletePatient" Margin="0,417,34,0" Height="58" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122" IsHitTestVisible="True" Click="btnDeletePatient_Click" IsEnabled="False">
             <TextBlock TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Right"  Width="92"><Run Text="Delete"/><LineBreak/><Run Text="patient"/></TextBlock>
         </Button>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="0,-3,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btnRequestBlood" Margin="0,333,34,0" Height="58" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122" IsHitTestVisible="True" IsEnabled="False" Click="btnRequestBlood_Click">
             <TextBlock TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Right"  Width="92"><Run Text="Request"/><LineBreak/><Run Text="bloodpack"/></TextBlock>
         </Button>

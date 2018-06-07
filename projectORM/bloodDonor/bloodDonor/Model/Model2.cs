@@ -71,6 +71,10 @@ namespace BloodDonor.Model
                 .Property(e => e.Rh)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<Donation>()
+                .Property(e => e.Status)
+                .IsUnicode(false);
+
             modelBuilder.Entity<Donor>()
                 .Property(e => e.Name)
                 .IsUnicode(false);
@@ -85,6 +89,14 @@ namespace BloodDonor.Model
 
             modelBuilder.Entity<Donor>()
                 .Property(e => e.Address)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Donor>()
+                .Property(e => e.Weight)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Donor>()
+                .Property(e => e.BirthDate)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Nurse>()
@@ -114,11 +126,6 @@ namespace BloodDonor.Model
             modelBuilder.Entity<User>()
                 .Property(e => e.Password)
                 .IsUnicode(false);
-
-            modelBuilder.Entity<User>()
-                .HasMany(e => e.DoctorPacients)
-                .WithOptional(e => e.User)
-                .HasForeignKey(e => e.DoctorId);
         }
     }
 }

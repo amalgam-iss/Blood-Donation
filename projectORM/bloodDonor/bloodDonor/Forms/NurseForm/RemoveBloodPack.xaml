@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         Title="Remove blood pack" Height="200" Width="500">
     <Grid>
-        <TextBox x:Name="tbxRemoveBloodPack" PreviewMouseDown="tbxRemoveBloodPack_PreviewMouseDown" Margin="10,56,151.6,0" TextWrapping="Wrap" FontSize="14" Height="39" VerticalAlignment="Top" Text="Blood pack id"/>
+        <TextBox x:Name="tbxRemoveBloodPack" PreviewMouseDown="tbxRemoveBloodPack_PreviewMouseDown" Margin="10,56,151.6,0" TextWrapping="Wrap" FontSize="14" Height="39" VerticalAlignment="Top" Text=" Blood pack id"/>
         <Button x:Name="btnRemove" Content="Remove" Click="btnRemove_Click" Height="37" Margin="363,58,27.6,0" VerticalAlignment="Top"/>
         <Button x:Name="btnExit" Content="Exit" Click="btnExit_Click" Margin="363,121,27.6,0" VerticalAlignment="Top"/>
-        <Label Content="Blood pack id:"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF558ED1" FontWeight="Bold"  Margin="10,21,0,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="146"/>
+        <Label Content="Blood pack id:"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF673AB7" FontWeight="Bold"  Margin="10,21,0,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="146"/>
 
     </Grid>
 </Window>

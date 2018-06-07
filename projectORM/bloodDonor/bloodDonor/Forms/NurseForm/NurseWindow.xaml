@@ -5,71 +5,88 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BloodDonor"
         mc:Ignorable="d"
-        Title="Nurse Window" Height="900" Width="1229.2" Loaded="Window_Loaded">
-    <Grid>
-        <Label x:Name="lblTitle" Content="Welcome, Nurse!" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,16,0,0" Width="487" RenderTransformOrigin="0.5,0.5" Height="38" FontSize="20"/>
 
-        <TabControl Margin="10,59,9.6,10.4">
+        Title="Nurse Window" Height="704" Width="1354" MinHeight="800" MinWidth="1000" Loaded="Window_Loaded">
+    <Window.Resources>
+        <local:AmalgamIssDataSet x:Key="amalgamIssDataSet"/>
+        <CollectionViewSource x:Key="donorsViewSource" Source="{Binding Donors, Source={StaticResource amalgamIssDataSet}}"/>
+        <CollectionViewSource x:Key="donorViewSource"/>
+        <CollectionViewSource x:Key="bloodPackViewSource" />
+        <CollectionViewSource x:Key="bloodRequestViewSource" />
+    </Window.Resources>
+    <Grid>
+        <Label x:Name="lblTitle" Content="Welcome, Nurse!" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,16,0,0" Width="321" RenderTransformOrigin="0.5,0.5" Height="38" FontSize="20"/>
+
+        <TabControl Margin="10,59,9.8,10.4">
             <TabItem Header="Bloodpack">
-                <Grid Background="#FFE5E5E5" Height="775" Margin="0,0,0,0" DataContext="{StaticResource bloodRequestViewSource}">
+                <Grid Background="#FFD9C7F6" Margin="0,0,-0.6,-2.2" Height="675" VerticalAlignment="Top">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="189*"/>
                         <ColumnDefinition Width="1009*"/>
                     </Grid.ColumnDefinitions>
-                    <DataGrid x:Name="dgvBloodPack" HorizontalAlignment="Left" Margin="10,61,0,9" Width="496" Grid.ColumnSpan="2" SelectionMode="Single"/>
-                    <DataGrid x:Name="dgvPendingRequest" Margin="347.4,61,160.6,9" Grid.Column="1" ItemsSource="{Binding}"/>
-                    <Button x:Name="btn1"   Click="btn1_Click" Margin="0,61,9.6,0" Height="50" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122">
+                    <DataGrid x:Name="dgvBloodPack" Margin="26,45,0,54" SelectionMode="Single" ItemsSource="{Binding Source={StaticResource bloodPackViewSource}}" HorizontalAlignment="Left" Width="407" IsReadOnly="True"/>
+                    <DataGrid x:Name="dgvPendingRequest" Margin="453,45,161.6,49" ItemsSource="{Binding}" IsReadOnly="True" AutoGeneratingColumn="dgvPendingRequest_OnGenerating"/>
+                    <Button x:Name="btnAddBloodpack" Background="#FF673AB7"  Click="btnAddBloodpack_Click" Margin="0,61,9.6,0" Height="50" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122">
                         <TextBlock Text="Add blood pack" TextWrapping="Wrap" TextAlignment="Center" Width="92"/>
                     </Button>
-                    <Button x:Name="btn2"  Margin="0,119,9.6,0" Click="btn2_Click" Height="50" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122">
+                    <Button x:Name="btnRemoveBloodpack" Background="#FF673AB7" Margin="0,171,10.6,0" Click="btnRemoveBloodpack_Click" Height="50" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122">
                         <TextBlock Text="Remove blood pack" TextWrapping="Wrap" TextAlignment="Center" Width="92"/>
                     </Button>
-                    <Button x:Name="btn3" Click="btn3_Click" Content="Exit" Margin="874,710,9,0" Height="32" Grid.Column="1" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl1" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="877.2,361,0,0" Height="87" Width="122" Grid.Column="1"/>
-                    <Label Content="Blood pack view:"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF558ED1" FontWeight="Bold"  Margin="10,21,0,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="382" Grid.ColumnSpan="2"/>
-                    <Label Content="Request:"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF558ED1" FontWeight="Bold"  Margin="347.4,21,0,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="127" Grid.Column="1"/>
-                    <Button x:Name="btn4" Click="btn4_Click" Margin="0,181,8.6,0" Height="50" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122">
+                    <!--<Button x:Name="btn3" Click="btn3_Click" Content="Exit" Margin="874,710,9,0" Height="32" Grid.Column="1" VerticalAlignment="Top"/>
+                    <Label Content="Blood pack view:"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF673AB7" FontWeight="Bold"  Margin="10,21,0,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="382" Grid.ColumnSpan="2"/>
+                    <Label Content="Request:"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF673AB7" FontWeight="Bold"  Margin="347.4,21,0,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="127" Grid.Column="1"/>
+                    <Button x:Name="btn4" Click="btn4_Click" Margin="0,181,8.6,0" Height="50" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122">-->
+                    <Button x:Name="btn3" Background="#FF673AB7" Click="btn3_Click" Content="Exit" Margin="0,0,9,10" Height="45" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="123"/>
+                    <Label Content="Blood pack view:"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF673AB7" FontWeight="Bold"  Margin="26,10,786.6,0" Height="35" VerticalAlignment="Top" Background="#FFD9C7F6"/>
+                    <Label Content="Request:"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF673AB7" FontWeight="Bold"  Margin="396,21,0,719" HorizontalAlignment="Left" Width="126"/>
+                    <Button x:Name="btn4" Background="#FF673AB7" Click="btn4_Click" Margin="0,116,10.6,0" Height="50" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122">
                         <TextBlock Text="Edit blood pack status" TextWrapping="Wrap" TextAlignment="Center" Width="92"/>
                     </Button>
-                    <Button x:Name="btnUpdate"  Click="btnUpdate_Click" Margin="0,242,9.6,0" Height="50" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122">
-                        <TextBlock Text="Update Datagrid" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Right"  Width="92"/>
+                    <Label Content="Requests:"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF673AB7" FontWeight="Bold"  Margin="453,10,359.6,0" Height="35" VerticalAlignment="Top" Background="#FFD9C7F6"/>
+                    <Button x:Name="btnUseBloodpack" Background="#FF673AB7" Margin="0,226,10.6,0" Click="btnUseBloodpack_Click" Height="50" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122">
+                        <TextBlock Text="Use bloodpack" TextWrapping="Wrap" TextAlignment="Center" Width="92"/>
                     </Button>
                 </Grid>
             </TabItem>
             <TabItem Header="Donors">
-                <Grid Background="#FFE5E5E5" DataContext="{StaticResource donorsViewSource}">
+                <Grid Background="#FFD9C7F6">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="141*"/>
+                        <ColumnDefinition Width="22*"/>
+                        <ColumnDefinition/>
                         <ColumnDefinition Width="0*"/>
-                        <ColumnDefinition Width="1057*"/>
+                        <ColumnDefinition Width="0*"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="1294*"/>
                     </Grid.ColumnDefinitions>
-                    <DataGrid x:Name="dgvDonor" Grid.ColumnSpan="3" Margin="10,61,205,10" ItemsSource="{Binding Source={StaticResource donorViewSource}}"/>
-                    <Label Content="Donor view:"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF558ED1" FontWeight="Bold"  Margin="10,21,0,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="382" Grid.ColumnSpan="3"/>
-                    <Button x:Name="btn2_Copy"  Margin="0,61,10,0" Height="50" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Right" Width="144">
-                        <TextBlock Text="Do something?" TextWrapping="Wrap" TextAlignment="Center"/>
-                    </Button>
-                    <Button x:Name="btnExit2" Content="Exit" VerticalAlignment="Bottom" Click="btn3_Click" Height="50" Margin="0,0,10,23" Grid.Column="2" HorizontalAlignment="Right" Width="144"/>
-                    <Button x:Name="btnUpdate2"  Content="Update" Click="btnUpdate_Click" Height="50" Margin="0,0,10,553" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="144" Grid.Column="2"/>
+
+                    <DataGrid x:Name="dgvDonor" Grid.ColumnSpan="2" Margin="0.6,48,185.8,22.8" ItemsSource="{Binding Source={StaticResource donorViewSource}}" Grid.Column="6"/>
+                    <Label Content="Donor view:"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF673AB7" FontWeight="Bold"  Margin="0.6,10,0,0" Height="38" VerticalAlignment="Top" HorizontalAlignment="Left" Width="390" Grid.Column="6" Grid.ColumnSpan="2"/>
+                    <Button x:Name="btnExit2" Background="#FF673AB7"  Content="Exit" VerticalAlignment="Bottom" Click="btn3_Click" Height="50" Margin="0,0,8.201,22.8" Grid.Column="7" HorizontalAlignment="Right" Width="144"/>
+                    <Button x:Name="btnUpdate2" Background="#FF673AB7" Content="Update" Click="btnUpdate_Click" Height="50" Margin="0,0,8.201,533.8" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="144" Grid.Column="7"/>
 
                 </Grid>
             </TabItem>
             <TabItem Header="Expired blood packs" RenderTransformOrigin="7.562,0.409">
-                <Grid  Background="#FFE5E5E5" Height="775" Margin="0,0,0,0" DataContext="{StaticResource bloodPackViewSource}">
-                    <DataGrid x:Name="dgvExpiredBloodPacks" HorizontalAlignment="Left" Height="697" Margin="10,68,0,0" VerticalAlignment="Top" Width="988" ItemsSource="{Binding}"/>
-                    <Button  Click="btn2_Click" Height="Auto" Margin="0,68,10,657" HorizontalAlignment="Right" Width="144">
+                <Grid  Background="#FFD9C7F6" Height="775" Margin="0,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="dgvExpiredBloodPacks" HorizontalAlignment="Left" Height="697" Margin="27,50,0,0" VerticalAlignment="Top" Width="971" ItemsSource="{Binding}"/>
+                    <Button  Click="btnRemoveBloodpack_Click" Height="Auto" Margin="0,68,9.8,657" HorizontalAlignment="Right" Width="144">
                         <TextBlock Text="Delete expired blood pack" TextWrapping="Wrap" TextAlignment="Center" Height="40" Width="112"/>
-
                     </Button>
-                    <Button x:Name="btnUpdate1"  Content="Update" Click="btnUpdate_Click" Height="50" Margin="0,0,10,577" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="144"/>
-                    <Button x:Name="btnExit3" Content="Exit" VerticalAlignment="Bottom" Click="btn3_Click" Height="50" Margin="0,0,10,23" HorizontalAlignment="Right" Width="144"/>
-                    <Label Content="Expired blood packs view:"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF558ED1" FontWeight="Bold"  Margin="10,21,0,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="382"/>
+                    <Button x:Name="btnUpdate1"  Content="Update" Click="btnUpdate_Click" Height="50" Margin="0,0,9.8,577" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="144"/>
+                    <Button x:Name="btnExit3" Content="Exit" VerticalAlignment="Bottom" Click="btn3_Click" Height="50" Margin="0,0,9.8,23" HorizontalAlignment="Right" Width="144"/>
+                    <Label Content="Expired blood packs view:"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF673AB7" FontWeight="Bold"  Margin="27,10,0,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="382"/>
+
 
                 </Grid>
 
             </TabItem>
 
         </TabControl>
-        <Image HorizontalAlignment="Left" Height="42" VerticalAlignment="Top" Width="46" Margin="1165,17,0,0" Source="pack://siteoforigin:,,,/Resources/if_Heart-Watch_379466.ico"/>
+        <Image HorizontalAlignment="Left" Height="42" VerticalAlignment="Top" Width="46" Margin="1261,17,0,0" Source="pack://siteoforigin:,,,/Resources/if_Heart-Watch_379466.ico"/>
 
     </Grid>
 </Window>

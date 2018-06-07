@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Sign up" Height="748.895" Width="527">
     <Grid>
-        <Canvas Height="120" VerticalAlignment="Top" Background="#FF558ED1" Margin="0,0,-0.2,0"/>
+        <Canvas Height="120" VerticalAlignment="Top" Background="#FF673AB7" Margin="0,0,-0.2,0"/>
         <Label x:Name="lblTitle" Content="Sign up" VerticalAlignment="Top" Margin="26,40,20.8,0" 
                    Height="42" HorizontalContentAlignment="Center" FontFamily="Microsoft YaHei UI" FontSize="24" FontStretch="Expanded" Foreground="#DDFFFFFF"/>
         <TextBox x:Name="tbxEmail" Height="23" Margin="26,448,9.8,0" TextWrapping="Wrap" VerticalAlignment="Top"/>

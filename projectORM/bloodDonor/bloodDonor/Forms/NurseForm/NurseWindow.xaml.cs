@@ -12,14 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data.Entity;
+using System.Configuration;
 using System.Diagnostics;
 using BloodDonor.Model;
+using BloodDonor.Forms.ErrorForm;
 
 namespace BloodDonor
 {
-    /// <summary>
-    /// Interaction logic for NurseWindow.xaml
-    /// </summary>
+    //
+    // Interaction logic for NurseWindow.xaml
+    //
     public partial class NurseWindow : Window
     {
         public NurseWindow(String nameOfNurse="Nurse")
@@ -33,6 +35,9 @@ namespace BloodDonor
 
         }
 
+        //
+        // DATA GRID VIEWS  
+        //
         private void initiateDgvDonors()
         {
             Debug.WriteLine("I tried to initialise the donors\n");
@@ -43,6 +48,8 @@ namespace BloodDonor
             }
 
         }
+
+        // Populates the dgv of Expired Bloodpacks
         private void initiateDgvExpiredBloodPack()
         {
             Debug.WriteLine("I tried to initialise the expired bp\n");
@@ -54,58 +61,151 @@ namespace BloodDonor
             }
 
         }
+
+        // Populates the dgv of Blood Pack
         private void initiateDgvBloodPack()
         {
             Debug.WriteLine("I tried to initialise the bp\n");
             using (var context = new Model1())
             {
                 var data = (from d in context.BloodPacks select d);
+                data = (from d in data where d.Status != "TESTED_NOT_OKAY" select d);
                 dgvBloodPack.ItemsSource = data.ToList();
             }
         }
+
+        // Populates the dgv Blood Request
         private void initiateDgvBloodRequest()
         {
             Debug.WriteLine("I tried to initialise the blood request\n");
             using (var context = new Model1())
             {
                 var data = (from d in context.BloodRequests select d);
-                dgvBloodPack.ItemsSource = data.ToList();
+                dgvPendingRequest.ItemsSource = data.ToList();
+            }
+        }
+        private void dgvPendingRequest_OnGenerating(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.Column.Header.ToString() == "AddressId")
+            {
+                e.Column.Visibility = Visibility.Hidden;
+            }
+            if (e.Column.Header.ToString() == "DoctorPacient")
+            {
+                e.Column.Visibility = Visibility.Hidden;
+            }
+            if (e.Column.Header.ToString() == "Quantity")
+            {
+                e.Column.Visibility = Visibility.Hidden;
             }
         }
 
-        private void btn1_Click(object sender, RoutedEventArgs e)
+        //
+        // BUTTONS
+        //
+
+        // Increase the quantity of the requested blood for a request
+        private void btnUseBloodpack_Click(object sender, RoutedEventArgs e)
+        {
+            ErrorWindow errorWindow = new ErrorWindow();
+            BloodPack bloodPack = (BloodPack)dgvBloodPack.SelectedItem;
+            BloodRequest bloodRequest = (BloodRequest)dgvPendingRequest.SelectedItem;
+
+            if (bloodPack == null)
+            {
+                errorWindow.SetContent("Bloodpack not selected!");
+                errorWindow.Show();
+                return;
+            }
+            if (bloodRequest == null)
+            {
+                errorWindow.SetContent("Blood request not selected!");
+                errorWindow.Show();
+                return;
+            }
+
+            if (bloodPack.Status != "TESTED_OK")
+            {
+                switch (bloodPack.Status)
+                {
+                    case "TESTED_NOT_OK":
+                        errorWindow.SetContent("Bloodpack has not passed test!");
+                        break;
+                    case "DISTRIBUTED":
+                        errorWindow.SetContent("Bloodpack already distributed!");
+                        break;
+                    case "IN_PROCESS":
+                        errorWindow.SetContent("Bloodpack in processing!");
+                        break;
+                }
+                errorWindow.Show();
+                return;
+            }
+
+            if (bloodRequest.Received_quantity + 1 > bloodRequest.Requested_quantity)
+            {
+                errorWindow.SetContent("Request already fulfilled!");
+                errorWindow.Show();
+                return;
+            }
+
+            using (var context = new Model1())
+            {
+                bloodRequest.Received_quantity += 1;
+                bloodPack.Status = "DISTRIBUTED";
+                context.Entry(bloodPack).State = EntityState.Modified;
+                context.Entry(bloodRequest).State = EntityState.Modified;
+                context.SaveChanges();
+            }
+
+            initiateDgvBloodPack();
+            initiateDgvBloodRequest();
+        }
+
+        // Opens a new window to add a blood pack to the database. If the result is ok then the object is created and added to the database. 
+        private void btnAddBloodpack_Click(object sender, RoutedEventArgs e)
         {
             AddBloodPack win1 = new AddBloodPack();
             bool? result = win1.ShowDialog();
 
             if (result.HasValue && result.Value)
             {
-                 String groupTxtNurse = win1.groupTxt;
-                 String rhTxtNurse = win1.rhTxt;
-                 String statusTxtNurse = win1.statusTxt;
-                 DateTime currentDateNurse = win1.currentDate;
+                String groupTxtNurse = win1.groupTxt;
+                String rhTxtNurse = win1.rhTxt;
+                String statusTxtNurse = win1.statusTxt;
+                DateTime currentDateNurse = win1.currentDate;
                 //TODO Create the object
             }
         }
 
-        private void btn2_Click(object sender, RoutedEventArgs e)
+        // Opens a new window which allows you to remove a blood pack.
+        private void btnRemoveBloodpack_Click(object sender, RoutedEventArgs e)
         {
-            Object myItem = dgvBloodPack.SelectedItem;
-            //Object cellId = dgvBloodPack.SelectedCells[0];
-            RemoveBloodPack win1 = new RemoveBloodPack(myItem); // or cellId
-            bool? result = win1.ShowDialog();
-
-            if (result.HasValue && result.Value)
+            ErrorWindow errorWindow = new ErrorWindow();
+            BloodPack bloodPack = (BloodPack)dgvBloodPack.SelectedItem;
+            if (bloodPack == null)
             {
-                String cellRemovedId = win1.bloodPackIdTxt;
+                errorWindow.SetContent("No bloodpack selected!");
+                errorWindow.Show();
+                return;
             }
+
+            using (var context = new Model1())
+            {
+                context.Entry(bloodPack).State = EntityState.Deleted;
+                context.SaveChanges();
+            }
+
+            initiateDgvBloodPack();
         }
 
+        // Closes the current window.
         private void btn3_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
+        /// Updates the database with all the changes form the dgv
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
             //TODO update dgv
@@ -117,6 +217,8 @@ namespace BloodDonor
 
         }
 
+
+        // Opens a new window to edit the bloodpack
         private void btn4_Click(object sender, RoutedEventArgs e)
         {
             Object myItem = dgvBloodPack.SelectedItem;
@@ -134,18 +236,12 @@ namespace BloodDonor
             }
         }
 
+
+        
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
-            System.Windows.Data.CollectionViewSource donorViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("donorViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // dgvDonor.ItemsSource = [generic data source]
-            System.Windows.Data.CollectionViewSource bloodPackViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("bloodPackViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // bloodPackViewSource.Source = [generic data source]
-            System.Windows.Data.CollectionViewSource bloodRequestViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("bloodRequestViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // bloodRequestViewSource.Source = [generic data source]
+            
         }
     }
 }
