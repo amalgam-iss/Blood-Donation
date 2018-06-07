@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+
 namespace BloodDonor
 {
     /// <summary>
@@ -22,18 +23,57 @@ namespace BloodDonor
     public partial class DonorWindow : Window
     {
         RegisterController register = new RegisterController();
+        HistoryController history = new HistoryController();
+
 
         public DonorWindow(string username)
         {
             InitializeComponent();
             register.SetUser(username);
             this.Initialize();
+            this.setHistory();
             lblTitle.Content = "Welcome, " + username;
+        }
+
+        private void setHistory()
+        {
+            int donorId = history.getDonorId(register.GetUser());
+            if (donorId != -1)
+            {
+                List<String> data = new List<string>();
+                data = history.getHistory(donorId);
+                foreach(string entry in data)
+                {
+                    string[] info = entry.Split('|');
+                    string result = "";
+                    switch (Int32.Parse(info[0]))
+                    {
+                        case 0:
+                            result = "Results not ready";
+                            break;
+                        case 1:
+                            result = "Tests are OK";
+                            break;
+                        case 2:
+                            result = "Tests not OK.";
+                            break;
+                        default:
+                            result = "Couldn't get information about the tests";
+                            break;
+                    }
+                    var row = new EntryRow { Date = info[2], Status = info[1], Result = result };
+                    Console.WriteLine(row);
+                    dgvDonationsView.Items.Add(row);
+
+                }
+            }
         }
 
         private void btn1_Click(object sender, RoutedEventArgs e)
         {
-
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
         }
 
         private void btnSend_Data(object sender, RoutedEventArgs e)
@@ -327,5 +367,12 @@ namespace BloodDonor
             }
             return true;
         }
+    }
+
+    public class EntryRow
+    {
+        public string Date { get; set; }
+        public string Status { get; set; }
+        public string Result { get; set; }
     }
 }
