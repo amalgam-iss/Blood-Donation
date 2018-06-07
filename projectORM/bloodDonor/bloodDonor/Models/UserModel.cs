@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
 using BloodDonor.Utils;
+using System.Configuration;
 
 namespace BloodDonor.Models
 {
     public class UserModel
     {
-        SqlConnection conn = new SqlConnection(@"Data Source = lberciu-lpt; " +
-                " Initial Catalog = AmalgamIss; Integrated Security = true;");
+        SqlConnection conn = new SqlConnection(ConfigurationManager.AppSettings["dataSource"]);
 
         public long Id { get; set; }
 

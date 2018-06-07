@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BloodDonor"
         mc:Ignorable="d"
 
-        Title="Nurse Window" Height="900" Width="1229.2" MinHeight="800" MinWidth="1000" Loaded="Window_Loaded">
+        Title="Nurse Window" Height="704" Width="1226.8" MinHeight="800" MinWidth="1000" Loaded="Window_Loaded">
     <Window.Resources>
         <local:AmalgamIssDataSet x:Key="amalgamIssDataSet"/>
         <CollectionViewSource x:Key="donorsViewSource" Source="{Binding Donors, Source={StaticResource amalgamIssDataSet}}"/>
@@ -17,14 +17,14 @@
     <Grid>
         <Label x:Name="lblTitle" Content="Welcome, Nurse!" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,16,0,0" Width="487" RenderTransformOrigin="0.5,0.5" Height="38" FontSize="20"/>
 
-        <TabControl Margin="10,59,9.6,10.4">
+        <TabControl Margin="10,59,9.8,10.4">
             <TabItem Header="Bloodpack">
-                <Grid Background="#FFE5E5E5" Height="775" Margin="0,0,0,0">
+                <Grid Background="#FFE5E5E5" Margin="0,0,-0.6,-2.2" Height="675" VerticalAlignment="Top">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1009*"/>
                     </Grid.ColumnDefinitions>
-                    <DataGrid x:Name="dgvBloodPack" Margin="26,61,0,9" SelectionMode="Single" ItemsSource="{Binding Source={StaticResource bloodPackViewSource}}" HorizontalAlignment="Left" Width="324"/>
-                    <DataGrid x:Name="dgvPendingRequest" Margin="396,61,161,9" ItemsSource="{Binding}"/>
+                    <DataGrid x:Name="dgvBloodPack" Margin="26,61,0,38" SelectionMode="Single" ItemsSource="{Binding Source={StaticResource bloodPackViewSource}}" HorizontalAlignment="Left" Width="324"/>
+                    <DataGrid x:Name="dgvPendingRequest" Margin="396,61,160.2,38" ItemsSource="{Binding}"/>
                     <Button x:Name="btn1" Background="#FF673AB7"  Click="btn1_Click" Margin="0,61,9.6,0" Height="50" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122">
                         <TextBlock Text="Add blood pack" TextWrapping="Wrap" TextAlignment="Center" Width="92"/>
                     </Button>

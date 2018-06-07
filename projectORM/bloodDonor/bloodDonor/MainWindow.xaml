@@ -8,7 +8,7 @@
         ResizeMode="NoResize" 
         WindowStyle="SingleBorderWindow"
     WindowStartupLocation="CenterScreen"
-        Title="Amalgam" Height="748.895" Width="527">
+        Title="Amalgam" Height="748.895" Width="527" Icon="Resources/if_Heart-Watch_379466.ico">
 
     <Grid x:Name="MainView">
         <Grid.ColumnDefinitions>

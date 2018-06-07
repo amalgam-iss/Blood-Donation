@@ -7,13 +7,13 @@ using System.Data.SqlClient;
 using System.Data;
 using BloodDonor.Utils;
 using System.Diagnostics;
+using System.Configuration;
 
 namespace BloodDonor.Models
 {
     class RegisterModel
     {
-        SqlConnection conn = new SqlConnection(@"Data Source = lberciu-lpt; " +
-                " Initial Catalog = AmalgamIss; Integrated Security = true;");
+        SqlConnection conn = new SqlConnection("" + ConfigurationManager.AppSettings["dataSource"]);
         private long Id = 0;
 
         public void Register(string dob, string country, string city, string address, string blood_type,string username,string weight)
