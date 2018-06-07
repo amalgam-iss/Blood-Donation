@@ -70,6 +70,7 @@ namespace BloodDonor
             using (var context = new Model1())
             {
                 var data = (from d in context.BloodPacks select d);
+                data = (from d in data where d.Status != "TESTED_NOT_OKAY" select d);
                 dgvBloodPack.ItemsSource = data.ToList();
             }
         }

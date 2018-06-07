@@ -58,6 +58,7 @@ namespace BloodDonor
 
                     doctorWindow.Show();
                     ;
+                    this.Close();
                     break;
                 case 3:
                     NurseWindow nurseWindow = new NurseWindow();
