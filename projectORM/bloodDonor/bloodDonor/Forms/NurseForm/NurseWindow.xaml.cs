@@ -124,9 +124,20 @@ namespace BloodDonor
                 return;
             }
 
-            if (bloodPack.Status == "DISTRIBUTED")
+            if (bloodPack.Status != "TESTED_OK")
             {
-                errorWindow.SetContent("Bloodpack already DISTRIBUTED!");
+                switch (bloodPack.Status)
+                {
+                    case "TESTED_NOT_OK":
+                        errorWindow.SetContent("Bloodpack has not passed test!");
+                        break;
+                    case "DISTRIBUTED":
+                        errorWindow.SetContent("Bloodpack already distributed!");
+                        break;
+                    case "IN_PROCESS":
+                        errorWindow.SetContent("Bloodpack in processing!");
+                        break;
+                }
                 errorWindow.Show();
                 return;
             }
