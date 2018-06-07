@@ -71,7 +71,7 @@ namespace BloodDonor
             using (var context = new Model1())
             {
                 var data = (from d in context.BloodPacks select d);
-                data = (from d in data where d.Status != "TESTED_NOT_OKAY" select d);
+                data = (from d in data where d.Status != "EXPIRED" select d);
                 dgvBloodPack.ItemsSource = data.ToList();
             }
         }
@@ -126,11 +126,11 @@ namespace BloodDonor
                 return;
             }
 
-            if (bloodPack.Status != "TESTED_OK")
+            if (bloodPack.Status != "TEST_OK")
             {
                 switch (bloodPack.Status)
                 {
-                    case "TESTED_NOT_OK":
+                    case "TEST_NOT_OK":
                         errorWindow.SetContent("Bloodpack has not passed test!");
                         break;
                     case "DISTRIBUTED":
@@ -217,50 +217,38 @@ namespace BloodDonor
             this.Close();
         }
 
-        /// Updates the database with all the changes form the dgv
-        private void btnUpdate_Click(object sender, RoutedEventArgs e)
+        // Opens a new window to edit the bloodpack
+        private void btnUpdateBloodpack_Click(object sender, RoutedEventArgs e)
         {
+            ErrorWindow errorWindow = new ErrorWindow();
+            BloodPack bloodPack = (BloodPack)dgvBloodPack.SelectedItem;
 
-            using (var context = new Model1())
+            if (bloodPack == null)
             {
-                context.SaveChanges();
+                errorWindow.SetContent("No bloodpack selected!");
+                errorWindow.Show();
+                return;
             }
 
-        }
-
-
-        // Opens a new window to edit the bloodpack
-        private void btn4_Click(object sender, RoutedEventArgs e)
-        {
-            //Object myItem = dgvBloodPack.SelectedItem;
-             var cellId = dgvBloodPack.SelectedCells[0];
-            EditBloodPack win1 = new EditBloodPack(cellId); // or cellId
+            EditBloodPack win1 = new EditBloodPack();
             bool? result = win1.ShowDialog();
-            //TODO
+
             if (result.HasValue && result.Value)
             {
-                String groupTxtNurse = win1.groupTxt;
-                String rhTxtNurse = win1.rhTxt;
-                String statusTxtNurse = win1.statusTxt;
-                DateTime currentDateNurse = win1.currentDate;
-                using (var db = new Model1())
+                bloodPack.Status = win1.statusTxt;
+                using (var context = new Model1())
                 {
-                    //var res = db.BloodPacks.SingleOrDefault(b => b.Id.ToString().Equals(cellId.ToString()));
-                    //if (result != null)
-                    //{
-                    //    result.SomeValue = "Some new value";
-                    //    db.SaveChanges();
-                    //}
+                    context.Entry(bloodPack).State = EntityState.Modified;
+                    context.SaveChanges();
                 }
             }
+
+            initiateDgvBloodPack();
+            initiateDgvExpiredBloodPack();
         }
-
-
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
-
             System.Windows.Data.CollectionViewSource bloodPackViewSource1 = ((System.Windows.Data.CollectionViewSource)(this.FindResource("bloodPackViewSource1")));
             // Load data by setting the CollectionViewSource.Source property:
             // bloodPackViewSource1.Source = [generic data source]

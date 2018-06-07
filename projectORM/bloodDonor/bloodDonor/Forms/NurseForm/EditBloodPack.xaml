@@ -5,18 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BloodDonor"
         mc:Ignorable="d"
-        Title="Edit Blood Pack" Height="700" Width="400" >
-    <Grid>
-        <TextBox x:Name="tbxGroup" Margin="10,77,0,0" PreviewMouseDown="tbxGroup_PreviewMouseDown" TextWrapping="Wrap" Text="" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" Width="374"/>
-        <TextBox x:Name="tbxRh" Margin="10,190,9.6,0"  PreviewMouseDown="tbxRh_PreviewMouseDown"  TextWrapping="Wrap" Text="" Height="37" VerticalAlignment="Top" FontSize="14"/>
-        <TextBox x:Name="tbxStatus" Margin="10,381,10.6,247.4"  PreviewMouseDown="tbxStatus_PreviewMouseDown" TextWrapping="Wrap" Text="" FontSize="14"/>
-        <DatePicker x:Name="dpCreationDate" PreviewMouseDown="dpCreationDate_PreviewMouseDown"  VerticalAlignment="Top" Margin="10,286,10,0" Height="35" FontSize="14"/>
-        <Label Content="Group"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF673AB7" FontWeight="Bold"  Margin="10,43,0,0" Height="34" VerticalAlignment="Top" HorizontalAlignment="Left" Width="91"/>
-        <Label Content="Rh type"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF673AB7" FontWeight="Bold"  Margin="10,147,0,0" Height="38" VerticalAlignment="Top" HorizontalAlignment="Left" Width="127"/>
-        <Label Content="Creation date"  FontFamily="Microsoft YaHei UI" FontSize="13" Foreground="#FF673AB7" FontWeight="Bold"  Margin="10,247,0,0" Height="39" VerticalAlignment="Top" HorizontalAlignment="Left" Width="238"/>
-        <Label Content="Status"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF673AB7" FontWeight="Bold"  Margin="10,346,0,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="127"/>
-        <Button x:Name="btnDone" Content="Done" Click="btnDone_Click" Margin="239,512,9.6,113.4" Height="Auto"/>
-        <Button x:Name="btnExit" Content="Exit" Click="btnExit_Click" Margin="239,600,9.6,25.4" Height="Auto"/>
-
+        Title="Edit Blood Pack" Height="368.353" Width="400" >
+    <Grid HorizontalAlignment="Left" Height="329" Margin="10,10,0,-0.6" VerticalAlignment="Top" Width="380">
+        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="33,236,0,0" VerticalAlignment="Top" Width="112" Click="btnCancel_Click" Height="60" FontSize="22"/>
+        <Button x:Name="btnDone" Content="Update" HorizontalAlignment="Left" Margin="231,236,0,0" VerticalAlignment="Top" Width="112" Click="btnDone_Click" Height="60" FontSize="22"/>
+        <Label x:Name="label" Content="Set new status for the&#xA; selected bloodpack" HorizontalAlignment="Left" Margin="62,28,0,0" VerticalAlignment="Top" Height="85" Width="262" FontSize="24" FontWeight="Bold" Foreground="#DD7D08E7"/>
+        <ComboBox Text="null" x:Name="cboxStatus" HorizontalAlignment="Left" Margin="33,140,0,0" VerticalAlignment="Top" Width="310" Height="50" FontSize="24">
+            <ComboBoxItem>IN_TESTING</ComboBoxItem>
+            <ComboBoxItem>TEST_OK</ComboBoxItem>
+            <ComboBoxItem>TEST_NOT_OK</ComboBoxItem>
+            <ComboBoxItem>DISTRIBUTED</ComboBoxItem>
+            <ComboBoxItem>EXPIRED</ComboBoxItem>
+        </ComboBox>
     </Grid>
 </Window>

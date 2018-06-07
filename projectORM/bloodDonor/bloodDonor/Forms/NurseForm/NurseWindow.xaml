@@ -7,7 +7,7 @@
         xmlns:Model="clr-namespace:BloodDonor.Model" x:Class="BloodDonor.NurseWindow"
         mc:Ignorable="d"
 
-        Title="Nurse Window" Height="807" Width="1362" MinHeight="800" MinWidth="1000" Loaded="Window_Loaded">
+        Title="Nurse Window" Height="807" Width="1362" MinHeight="800" MinWidth="1000" Loaded="Window_Loaded" Icon="/BloodDonor;component/Resources/if_Heart-Watch_379466.ico">
     <Window.Resources>
         <local:AmalgamIssDataSet x:Key="amalgamIssDataSet"/>
         <CollectionViewSource x:Key="donorsViewSource" Source="{Binding Donors, Source={StaticResource amalgamIssDataSet}}"/>
@@ -24,28 +24,29 @@
             <TabItem Header="Bloodpack">
                 <Grid Background="#FFD9C7F6" Margin="0,0,-0.6,-2.2" Height="675" VerticalAlignment="Top" DataContext="{StaticResource bloodPackViewSource1}">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1009*"/>
+                        <ColumnDefinition Width="166*"/>
+                        <ColumnDefinition Width="1165*"/>
                     </Grid.ColumnDefinitions>
-                    <DataGrid x:Name="dgvBloodPack" Margin="26,45,0,54" SelectionMode="Single" HorizontalAlignment="Left" Width="407" IsReadOnly="True" ItemsSource="{Binding}"/>
-                    <DataGrid x:Name="dgvPendingRequest" Margin="453,45,161.6,49" ItemsSource="{Binding Source={StaticResource bloodRequestViewSource1}}" IsReadOnly="True" AutoGeneratingColumn="dgvPendingRequest_OnGenerating"/>
-                    <Button x:Name="btnAddBloodpack" Background="#FF673AB7"  Click="btnAddBloodpack_Click" Margin="0,61,9.6,0" Height="50" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122">
+                    <DataGrid x:Name="dgvBloodPack" Margin="26,45,0,54" SelectionMode="Single" HorizontalAlignment="Left" Width="407" IsReadOnly="True" ItemsSource="{Binding}" Grid.ColumnSpan="2"/>
+                    <DataGrid x:Name="dgvPendingRequest" Margin="287.2,45,161.4,49" ItemsSource="{Binding Source={StaticResource bloodRequestViewSource1}}" IsReadOnly="True" AutoGeneratingColumn="dgvPendingRequest_OnGenerating" Grid.Column="1"/>
+                    <Button x:Name="btnAddBloodpack" Background="#FF673AB7"  Click="btnAddBloodpack_Click" Margin="0,61,9.4,0" Height="50" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122">
                         <TextBlock Text="Add blood pack" TextWrapping="Wrap" TextAlignment="Center" Width="92"/>
                     </Button>
-                    <Button x:Name="btnRemoveBloodpack" Background="#FF673AB7" Margin="0,171,10.6,0" Click="btnRemoveBloodpack_Click" Height="50" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122">
+                    <Button x:Name="btnRemoveBloodpack" Background="#FF673AB7" Margin="0,171,10.4,0" Click="btnRemoveBloodpack_Click" Height="50" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122" Grid.Column="1">
                         <TextBlock Text="Remove blood pack" TextWrapping="Wrap" TextAlignment="Center" Width="92"/>
                     </Button>
                     <!--<Button x:Name="btn3" Click="btn3_Click" Content="Exit" Margin="874,710,9,0" Height="32" Grid.Column="1" VerticalAlignment="Top"/>
                     <Label Content="Blood pack view:"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF673AB7" FontWeight="Bold"  Margin="10,21,0,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="382" Grid.ColumnSpan="2"/>
                     <Label Content="Request:"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF673AB7" FontWeight="Bold"  Margin="347.4,21,0,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="127" Grid.Column="1"/>
                     <Button x:Name="btn4" Click="btn4_Click" Margin="0,181,8.6,0" Height="50" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122">-->
-                    <Button x:Name="btn3" Background="#FF673AB7" Click="btn3_Click" Content="Exit" Margin="0,0,9,10" Height="45" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="123"/>
-                    <Label Content="Blood pack view:"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF673AB7" FontWeight="Bold"  Margin="26,10,786.6,0" Height="35" VerticalAlignment="Top" Background="#FFD9C7F6"/>
-                    <Label Content="Request:"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF673AB7" FontWeight="Bold"  Margin="396,21,0,719" HorizontalAlignment="Left" Width="126"/>
-                    <Button x:Name="btn4" Background="#FF673AB7" Click="btn4_Click" Margin="0,116,10.6,0" Height="50" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122">
+                    <Button x:Name="btn3" Background="#FF673AB7" Click="btn3_Click" Content="Exit" Margin="0,0,9.4,10" Height="45" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="123" Grid.Column="1"/>
+                    <Label Content="Blood pack view:"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF673AB7" FontWeight="Bold"  Margin="26,10,786.4,0" Height="35" VerticalAlignment="Top" Background="#FFD9C7F6" Grid.ColumnSpan="2"/>
+                    <Label Content="Request:"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF673AB7" FontWeight="Bold"  Margin="230.2,21,0,654" HorizontalAlignment="Left" Width="126" Grid.Column="1"/>
+                    <Button x:Name="btnUpdateBloodpack" Background="#FF673AB7" Click="btnUpdateBloodpack_Click" Margin="0,116,10.4,0" Height="50" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122" Grid.Column="1">
                         <TextBlock Text="Edit blood pack status" TextWrapping="Wrap" TextAlignment="Center" Width="92"/>
                     </Button>
-                    <Label Content="Requests:"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF673AB7" FontWeight="Bold"  Margin="453,10,359.6,0" Height="35" VerticalAlignment="Top" Background="#FFD9C7F6"/>
-                    <Button x:Name="btnUseBloodpack" Background="#FF673AB7" Margin="0,226,10.6,0" Click="btnUseBloodpack_Click" Height="50" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122">
+                    <Label Content="Requests:"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF673AB7" FontWeight="Bold"  Margin="287.2,10,359.4,0" Height="35" VerticalAlignment="Top" Background="#FFD9C7F6" Grid.Column="1"/>
+                    <Button x:Name="btnUseBloodpack" Background="#FF673AB7" Margin="0,226,10.4,0" Click="btnUseBloodpack_Click" Height="50" VerticalAlignment="Top" HorizontalAlignment="Right" Width="122" Grid.Column="1">
                         <TextBlock Text="Use bloodpack" TextWrapping="Wrap" TextAlignment="Center" Width="92"/>
                     </Button>
                 </Grid>
@@ -69,8 +70,7 @@
                     <Button  Click="btnRemoveBloodpack_Click" Height="Auto" Margin="0,68,9.8,657" HorizontalAlignment="Right" Width="144">
                         <TextBlock Text="Delete expired blood pack" TextWrapping="Wrap" TextAlignment="Center" Height="40" Width="112"/>
                     </Button>
-                    <Button x:Name="btnUpdate1"  Content="Update" Click="btnUpdate_Click" Height="50" Margin="0,0,9.8,577" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="144"/>
-                    <Button x:Name="btnExit3" Content="Exit" VerticalAlignment="Bottom" Click="btn3_Click" Height="50" Margin="0,0,9.8,23" HorizontalAlignment="Right" Width="144"/>
+                    <Button x:Name="btnExit3" Content="Exit" VerticalAlignment="Bottom" Click="btn3_Click" Height="50" Margin="0,0,63.8,20" HorizontalAlignment="Right" Width="144"/>
                     <Label Content="Expired blood packs view:"  FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF673AB7" FontWeight="Bold"  Margin="27,10,0,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="382"/>
 
 
